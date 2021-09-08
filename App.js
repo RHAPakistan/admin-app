@@ -1,21 +1,27 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import GlobalStyles from './styles/GlobalStyles';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+	// Boolean return after processing a function
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	if (isAuthenticated) {
+		return (
+			// Dashboard
+			<View style={GlobalStyles.container}>
+				<Text>You are Logged in</Text>
+			</View>
+		);
+	} else {
+		return (
+			// Login Screen
+			<View style={GlobalStyles.container}>
+				<Text>You are a new user</Text>
+			</View>
+		);
+	}
+
+	// <StatusBar style='auto' />
+}
