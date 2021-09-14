@@ -3,16 +3,16 @@ import { Button, Text, View } from 'react-native';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 
-const PickupManagerScreen = ({ navigation }) => {
+const DriveManagerScreen = ({ navigation }) => {
 	return (
 		<View style={GlobalStyles.container}>
-			<Text>This is Pickup Manager Screen</Text>
+			<Text>This is Drive Manager Screen</Text>
 			<Button
-				title='Pickup Details'
-				onPress={() => navigation.push('PickupDetailsScreen')}
+				title='Drive Details'
+				onPress={() => navigation.push('DriveDetailsScreen')}
 			/>
 		</View>
 	);
 };
 
-export default PickupManagerScreen;
+export default DriveManagerScreen;
