@@ -5,6 +5,7 @@ import PickupDetailsScreen from '../screens/pickup_module/PickupDetailsScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
 import PrimaryHeader from '../components/PrimaryHeader';
+
 const Stack = createStackNavigator();
 
 const PickupStack = () => {
