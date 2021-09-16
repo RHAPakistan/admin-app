@@ -6,8 +6,8 @@ import {
 	DrawerItem,
 } from '@react-navigation/drawer';
 
-import GlobalStyles from '../styles/GlobalStyles';
-import Colors from '../styles/Colors';
+import styles from './styles';
+import Colors from '../../styles/Colors';
 
 const LogoutProps = {
 	style: {
@@ -28,10 +28,10 @@ const LogoutProps = {
 const CustomDrawerContent = (props) => {
 	return (
 		<ScrollView>
-			<View style={GlobalStyles.drawerHeader}>
-				<View style={GlobalStyles.drawerHeaderTitle}>
-					<Text style={GlobalStyles.drawerHeaderName}>John Doe Smith</Text>
-					<Text style={GlobalStyles.drawerHeaderPhone}>+92 345 1234567</Text>
+			<View style={styles.drawerHeader}>
+				<View style={styles.drawerHeaderTitle}>
+					<Text style={styles.drawerHeaderName}>John Doe Smith</Text>
+					<Text style={styles.drawerHeaderPhone}>+92 345 1234567</Text>
 				</View>
 			</View>
 			<DrawerContentScrollView

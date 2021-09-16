@@ -3,7 +3,22 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import PickupStack from './PickupStack';
 import DriveStack from './DriveStack';
 import CustomDrawerContent from '../components/CustomDrawerContent';
-import DrawerStyles from '../styles/DrawerStyles';
+
+const DrawerStyles = {
+	drawerActiveBackgroundColor: Colors.lightGreen,
+	drawerActiveTintColor: Colors.white,
+	drawerInactiveTintColor: Colors.green,
+	drawerItemStyle: {
+		marginHorizontal: 0,
+		marginVertical: 0,
+		height: 48,
+		borderRadius: 0,
+	},
+	drawerLabelStyle: {
+		marginHorizontal: 8,
+		fontSize: 16,
+	},
+};
 
 const Drawer = createDrawerNavigator();
 
@@ -11,7 +26,7 @@ const RootDrawer = () => {
 	return (
 		<Drawer.Navigator
 			screenOptions={DrawerStyles}
-			initialRouteName='PickupStack'
+			initialRouteName='Pickup Manager'
 			backBehavior='history'
 			drawerContent={(props) => <CustomDrawerContent {...props} />}>
 			<Drawer.Screen
