@@ -1,4 +1,4 @@
-import { Platform, StatusBar, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Colors from './Colors';
 
 const headerHeight = 56;
@@ -6,9 +6,13 @@ const GlobalStyles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: Colors.ashWhite,
+		paddingHorizontal: 16,
+		paddingVertical: 8,
+	},
+
+	center: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
 	},
 
 	drawerHeader: {
@@ -39,6 +43,27 @@ const GlobalStyles = StyleSheet.create({
 		width: headerHeight,
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+
+	screenTitle: {
+		borderBottomColor: Colors.green,
+		borderBottomWidth: 2,
+		marginBottom: 8,
+		paddingVertical: 4,
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+
+	screenTitleText: {
+		fontSize: 24,
+		fontWeight: '700',
+		color: Colors.green,
+		flex: 1,
+	},
+
+	screenTitleButton: {
+		backgroundColor: Colors.green,
+		borderRadius: 8,
 	},
 
 	bgGreen: {

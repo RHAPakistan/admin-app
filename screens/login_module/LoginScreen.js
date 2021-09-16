@@ -7,7 +7,12 @@ import Colors from '../../styles/Colors';
 
 const LoginScreen = ({ navigation }) => {
 	return (
-		<SafeAreaView style={[GlobalStyles.container, GlobalStyles.bgGreen]}>
+		<SafeAreaView
+			style={[
+				GlobalStyles.container,
+				GlobalStyles.bgGreen,
+				GlobalStyles.center,
+			]}>
 			<StatusBar backgroundColor={Colors.green} style='light' />
 			<Text>This is Login Screen</Text>
 			<Button
