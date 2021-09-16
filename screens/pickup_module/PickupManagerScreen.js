@@ -3,6 +3,8 @@ import { Button, Text, View, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Entypo } from '@expo/vector-icons';
 
+import SelectOptions from '../../components/SelectOptions';
+
 import GlobalStyles from '../../styles/GlobalStyles';
 import Colors from '../../styles/Colors';
 
@@ -13,11 +15,12 @@ const PickupManagerScreen = ({ navigation }) => {
 
 			<View style={GlobalStyles.screenTitle}>
 				<Text style={GlobalStyles.screenTitleText}>Pickup Manager</Text>
-
-				<TouchableOpacity style={GlobalStyles.screenTitleButton}>
-					<Entypo name='plus' size={30} color={Colors.white} />
-				</TouchableOpacity>
 			</View>
+
+			<SelectOptions
+				label='Status'
+				data={['Egypt', 'Canada', 'Australia', 'Ireland']}
+			/>
 
 			<Button
 				title='Pickup Details'

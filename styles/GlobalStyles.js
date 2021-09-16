@@ -48,7 +48,6 @@ const GlobalStyles = StyleSheet.create({
 	screenTitle: {
 		borderBottomColor: Colors.green,
 		borderBottomWidth: 2,
-		marginBottom: 8,
 		paddingVertical: 4,
 		flexDirection: 'row',
 		alignItems: 'center',
@@ -64,6 +63,40 @@ const GlobalStyles = StyleSheet.create({
 	screenTitleButton: {
 		backgroundColor: Colors.green,
 		borderRadius: 8,
+	},
+
+	selectOptions: {
+		marginVertical: 8,
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
+
+	selectLabelWrap: {
+		justifyContent: 'center',
+	},
+
+	selectLabel: {
+		fontSize: 21,
+		fontWeight: 'bold',
+	},
+
+	selectButtonWrap: {
+		flex: 1,
+		maxWidth: '75%',
+	},
+
+	selectButton: {
+		width: '100%',
+		height: 50,
+		borderWidth: 1,
+		borderRadius: 8,
+		borderColor: 'black',
+		backgroundColor: Colors.white,
+	},
+
+	selectDropdown: {
+		borderRadius: 8,
+		marginTop: 8,
 	},
 
 	bgGreen: {
