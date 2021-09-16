@@ -9,6 +9,7 @@ import NotificationScreen from '../screens/NotificationScreen';
 import PrimaryHeader from '../components/PrimaryHeader';
 
 const Stack = createStackNavigator();
+const title = 'Location: Karachi East';
 
 const DriveStack = () => {
 	return (
@@ -17,7 +18,7 @@ const DriveStack = () => {
 				name='DriveManagerScreen'
 				component={DriveManagerScreen}
 				options={({ navigation }) => {
-					return PrimaryHeader(navigation, 'Drive Manager');
+					return PrimaryHeader(navigation, title);
 				}}
 			/>
 			<Stack.Screen

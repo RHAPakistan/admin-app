@@ -7,6 +7,7 @@ import NotificationScreen from '../screens/NotificationScreen';
 import PrimaryHeader from '../components/PrimaryHeader';
 
 const Stack = createStackNavigator();
+const title = 'Location: Karachi East';
 
 const PickupStack = () => {
 	return (
@@ -15,7 +16,7 @@ const PickupStack = () => {
 				name='PickupManagerScreen'
 				component={PickupManagerScreen}
 				options={({ navigation }) => {
-					return PrimaryHeader(navigation, 'Pickup Manager');
+					return PrimaryHeader(navigation, title);
 				}}
 			/>
 			<Stack.Screen
