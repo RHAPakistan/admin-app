@@ -4,6 +4,7 @@ import Colors from '../../styles/Colors';
 const styles = StyleSheet.create({
 	selectOptions: {
 		marginVertical: 8,
+		marginHorizontal: 16,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 	},

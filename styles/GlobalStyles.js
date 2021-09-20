@@ -5,8 +5,7 @@ const GlobalStyles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: Colors.ashWhite,
-		paddingHorizontal: 16,
-		paddingVertical: 8,
+		paddingTop: 8,
 	},
 
 	center: {
@@ -20,6 +19,7 @@ const GlobalStyles = StyleSheet.create({
 		paddingVertical: 4,
 		flexDirection: 'row',
 		alignItems: 'center',
+		marginHorizontal: 16,
 	},
 
 	screenTitleText: {

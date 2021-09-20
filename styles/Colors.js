@@ -1,8 +1,10 @@
 export default Colors = {
+	lightGreen: '#2D6E42',
 	green: '#165E2E',
 	white: '#FFFFFF',
 	black: '#2E2E2E',
 	ashWhite: '#F7F7F7',
-	lightGrey: '#F0F0F0',
-	lightGreen: '#2D6E42',
+	lightGrey: '#A7A7A7',
+	grey: '#909090',
+	darkGrey: '#777777',
 };
