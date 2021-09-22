@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import { ScrollView, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
+import { DismissedWrap } from '../../contexts/DismissedContext';
 import SelectOptions from '../../components/SelectOptions';
 
 import GlobalStyles from '../../styles/GlobalStyles';
-import Colors from '../../styles/Colors';
 import PickupList from '../../components/PickupList';
 
 const PickupManagerScreen = ({ navigation }) => {
 	const [status, setStatus] = useState([]);
-	const [dismissed, setDismissed] = useState(false);
 
 	return (
 		<ScrollView style={GlobalStyles.container}>
-			<TouchableWithoutFeedback onPress={() => setDismissed(true)}>
+			<DismissedWrap>
 				<View>
 					<StatusBar style='light' />
 
@@ -28,13 +27,12 @@ const PickupManagerScreen = ({ navigation }) => {
 						data={['Egypt', 'Canada', 'Australia', 'Ireland']}
 					/>
 				</View>
-			</TouchableWithoutFeedback>
+			</DismissedWrap>
 			<PickupList
 				status={status}
-				dismissed={dismissed}
-				clearDismissed={() => setDismissed(false)}
-				action={(key) =>
-					navigation.navigate('PickupDetailsScreen', { key: key })
+				action={(id) =>
+					// navigation.navigate('PickupDetailsScreen', { key: key })
+					console.log(id, 'pressed')
 				}
 			/>
 		</ScrollView>

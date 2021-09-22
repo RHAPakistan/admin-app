@@ -1,38 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
+import React from 'react';
 
 import PickupButton from './PickupButton';
-import styles from './styles';
+import ButtonList from '../ButtonList';
 
-const PickupList = ({ status, dismissed, clearDismissed, action }) => {
-	const data = [1, 2, 3, 4, 5, 6, 7, 8];
-	const [activeKey, setActiveKey] = useState(-1);
-
-	// when user click outside the list, so clear the active buttons
-	useEffect(() => {
-		setActiveKey(-1);
-		clearDismissed();
-	}, [status, dismissed]);
-
-	// move to the pickup details screen
-	useEffect(() => {
-		if (activeKey > 0) {
-			action(activeKey);
-		}
-	}, [activeKey]);
-
+const PickupList = ({ status, action }) => {
+	// fetch data here
+	const data = [
+		{ id: 1, time: '2m ago', address: 'Plot 111, XYZ Street' },
+		{ id: 2, time: '5m ago', address: 'Plot 222, XYZ Street' },
+		{ id: 3, time: '10m ago', address: 'Plot 333, XYZ Street' },
+		{ id: 4, time: '15m ago', address: 'Plot 444, XYZ Street' },
+		{ id: 5, time: '34m ago', address: 'Plot 555, XYZ Street' },
+		{ id: 6, time: '1h 2m ago', address: 'Plot 666, XYZ Street' },
+	];
 	return (
-		<View style={styles.list}>
-			{data.map((item) => (
-				<View key={item}>
-					<PickupButton
-						item={item}
-						action={() => setActiveKey(item)}
-						isActive={activeKey === item}
-					/>
-				</View>
-			))}
-		</View>
+		<ButtonList data={data} action={action}>
+			<PickupButton />
+		</ButtonList>
 	);
 };
 

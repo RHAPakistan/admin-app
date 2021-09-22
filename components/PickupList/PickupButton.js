@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
-import styles from './styles';
+import styles from '../ButtonList/styles';
 
-const PickupButton = ({ item, action, isActive }) => {
+const PickupButton = ({ data, action, isActive }) => {
 	const activeStyles = {
 		Button: isActive ? styles.activeButton : null,
 		ButtonTitle: isActive ? styles.activeButtonTitle : styles.buttonTitleText,
@@ -12,13 +12,12 @@ const PickupButton = ({ item, action, isActive }) => {
 		<TouchableWithoutFeedback onPress={action}>
 			<View style={[styles.button, activeStyles.Button]}>
 				<View style={styles.buttonHeader}>
-					<Text style={activeStyles.ButtonTitle}>#{item}</Text>
-					<Text style={activeStyles.ButtonInfo}>2m ago</Text>
+					<Text style={activeStyles.ButtonTitle}>#{data.id}</Text>
+					<Text style={activeStyles.ButtonInfo}>{data.time}</Text>
 				</View>
 
 				<View style={styles.buttonHeader}>
-					<Text style={activeStyles.ButtonInfo}>Plot 21, XYZ Street</Text>
-					<Text style={activeStyles.ButtonInfo}>21 July, 2021</Text>
+					<Text style={activeStyles.ButtonInfo}>{data.address}</Text>
 				</View>
 			</View>
 		</TouchableWithoutFeedback>

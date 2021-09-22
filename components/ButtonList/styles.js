@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import Colors from '../../styles/Colors';
 
-const buttonElevation = 3;
+const buttonElevation = 4;
 const styles = StyleSheet.create({
 	list: {
 		borderTopColor: Colors.grey,
@@ -17,6 +17,11 @@ const styles = StyleSheet.create({
 		marginTop: 8,
 		paddingVertical: 8,
 		paddingHorizontal: 16,
+		borderWidth: 1,
+		borderColor: Colors.lightGrey,
+	},
+
+	buttonShadow: {
 		shadowColor: Colors.black,
 		shadowOffset: { width: 0, height: 0.5 * buttonElevation },
 		shadowOpacity: 0.3,
@@ -41,6 +46,8 @@ const styles = StyleSheet.create({
 	},
 
 	activeButton: {
+		paddingVertical: 7,
+		paddingHorizontal: 15,
 		borderWidth: 2,
 		borderColor: Colors.green,
 	},
