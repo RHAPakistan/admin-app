@@ -5,12 +5,12 @@ import { StatusBar } from 'expo-status-bar';
 import GlobalStyles from '../../styles/GlobalStyles';
 
 const PickupDetailsScreen = ({ navigation, route }) => {
-	const { key } = route.params;
+	const { id } = route.params;
 	return (
 		<View style={GlobalStyles.container}>
 			<StatusBar style='dark' />
 			<Text>This is Pickup Details Screen</Text>
-			<Text>Key: #{key}</Text>
+			<Text>Key: #{id}</Text>
 		</View>
 	);
 };

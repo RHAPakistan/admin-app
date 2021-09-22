@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
-import DismissedContext from '../../contexts/DismissedContext';
 import styles from './styles';
 
-const ButtonList = ({ action, children, data }) => {
+const ButtonList = ({ action, children, clearDismissed, dismissed, data }) => {
 	const [activeKey, setActiveKey] = useState(-1);
-	const { dismissed, clearDismissed } = useContext(DismissedContext);
 
 	// when user click outside the list, so clear the active buttons
 	useEffect(() => {

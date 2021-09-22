@@ -3,7 +3,7 @@ import React from 'react';
 import PickupButton from './PickupButton';
 import ButtonList from '../ButtonList';
 
-const PickupList = ({ status, action }) => {
+const PickupList = ({ action, dismissed, clearDismissed, status }) => {
 	// fetch data here
 	const data = [
 		{ id: 1, time: '2m ago', address: 'Plot 111, XYZ Street' },
@@ -14,7 +14,7 @@ const PickupList = ({ status, action }) => {
 		{ id: 6, time: '1h 2m ago', address: 'Plot 666, XYZ Street' },
 	];
 	return (
-		<ButtonList data={data} action={action}>
+		<ButtonList {...{ action, data, dismissed, clearDismissed }}>
 			<PickupButton />
 		</ButtonList>
 	);
