@@ -33,8 +33,8 @@ const PickupManagerScreen = ({ navigation }) => {
 			<PickupList
 				{...{
 					action: (id) => {
-						// navigation.navigate('PickupDetailsScreen', { id: id })
-						console.log(id, 'pressed');
+						navigation.navigate('PickupDetailsScreen', { id: id });
+						// console.log(id, 'pressed');
 					},
 					clearDismissed: () => {
 						setDismissed(false);

@@ -22,7 +22,7 @@ const PickupStack = () => {
 			<Stack.Screen
 				name='PickupDetailsScreen'
 				component={PickupDetailsScreen}
-				options={{ title: 'Pickup Details' }}
+				options={({ route }) => ({ title: 'Pickup #' + route.params.id })}
 			/>
 			<Stack.Screen
 				name='NotificationScreen'
