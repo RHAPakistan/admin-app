@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PickupButton from './PickupButton';
-import ButtonList from '../ButtonList';
+import ButtonList from '../';
 
 const PickupList = ({ action, dismissed, clearDismissed, status }) => {
 	// fetch data here

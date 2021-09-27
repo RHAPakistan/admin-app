@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import SelectOptions from '../../components/SelectOptions';
 
 import GlobalStyles from '../../styles/GlobalStyles';
-import PickupList from '../../components/PickupList';
+import PickupList from '../../components/ButtonList/PickupList';
 
 const PickupManagerScreen = ({ navigation }) => {
 	const [status, setStatus] = useState([]);

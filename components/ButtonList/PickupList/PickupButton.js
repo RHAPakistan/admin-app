@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
-import styles from '../ButtonList/styles';
+import styles from '../styles';
 
 const PickupButton = ({ data, action, isActive }) => {
 	const activeStyles = {
