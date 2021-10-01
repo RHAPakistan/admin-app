@@ -13,9 +13,11 @@ const styles = StyleSheet.create({
 	ButtonLine: {
 		height: 48,
 	},
+
 	Description: {
 		marginHorizontal: 16,
 	},
+
 	DescLine: {
 		marginHorizontal: 0,
 		height: 36,
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-between',
 	},
+
 	descBox: {
 		borderWidth: 1,
 		borderRadius: 8,
@@ -32,6 +35,7 @@ const styles = StyleSheet.create({
 		marginBottom: 8,
 		padding: 8,
 	},
+
 	descText: { fontSize: 16 },
 
 	oddChild: {
@@ -45,6 +49,10 @@ const styles = StyleSheet.create({
 	Label: {
 		fontWeight: 'bold',
 		fontSize: 16,
+	},
+
+	textClickable: {
+		textDecorationLine: 'underline',
 	},
 
 	Button: {
