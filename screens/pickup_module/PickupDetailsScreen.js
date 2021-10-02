@@ -8,11 +8,14 @@ import ProgressBar from '../../components/ProgressBar';
 
 const PickupDetailsScreen = ({ navigation, route }) => {
 	const { id } = route.params;
+	let removeProgressBar = false;
 
 	const [dropoff, setDropoff] = useState('');
 	// Fetch Data from id Here
 	const data = {
 		BOOKING_TIME: '{TIME_DATE}',
+		// COMPLETION_TIME: '{COMPLETION_TIME}',
+		CANCELLATION_TIME: '{CANCELLATION_TIME}',
 		CONTACT_NAME: '{CONTACT_NAME}',
 		CONTACT_PHONE: () => console.log('Contact Button Pressed'),
 		PICKUP_LOCATION: () => console.log('Pickup Location Button Pressed'),
@@ -28,11 +31,17 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		},
 	};
 
+	if (data.CANCELLATION_TIME || data.COMPLETION_TIME) {
+		removeProgressBar = true;
+	}
+
 	return (
 		<View style={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
-			<ProgressBar active={4} message='This is step four.' />
+			{!removeProgressBar && (
+				<ProgressBar active={4} message='This is step four.' />
+			)}
 
 			<PickupDetails data={data} />
 		</View>

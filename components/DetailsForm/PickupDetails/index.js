@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 
 import TextLine from '../TextLine';
@@ -7,6 +7,8 @@ import ButtonLine from '../ButtonLine';
 import TextDescription from '../TextDescription';
 
 const PickupDetails = ({ data }) => {
+	let indexOffset = 1;
+
 	const SelectDropOff = ({ index, data }) => {
 		const { value, action } = data;
 
@@ -28,29 +30,56 @@ const PickupDetails = ({ data }) => {
 		);
 	};
 
+	let DataLine =
+		data.COMPLETION_TIME || data.CANCELLATION_TIME ? (
+			data.COMPLETION_TIME ? (
+				<TextLine
+					index={indexOffset}
+					label='Completion Time'
+					value={data.COMPLETION_TIME}
+				/>
+			) : (
+				<TextLine
+					index={indexOffset}
+					label='Cancellation Time'
+					value={data.CANCELLATION_TIME}
+				/>
+			)
+		) : null;
+	indexOffset = DataLine ? 1 : 0;
+
 	return (
 		<View>
 			<TextLine index={0} label='Booking Time' value={data.BOOKING_TIME} />
-			<TextLine index={1} label='Contact Name' value={data.CONTACT_NAME} />
+			{DataLine}
+			<TextLine
+				index={indexOffset + 1}
+				label='Contact Name'
+				value={data.CONTACT_NAME}
+			/>
 			<ButtonLine
-				index={2}
+				index={indexOffset + 2}
 				label='Contact Phone'
 				title='Contact'
 				action={data.CONTACT_PHONE}
 			/>
 			<ButtonLine
-				index={3}
+				index={indexOffset + 3}
 				label='Pickup Location'
 				title='Map'
 				action={data.PICKUP_LOCATION}
 			/>
-			<TextLine index={4} label='Surplus Type' value={data.SURPLUS_TYPE} />
+			<TextLine
+				index={indexOffset + 4}
+				label='Surplus Type'
+				value={data.SURPLUS_TYPE}
+			/>
 			<TextDescription
-				index={5}
+				index={indexOffset + 5}
 				label='Food Description'
 				value={data.DESCRIPTION}
 			/>
-			<SelectDropOff index={6} data={data.DROPOFF_LOC} />
+			<SelectDropOff index={indexOffset + 6} data={data.DROPOFF_LOC} />
 		</View>
 	);
 };
