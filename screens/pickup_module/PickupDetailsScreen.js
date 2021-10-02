@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import PickupDetails from '../../components/DetailsForm/PickupDetails';
+import ProgressBar from '../../components/ProgressBar';
 
 const PickupDetailsScreen = ({ navigation, route }) => {
 	const { id } = route.params;
@@ -31,7 +32,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		<View style={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
-			{/* Show ProgressBar Here */}
+			<ProgressBar active={4} message='This is step four.' />
 
 			<PickupDetails data={data} />
 		</View>
