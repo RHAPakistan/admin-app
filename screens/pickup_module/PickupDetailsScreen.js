@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import GlobalStyles from '../../styles/GlobalStyles';
@@ -10,7 +10,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	const { id } = route.params;
 	let removeProgressBar = false;
 
-	const [dropoff, setDropoff] = useState('');
+	const [dropoff, setDropoff] = useState({ name: '', id: '' });
 	// Fetch Data from id Here
 	const data = {
 		BOOKING_TIME: '{TIME_DATE}',
@@ -23,11 +23,9 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		DESCRIPTION:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		DROPOFF_LOC: {
-			value: dropoff,
-			action: () => {
-				console.log('Dropoff Button Pressed');
-				setDropoff('' + Math.random() * 100000);
-			},
+			value: dropoff.name,
+			action: () =>
+				navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff }),
 		},
 	};
 
@@ -36,7 +34,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	}
 
 	return (
-		<View style={GlobalStyles.container}>
+		<ScrollView style={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
 			{!removeProgressBar && (
@@ -44,7 +42,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 			)}
 
 			<PickupDetails data={data} />
-		</View>
+		</ScrollView>
 	);
 };
 
