@@ -9,16 +9,10 @@ import TextDescription from '../TextDescription';
 const PickupDetails = ({ data }) => {
 	let indexOffset = 1;
 
-	const SelectDropOff = ({ index, data }) => {
+	const ButtonToTextClickable = ({ data, index, label, title }) => {
 		const { value, action } = data;
 
-		const dataProps = {
-			index,
-			label: 'Drop-off Location',
-			title: 'Assign',
-			value,
-			action,
-		};
+		const dataProps = { index, label, title, value, action };
 		return (
 			<View>
 				{!value ? (
@@ -79,7 +73,18 @@ const PickupDetails = ({ data }) => {
 				label='Food Description'
 				value={data.DESCRIPTION}
 			/>
-			<SelectDropOff index={indexOffset + 6} data={data.DROPOFF_LOC} />
+			<ButtonToTextClickable
+				index={indexOffset + 6}
+				label='Drop-off Location'
+				title='Assign'
+				data={data.DROPOFF_LOC}
+			/>
+			<ButtonToTextClickable
+				index={indexOffset + 7}
+				label='Assign Volunteer Manually?'
+				title='Assign'
+				data={data.VOLUNTEER}
+			/>
 		</View>
 	);
 };
