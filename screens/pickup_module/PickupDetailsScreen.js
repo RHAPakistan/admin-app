@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import ProgressBar from '../../components/ProgressBar';
@@ -19,6 +20,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		id: '',
 	});
 
+	const [dropoff, setDropoff] = useState({ name: '', id: '' });
 	// Fetch Data from id Here
 	const data = {
 		BOOKING_TIME: '{TIME_DATE}',
