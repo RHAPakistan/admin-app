@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import PickupManagerScreen from '../screens/pickup_module/PickupManagerScreen';
 import PickupDetailsScreen from '../screens/pickup_module/PickupDetailsScreen';
 import SelectDropoffScreen from '../screens/pickup_module/SelectDropoffScreen';
+import SelectVolunteerScreen from '../screens/pickup_module/SelectVolunteerScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
 import PrimaryHeader from '../components/PrimaryHeader';
@@ -29,6 +30,11 @@ const PickupStack = () => {
 				name='SelectDropoffScreen'
 				component={SelectDropoffScreen}
 				options={{ title: 'Assign Dropoff Location' }}
+			/>
+			<Stack.Screen
+				name='SelectVolunteerScreen'
+				component={SelectVolunteerScreen}
+				options={{ title: 'Assign Volunteer Location' }}
 			/>
 			<Stack.Screen
 				name='NotificationScreen'

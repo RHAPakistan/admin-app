@@ -11,8 +11,8 @@
 | ADM 1.3 | Add Drive Screen              | &#9744;     |
 | ADM 1.4 | Edit Drive Details Screen     | &#9744;     |
 | ------- | -----------------------       | ----------- |
-| ADM 2.1 | Pickup Manager Screen         | &#9744;     |
-| ADM 2.2 | Pickup Details Screen         | &#9744;     |
+| ADM 2.1 | Pickup Manager Screen         | &#9745;     |
+| ADM 2.2 | Pickup Details Screen         | &#9745;     |
 | ADM 2.3 | Assign Drop-off Screen        | &#9744;     |
 | ADM 2.4 | Assign Volunteer Screen       | &#9744;     |
 | ------- | -----------------------       | ----------- |

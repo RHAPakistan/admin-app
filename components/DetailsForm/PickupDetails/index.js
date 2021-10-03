@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 
 import TextLine from '../TextLine';
@@ -6,19 +6,15 @@ import TextLineClickable from '../TextLineClickable';
 import ButtonLine from '../ButtonLine';
 import TextDescription from '../TextDescription';
 
+import styles from '../styles';
+
 const PickupDetails = ({ data }) => {
 	let indexOffset = 1;
 
-	const SelectDropOff = ({ index, data }) => {
+	const ButtonToTextClickable = ({ data, index, label, title }) => {
 		const { value, action } = data;
 
-		const dataProps = {
-			index,
-			label: 'Drop-off Location',
-			title: 'Assign',
-			value,
-			action,
-		};
+		const dataProps = { index, label, title, value, action };
 		return (
 			<View>
 				{!value ? (
@@ -30,7 +26,7 @@ const PickupDetails = ({ data }) => {
 		);
 	};
 
-	let DataLine =
+	let CompletionLine =
 		data.COMPLETION_TIME || data.CANCELLATION_TIME ? (
 			data.COMPLETION_TIME ? (
 				<TextLine
@@ -46,40 +42,89 @@ const PickupDetails = ({ data }) => {
 				/>
 			)
 		) : null;
-	indexOffset = DataLine ? 1 : 0;
+	indexOffset = CompletionLine ? 1 : 0;
 
+	let ProviderLine =
+		data.PROVIDER.type === 'Registered' ? (
+			<TextLineClickable
+				index={indexOffset + 3}
+				label='Vendor Name'
+				value={data.PROVIDER.name}
+				action={data.PROVIDER.action}
+			/>
+		) : (
+			<TextLine
+				index={indexOffset + 3}
+				label='Vendor Type'
+				value={data.PROVIDER.type}
+			/>
+		);
 	return (
 		<View>
+			{/* Booking Time: When Pickup is created */}
 			<TextLine index={0} label='Booking Time' value={data.BOOKING_TIME} />
-			{DataLine}
+
+			{/* If Pickuo is cancelled or completed */}
+			{CompletionLine}
+
+			{/* Contact Name */}
 			<TextLine
 				index={indexOffset + 1}
 				label='Contact Name'
 				value={data.CONTACT_NAME}
 			/>
-			<ButtonLine
+
+			{/* contact phone number, and go to dialer if clicked */}
+			<TextLineClickable
 				index={indexOffset + 2}
 				label='Contact Phone'
-				title='Contact'
-				action={data.CONTACT_PHONE}
+				value={data.CONTACT_PHONE}
+				action={() => console.log('Phone Number Clicked')}
 			/>
+
+			{/* vendor/provider name or Type if Guest */}
+			{ProviderLine}
+
+			{/* Go to google map when clicked to find the location */}
 			<ButtonLine
-				index={indexOffset + 3}
+				index={indexOffset + 4}
 				label='Pickup Location'
 				title='Map'
 				action={data.PICKUP_LOCATION}
 			/>
+
+			{/* Surplus type */}
 			<TextLine
-				index={indexOffset + 4}
+				index={indexOffset + 5}
 				label='Surplus Type'
 				value={data.SURPLUS_TYPE}
 			/>
+
+			{/* Food Description */}
 			<TextDescription
-				index={indexOffset + 5}
+				index={indexOffset + 6}
 				label='Food Description'
 				value={data.DESCRIPTION}
 			/>
-			<SelectDropOff index={indexOffset + 6} data={data.DROPOFF_LOC} />
+
+			{/* Admin Actions Starts here */}
+			<View style={styles.splitter}></View>
+
+			{/* Assign dropoff location */}
+			<ButtonToTextClickable
+				index={indexOffset + 7}
+				label='Drop-off Location'
+				title='Assign'
+				data={data.DROPOFF_LOC}
+			/>
+
+			{/* Assign volunteer manually */}
+			<ButtonToTextClickable
+				index={indexOffset + 8}
+				label='Assign Volunteer Manually?'
+				title='Assign'
+				data={data.VOLUNTEER}
+			/>
 		</View>
 	);
 };
