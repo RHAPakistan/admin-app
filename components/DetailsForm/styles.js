@@ -63,9 +63,17 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+
 	ButtonTitle: {
 		color: Colors.white,
 		fontSize: 16,
+	},
+
+	splitter: {
+		height: 2,
+		marginHorizontal: 16,
+		marginBottom: 8,
+		backgroundColor: Colors.grey,
 	},
 });
 
