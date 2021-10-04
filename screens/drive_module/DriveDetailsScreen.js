@@ -27,31 +27,36 @@ const DriveDetailsScreen = ({ navigation, route }) => {
 	};
 
 	return (
-		<ScrollView style={GlobalStyles.container}>
+		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
-			<DriveDetails data={data} />
+			{/* < */}
+			<View style={{ flex: 1 }}>
+				<DriveDetails data={data} />
 
-			<ActionBox
-				type='primary'
-				title='See Participants'
-				action={() =>
-					navigation.navigate('DriveParticipantsScreen', { id: id })
-				}
-			/>
+				<ActionBox
+					type='primary'
+					title='See Participants'
+					action={() =>
+						navigation.navigate('DriveParticipantsScreen', { id: id })
+					}
+				/>
+			</View>
 
-			{/* When Cancelling or deactivating, a modal should appear to ask if admin really wants to cancel the pickup */}
-			<ActionBox
-				type='cancel'
-				title='Deactivate'
-				action={() => console.log('Deactivate Button Clicked')}
-			/>
+			<View style={{ marginTop: 32 }}>
+				{/* When Cancelling or deactivating, a modal should appear to ask if admin really wants to cancel the pickup */}
+				<ActionBox
+					type='cancel'
+					title='Deactivate'
+					action={() => console.log('Deactivate Button Clicked')}
+				/>
 
-			<ActionBox
-				type='cancel'
-				title='Cancel'
-				action={() => console.log('Cancel Button Clicked')}
-			/>
+				<ActionBox
+					type='cancel'
+					title='Cancel'
+					action={() => console.log('Cancel Button Clicked')}
+				/>
+			</View>
 		</ScrollView>
 	);
 };
