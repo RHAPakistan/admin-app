@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import ProgressBar from '../../components/ProgressBar';
@@ -58,27 +58,29 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	}
 
 	return (
-		<ScrollView style={GlobalStyles.container}>
+		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
-			{!removeProgressBar && (
-				<ProgressBar active={4} message='This is step four.' />
-			)}
+			<View style={{ flex: 1 }}>
+				{!removeProgressBar && (
+					<ProgressBar active={4} message='This is step four.' />
+				)}
+				<PickupDetails data={data} />
+				<ActionBox
+					type='primary'
+					title='Proceed'
+					action={() => console.log('Proceed Button Clicked')}
+				/>
+			</View>
 
-			<PickupDetails data={data} />
-
-			<ActionBox
-				type='primary'
-				title='Proceed'
-				action={() => console.log('Proceed Button Clicked')}
-			/>
-
-			{/* When Cancelling, a modal should appear to ask if admin really wants to cancel the pickup */}
-			<ActionBox
-				type='cancel'
-				title='Cancel Pickup'
-				action={() => console.log('Cancel Button Clicked')}
-			/>
+			<View style={{ marginTop: 32 }}>
+				{/* When Cancelling, a modal should appear to ask if admin really wants to cancel the pickup */}
+				<ActionBox
+					type='cancel'
+					title='Cancel Pickup'
+					action={() => console.log('Cancel Button Clicked')}
+				/>
+			</View>
 		</ScrollView>
 	);
 };
