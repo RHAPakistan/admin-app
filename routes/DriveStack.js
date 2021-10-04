@@ -4,6 +4,7 @@ import DriveManagerScreen from '../screens/drive_module/DriveManagerScreen';
 import DriveDetailsScreen from '../screens/drive_module/DriveDetailsScreen';
 import EditDriveDetailsScreen from '../screens/drive_module/EditDriveDetailsScreen';
 import CreateDriveScreen from '../screens/drive_module/CreateDriveScreen';
+import DriveParticipantsScreen from '../screens/drive_module/DriveParticipantsScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
 import PrimaryHeader from '../components/PrimaryHeader';
@@ -24,7 +25,7 @@ const DriveStack = () => {
 			<Stack.Screen
 				name='DriveDetailsScreen'
 				component={DriveDetailsScreen}
-				options={{ title: 'Drive Details' }}
+				options={({ route }) => ({ title: 'Drive #' + route.params.id })}
 			/>
 			<Stack.Screen
 				name='EditDriveDetailsScreen'
@@ -35,6 +36,11 @@ const DriveStack = () => {
 				name='CreateDriveScreen'
 				component={CreateDriveScreen}
 				options={{ title: 'Add New Drive' }}
+			/>
+			<Stack.Screen
+				name='DriveParticipantsScreen'
+				component={DriveParticipantsScreen}
+				options={{ title: 'Drive Participants List' }}
 			/>
 			<Stack.Screen
 				name='NotificationScreen'
