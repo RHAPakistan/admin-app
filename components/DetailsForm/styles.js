@@ -55,20 +55,6 @@ const styles = StyleSheet.create({
 		textDecorationLine: 'underline',
 	},
 
-	Button: {
-		width: 120,
-		height: 40,
-		borderRadius: 8,
-		backgroundColor: Colors.green,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-
-	ButtonTitle: {
-		color: Colors.white,
-		fontSize: 16,
-	},
-
 	splitter: {
 		height: 2,
 		marginHorizontal: 16,

@@ -1,18 +1,18 @@
 import React from 'react';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
-import styles from './styles';
+import { Text, Pressable, View } from 'react-native';
+import GlobalStyles from '../../styles/GlobalStyles';
 
 const ActionBox = ({ action, type, title }) => {
-	let buttonStyles =
-		type === 'primary' ? styles.primaryButton : styles.cancelButton;
+	let buttonStyles = [
+		GlobalStyles.LargeButton,
+		type === 'primary' ? GlobalStyles.bgGreen : GlobalStyles.bgRed,
+	];
 
 	return (
-		<View style={styles.container}>
-			<TouchableWithoutFeedback onPress={action}>
-				<View style={buttonStyles}>
-					<Text style={styles.buttonTitle}>{title}</Text>
-				</View>
-			</TouchableWithoutFeedback>
+		<View style={{ alignItems: 'center', paddingVertical: 4 }}>
+			<Pressable onPress={action} style={buttonStyles}>
+				<Text style={GlobalStyles.LargeButtonTitle}>{title}</Text>
+			</Pressable>
 		</View>
 	);
 };

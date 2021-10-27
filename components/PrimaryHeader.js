@@ -1,25 +1,25 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../styles/Colors';
 
 const PrimaryHeader = (navigation, title) => {
 	const MenuButton = () => {
 		return (
-			<TouchableOpacity
+			<Pressable
 				style={styles.headerButton}
 				onPress={() => navigation.openDrawer()}>
 				<Ionicons name='menu' size={30} color={Colors.white} />
-			</TouchableOpacity>
+			</Pressable>
 		);
 	};
 	const BellButton = () => {
 		return (
-			<TouchableOpacity
+			<Pressable
 				style={styles.headerButton}
 				onPress={() => navigation.push('NotificationScreen')}>
 				<Ionicons name='notifications' size={24} color={Colors.white} />
-			</TouchableOpacity>
+			</Pressable>
 		);
 	};
 
