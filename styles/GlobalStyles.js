@@ -42,6 +42,30 @@ const GlobalStyles = StyleSheet.create({
 		backgroundColor: Colors.red,
 	},
 
+	bgGrey: {
+		backgroundColor: Colors.grey,
+	},
+
+	ButtonGreenOutlined: {
+		borderWidth: 2,
+		borderColor: Colors.green,
+	},
+
+	ButtonGreenOutlinedTitle: {
+		color: Colors.green,
+		fontWeight: '700',
+	},
+
+	MediumButtonTitle: {
+		color: Colors.white,
+		fontSize: 16,
+	},
+
+	LargeButtonTitle: {
+		color: Colors.white,
+		fontSize: 18,
+	},
+
 	MediumButton: {
 		width: 120,
 		height: 40,
@@ -56,16 +80,6 @@ const GlobalStyles = StyleSheet.create({
 		borderRadius: 8,
 		justifyContent: 'center',
 		alignItems: 'center',
-	},
-
-	MediumButtonTitle: {
-		color: Colors.white,
-		fontSize: 16,
-	},
-
-	LargeButtonTitle: {
-		color: Colors.white,
-		fontSize: 18,
 	},
 });
 

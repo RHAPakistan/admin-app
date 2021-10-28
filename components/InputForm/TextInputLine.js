@@ -34,7 +34,7 @@ const TextInputLine = ({ label, value, validate, index, placeholder }) => {
 		<View
 			style={[
 				styles.line,
-				index % 2 == 0 ? styles.evenChild : styles.oddChild,
+				index % 2 == 0 ? styles.oddChild : styles.evenChild,
 			]}>
 			<View style={styles.labelBox}>
 				<Text style={labelStyle}>{label}:</Text>

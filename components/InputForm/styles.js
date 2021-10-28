@@ -4,6 +4,7 @@ import Colors from '../../styles/Colors';
 const styles = StyleSheet.create({
 	line: {
 		marginHorizontal: 16,
+		paddingVertical: 2,
 	},
 
 	evenChild: {
@@ -16,8 +17,7 @@ const styles = StyleSheet.create({
 
 	labelBox: {
 		height: 20,
-		marginTop: 4,
-		marginBottom: 2,
+		marginVertical: 2,
 	},
 
 	labelText: {
@@ -63,10 +63,53 @@ const styles = StyleSheet.create({
 		borderColor: Colors.red,
 	},
 
-	errorBox: { marginVertical: 2 },
+	errorBox: {
+		marginVertical: 2,
+	},
 
 	errorText: {
 		color: Colors.red,
+	},
+
+	ModalBackground: {
+		backgroundColor: 'rgba(0,0,0,0.8)',
+		flex: 1,
+		justifyContent: 'center',
+	},
+
+	ModalBody: {
+		backgroundColor: Colors.ashWhite,
+		margin: 16,
+		borderRadius: 16,
+		paddingHorizontal: 16,
+		paddingVertical: 8,
+	},
+
+	ModalHeader: {
+		alignItems: 'center',
+		borderBottomWidth: 2,
+		borderBottomColor: Colors.grey,
+		paddingBottom: 4,
+	},
+
+	ModalHeaderTitle: {
+		fontSize: 21,
+		fontWeight: '700',
+		color: Colors.green,
+	},
+
+	ModalContainer: {
+		marginVertical: 16,
+		height: 104,
+		justifyContent: 'space-between',
+	},
+
+	ModalControls: {
+		flexDirection: 'row-reverse',
+		// justifyContent: 'space-between',
+		paddingTop: 8,
+		borderTopWidth: 2,
+		borderTopColor: Colors.grey,
 	},
 });
 
