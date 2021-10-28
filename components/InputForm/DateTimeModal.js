@@ -154,7 +154,7 @@ const DateTimeModal = ({ label, value, validate, index }) => {
 	}, []);
 
 	const validateHandler = () => {
-		const message = validate(text);
+		const message = validate(date);
 		if (message) {
 			setIsError(true);
 			setError(message);
@@ -183,6 +183,7 @@ const DateTimeModal = ({ label, value, validate, index }) => {
 	const ModalConfirmHandler = (newDate) => {
 		setDate(newDate);
 		setText(moment(newDate).format('LLLL'));
+		validateHandler();
 	};
 
 	return (

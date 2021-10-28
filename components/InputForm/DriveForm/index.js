@@ -3,33 +3,48 @@ import { View } from 'react-native';
 import TextInputLine from '../TextInputLine';
 import DateTimeModal from '../DateTimeModal';
 
-const DriveForm = ({ data, setData }) => {
+const DriveForm = ({ driveid }) => {
 	const [title, setTitle] = useState('');
 	const [location, setLocation] = useState('');
 	const [date, setDate] = useState(null);
 
 	//\\\\\\\\\\\\ Validation Functions
+	const [validate, setValidate] = useState({
+		title: false,
+		location: false,
+		date: false,
+	});
 
 	const TitleValidation = (text) => {
 		// if validation fails, return false else true
 		if (text.length == 0) {
-			return 'Title Should not be Empty';
+			setValidate({ title: 'Title Should not be Empty', ...validate });
+		} else {
+			setValidate({ title: false, ...validate });
 		}
 		setTitle(text);
-		return false;
+		return validate.title;
 	};
 
 	const LocationValidation = (text) => {
 		// if validation fails, return message else false
 		if (text.length == 0) {
-			return 'Location should not be Empty';
+			setValidate({ location: 'Location should not be Empty', ...validate });
+		} else {
+			setValidate({ location: false, ...validate });
 		}
 		setLocation(text);
-		return false;
+		return validate.location;
 	};
 
-	const DateValidation = () => {
-		return false;
+	const DateValidation = (date) => {
+		if (false) {
+			setValidate({ date: 'Something happened here', ...validate });
+		} else {
+			setValidate({ date: false, ...validate });
+		}
+		setDate(date);
+		return validate.date;
 	};
 
 	//\\\\\\\\\\\\ Render Main Component
@@ -58,8 +73,8 @@ const DriveForm = ({ data, setData }) => {
 			<DateTimeModal
 				index={2}
 				label={'Event Time'}
-				value={null}
-				validate={null}
+				value={date}
+				validate={DateValidation}
 			/>
 		</View>
 	);
