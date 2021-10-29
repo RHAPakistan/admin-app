@@ -7,10 +7,10 @@ import CreateDriveScreen from '../screens/drive_module/CreateDriveScreen';
 import DriveParticipantsScreen from '../screens/drive_module/DriveParticipantsScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
-import PrimaryHeader from '../components/PrimaryHeader';
+import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
+import HeaderWithEdit from '../components/ScreenHeaders/HeaderWithEdit';
 
 const Stack = createStackNavigator();
-const title = 'Location: Karachi East';
 
 const DriveStack = () => {
 	return (
@@ -19,13 +19,18 @@ const DriveStack = () => {
 				name='DriveManagerScreen'
 				component={DriveManagerScreen}
 				options={({ navigation }) => {
+					const title = 'Location: Karachi East';
 					return PrimaryHeader(navigation, title);
 				}}
 			/>
 			<Stack.Screen
 				name='DriveDetailsScreen'
 				component={DriveDetailsScreen}
-				options={({ route }) => ({ title: 'Drive #' + route.params.id })}
+				options={({ navigation, route }) => {
+					const title = 'Drive #' + route.params.id;
+					const screen = 'EditDriveDetailsScreen';
+					return HeaderWithEdit(navigation, route, title, screen);
+				}}
 			/>
 			<Stack.Screen
 				name='EditDriveDetailsScreen'
