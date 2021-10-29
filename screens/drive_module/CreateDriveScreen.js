@@ -8,22 +8,35 @@ import DriveForm from '../../components/InputForm/DriveForm';
 
 const CreateDriveScreen = ({ navigation }) => {
 	const [data, setData] = useState({});
+	const [isSubmitPressed, setSubmitPressed] = useState(false);
+
+	const onSubmit = (hasError) => {
+		if (hasError) {
+			setSubmitPressed(false);
+		} else {
+			// Submit Data Here
+			navigation.goBack();
+		}
+	};
+
 	return (
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
 			{/* Input Form Here */}
-			<DriveForm setData={setData} />
+			<DriveForm
+				data={data}
+				setData={setData}
+				verify={isSubmitPressed}
+				onSubmit={onSubmit}
+			/>
 			<View style={{ marginTop: 8 }}>
 				<ActionBox
 					type='primary'
 					title='Add Drive'
-					action={() => console.log('Add Button Clicked')}
+					action={() => setSubmitPressed(true)}
 				/>
-				<ActionBox
-					title='Cancel'
-					action={() => console.log('Cancel Button Clicked')}
-				/>
+				<ActionBox title='Cancel' action={() => navigation.goBack()} />
 			</View>
 		</ScrollView>
 	);

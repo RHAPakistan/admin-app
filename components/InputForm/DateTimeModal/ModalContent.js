@@ -1,11 +1,12 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Modal, Text, TextInput, Pressable, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, Pressable, View } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+
 import moment from 'moment';
 moment().format();
 
-import styles from './styles';
-import GlobalStyles from '../../styles/GlobalStyles';
+import GlobalStyles from '../../../styles/GlobalStyles';
+import styles from '../styles';
 
 const StyledButton = ({ title, action, type, disabled }) => {
 	let ButtonStyle, TitleStyle;
@@ -136,92 +137,4 @@ const ModalContent = ({ onClose, onConfirm, value }) => {
 	);
 };
 
-const DateTimeModal = ({ label, value, validate, index }) => {
-	const [text, setText] = useState(null);
-	const [date, setDate] = useState(null);
-	const [isError, setIsError] = useState(false);
-	const [error, setError] = useState('');
-	const [inputStyle, setInputStyle] = useState(styles.inputTextDefault);
-	const [labelStyle, setLabelStyle] = useState(styles.labelText);
-	const [modalVisible, setModalVisible] = useState(false);
-
-	const refTextInput = useRef();
-
-	useEffect(() => {
-		if (value) {
-			setDate(moment(value));
-		}
-	}, []);
-
-	const validateHandler = () => {
-		const message = validate(date);
-		if (message) {
-			setIsError(true);
-			setError(message);
-			setInputStyle([styles.inputTextDefault, styles.inputTextError]);
-			setLabelStyle(styles.labelTextError);
-		} else {
-			setIsError(false);
-			setError('');
-		}
-	};
-
-	const onFocusHandler = () => {
-		setModalVisible(true);
-		refTextInput.current.blur();
-	};
-
-	const onBlurHandler = () => {
-		setInputStyle(styles.inputTextDefault);
-		setLabelStyle(styles.labelText);
-	};
-
-	const ModalCloseHandler = () => {
-		setModalVisible(false);
-	};
-
-	const ModalConfirmHandler = (newDate) => {
-		setDate(newDate);
-		setText(moment(newDate).format('LLLL'));
-		validateHandler();
-	};
-
-	return (
-		<View
-			style={[
-				styles.line,
-				index % 2 == 0 ? styles.oddChild : styles.evenChild,
-			]}>
-			<View style={styles.labelBox}>
-				<Text style={labelStyle}>{label}:</Text>
-			</View>
-			<TextInput
-				style={inputStyle}
-				value={text}
-				placeholder='i.e. 19/10/2021 3:00 AM'
-				showSoftInputOnFocus={false}
-				onFocus={onFocusHandler}
-				onBlur={onBlurHandler}
-				ref={refTextInput}
-			/>
-			{isError ? (
-				<View style={styles.errorBox}>
-					<Text style={styles.errorText}>{error}</Text>
-				</View>
-			) : null}
-
-			<Modal
-				transparent={true}
-				visible={modalVisible}
-				onRequestClose={ModalCloseHandler}>
-				<ModalContent
-					onConfirm={ModalConfirmHandler}
-					onClose={ModalCloseHandler}
-					value={date}
-				/>
-			</Modal>
-		</View>
-	);
-};
-
-export default DateTimeModal;
+export default ModalContent;

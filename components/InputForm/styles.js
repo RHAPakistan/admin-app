@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 	},
 
 	inputTextDefault: {
-		height: 36,
+		minHeight: 36,
 		borderWidth: 1,
 		borderRadius: 4,
 		borderColor: Colors.grey,

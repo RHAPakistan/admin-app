@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, TextInput, View } from 'react-native';
 
 import styles from './styles';
 
-const TextInputLine = ({ label, value, validate, index, placeholder }) => {
+const TextInputLine = ({
+	label,
+	value,
+	validate,
+	index,
+	placeholder,
+	error,
+}) => {
 	const [text, setText] = useState(value);
 	const [isError, setIsError] = useState(false);
-	const [error, setError] = useState('');
+	const [errorText, setErrorText] = useState('');
 	const [inputStyle, setInputStyle] = useState(styles.inputTextDefault);
 	const [labelStyle, setLabelStyle] = useState(styles.labelText);
+
+	useEffect(() => {
+		if (error) {
+			setIsError(true);
+			setErrorText(error);
+		} else {
+			setIsError(false);
+			setErrorText('');
+		}
+	}, [error]);
 
 	const validateHandler = () => {
 		const message = validate(text);
 		if (message) {
 			setIsError(true);
-			setError(message);
+			setErrorText(message);
 			setInputStyle([styles.inputTextDefault, styles.inputTextError]);
 			setLabelStyle(styles.labelTextError);
 		} else {
 			setIsError(false);
-			setError('');
+			setErrorText('');
 			setInputStyle(styles.inputTextDefault);
 			setLabelStyle(styles.labelText);
 		}
@@ -47,10 +64,11 @@ const TextInputLine = ({ label, value, validate, index, placeholder }) => {
 				onFocus={onFocusHandler}
 				onBlur={validateHandler}
 				onSubmitEditing={validateHandler}
+				multiline
 			/>
 			{isError ? (
 				<View style={styles.errorBox}>
-					<Text style={styles.errorText}>{error}</Text>
+					<Text style={styles.errorText}>{errorText}</Text>
 				</View>
 			) : null}
 		</View>
