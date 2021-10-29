@@ -11,7 +11,6 @@ const DateTimeModal = ({ label, value, validate, index, error }) => {
 	const [isError, setIsError] = useState(null);
 	const [errorText, setErrorText] = useState('');
 	const [inputStyle, setInputStyle] = useState(styles.inputTextDefault);
-	const [labelStyle, setLabelStyle] = useState(styles.labelText);
 	const [modalVisible, setModalVisible] = useState(false);
 
 	const refTextInput = useRef();
@@ -30,25 +29,31 @@ const DateTimeModal = ({ label, value, validate, index, error }) => {
 
 	useEffect(() => {
 		if (error) {
-			setIsError(true);
-			setErrorText(error);
+			HighlightError(error);
 		} else {
-			setIsError(false);
-			setErrorText('');
+			UnhighlightError();
 		}
 	}, [error]);
 
 	const validateHandler = () => {
 		const message = validate(date);
 		if (message) {
-			setIsError(true);
-			setErrorText(message);
-			setInputStyle([styles.inputTextDefault, styles.inputTextError]);
-			setLabelStyle(styles.labelTextError);
+			HighlightError(message);
 		} else {
-			setIsError(false);
-			setErrorText('');
+			UnhighlightError();
 		}
+	};
+
+	const HighlightError = (message) => {
+		setIsError(true);
+		setErrorText(message);
+		setInputStyle([styles.inputTextDefault, styles.inputTextError]);
+	};
+
+	const UnhighlightError = () => {
+		setIsError(false);
+		setErrorText('');
+		setInputStyle(styles.inputTextDefault);
 	};
 
 	const onFocusHandler = () => {
@@ -58,7 +63,6 @@ const DateTimeModal = ({ label, value, validate, index, error }) => {
 
 	const onBlurHandler = () => {
 		setInputStyle(styles.inputTextDefault);
-		setLabelStyle(styles.labelText);
 	};
 
 	const ModalCloseHandler = () => {
@@ -76,7 +80,7 @@ const DateTimeModal = ({ label, value, validate, index, error }) => {
 				index % 2 == 0 ? styles.oddChild : styles.evenChild,
 			]}>
 			<View style={styles.labelBox}>
-				<Text style={labelStyle}>{label}:</Text>
+				<Text style={styles.labelText}>{label}:</Text>
 			</View>
 			<TextInput
 				style={inputStyle}

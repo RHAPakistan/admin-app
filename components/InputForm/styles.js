@@ -26,18 +26,6 @@ const styles = StyleSheet.create({
 		color: Colors.black,
 	},
 
-	labelTextFocused: {
-		fontSize: 16,
-		fontWeight: 'bold',
-		color: Colors.green,
-	},
-
-	labelTextError: {
-		fontSize: 16,
-		fontWeight: 'bold',
-		color: Colors.red,
-	},
-
 	inputTextDefault: {
 		minHeight: 36,
 		borderWidth: 1,
@@ -54,12 +42,7 @@ const styles = StyleSheet.create({
 	},
 
 	inputTextError: {
-		borderWidth: 2,
-		borderColor: Colors.red,
-	},
-
-	textError: {
-		borderWidth: 2,
+		borderWidth: 1,
 		borderColor: Colors.red,
 	},
 

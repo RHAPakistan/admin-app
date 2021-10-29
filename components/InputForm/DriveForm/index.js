@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import TextInputLine from '../TextInputLine';
 import DateTimeModal from '../DateTimeModal';
+import NumberRangeLine from '../NumberRangeLine';
 import moment from 'moment';
 
 const DriveForm = ({ data, setData, verify, onSubmit }) => {
@@ -9,6 +10,7 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 	const [location, setLocation] = useState('');
 	const [date, setDate] = useState(null);
 	const [desc, setDesc] = useState('');
+	const [vols, setVols] = useState({ min: null, max: null });
 
 	useEffect(() => {
 		if (verify) {
@@ -17,13 +19,17 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 				location: validate.location ? false : 'Location is Required',
 				date: validate.date ? false : 'Date is Required',
 				description: validate.description ? false : 'Description is Required',
+				volunteers: validate.volunteers
+					? false
+					: 'No. of Volunteers are Required',
 			});
 
 			let hasError =
 				validate.title &&
 				validate.location &&
 				validate.date &&
-				validate.description;
+				validate.description &&
+				validate.volunteers;
 
 			onSubmit(!hasError);
 		}
@@ -35,6 +41,7 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 		location: false,
 		date: false,
 		description: false,
+		volunteers: false,
 	});
 
 	const [ErrorText, setErrorText] = useState({
@@ -42,6 +49,7 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 		location: false,
 		date: false,
 		description: false,
+		volunteers: false,
 	});
 
 	const TitleValidation = (text) => {
@@ -88,6 +96,17 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 		return message;
 	};
 
+	const VolunteersValidation = (min, max) => {
+		// if validation fails, return false else true
+		let message = false;
+		if (min > max) {
+			message = 'Minimum Value is higher than maximum ';
+		}
+		setValidate({ ...validate, volunteers: !message });
+		setVols({ min, max });
+		return message;
+	};
+
 	//\\\\\\\\\\\\ Render Main Component
 
 	return (
@@ -129,6 +148,15 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 				placeholder='Brief introduction about your Drive'
 				validate={DescriptionValidation}
 				error={ErrorText.description}
+			/>
+
+			{/* Volunteer Required */}
+			<NumberRangeLine
+				index={4}
+				label={'No. of Volunteers Required'}
+				value={vols}
+				validate={VolunteersValidation}
+				error={ErrorText.volunteers}
 			/>
 		</View>
 	);
