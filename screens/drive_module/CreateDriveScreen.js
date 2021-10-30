@@ -7,15 +7,24 @@ import GlobalStyles from '../../styles/GlobalStyles';
 import DriveForm from '../../components/InputForm/DriveForm';
 
 const CreateDriveScreen = ({ navigation }) => {
-	const [data, setData] = useState({});
+	const data = {
+		title: '',
+		location: '',
+		date: null,
+		description: '',
+		volunteers: {
+			min: null,
+			max: null,
+		},
+	};
 	const [isSubmitPressed, setSubmitPressed] = useState(false);
 
-	const onSubmit = (hasError) => {
-		if (hasError) {
-			setSubmitPressed(false);
-		} else {
+	const onSubmit = (value) => {
+		if (value) {
 			// Submit Data Here
 			navigation.goBack();
+		} else {
+			setSubmitPressed(false);
 		}
 	};
 
@@ -24,12 +33,7 @@ const CreateDriveScreen = ({ navigation }) => {
 			<StatusBar style='dark' />
 
 			{/* Input Form Here */}
-			<DriveForm
-				data={data}
-				setData={setData}
-				verify={isSubmitPressed}
-				onSubmit={onSubmit}
-			/>
+			<DriveForm data={data} verify={isSubmitPressed} onSubmit={onSubmit} />
 			<View style={{ marginTop: 8 }}>
 				<ActionBox
 					type='primary'

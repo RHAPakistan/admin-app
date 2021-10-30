@@ -15,15 +15,16 @@ const NumberRangeLine = ({ label, value, validate, index, error }) => {
 	const [MaxStyle, setMaxStyle] = useState(styles.inputTextDefault);
 
 	useEffect(() => {
-		if (error) {
-			HighlightError(error);
+		if (typeof error == 'string') {
+			validateHandler(error);
 		} else {
 			UnhighlightError();
 		}
 	}, [error]);
 
 	const validateHandler = () => {
-		const message = validate(parseInt(MinValue), parseInt(MaxValue));
+		const message =
+			typeof error == 'string' ? error : validate(MinValue, MaxValue);
 		if (message) {
 			HighlightError(message);
 		} else {

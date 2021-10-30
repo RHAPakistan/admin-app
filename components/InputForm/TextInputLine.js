@@ -17,15 +17,15 @@ const TextInputLine = ({
 	const [inputStyle, setInputStyle] = useState(styles.inputTextDefault);
 
 	useEffect(() => {
-		if (error) {
-			HighlightError(error);
+		if (typeof error == 'string') {
+			validateHandler();
 		} else {
 			UnhighlightError();
 		}
 	}, [error]);
 
 	const validateHandler = () => {
-		const message = validate(text);
+		const message = typeof error == 'string' ? error : validate(text);
 		if (message) {
 			HighlightError(message);
 		} else {

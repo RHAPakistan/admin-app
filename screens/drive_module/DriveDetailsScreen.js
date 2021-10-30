@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import GlobalStyles from '../../styles/GlobalStyles';
@@ -13,14 +13,14 @@ const DriveDetailsScreen = ({ navigation, route }) => {
 	// Process Data here
 
 	const data = {
-		CREATION_TIME: '{CREATION_TIME_DATE}',
-		LAST_MODIFIED: '{LAST_MODIFIED}',
-		DRIVE_TITLE: '{DRIVE_TITLE}',
-		DRIVE_LOC: '{DRIVE_LOC}',
-		DRIVE_DATE: '{DRIVE_DATE}',
-		DESCRIPTION:
+		// creation_time: 'September 9, 2021 1:17 PM',
+		last_modified: 'September 14, 2021 8:32 PM',
+		title: 'Lorem ipsum dolor sit amet',
+		location: 'consectetur adipiscing elit',
+		date: 'November 4, 2021 3:00 PM',
+		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-		VOLUNTEERS: {
+		volunteers: {
 			// min: 10,
 			max: 15,
 		},

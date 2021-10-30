@@ -35,7 +35,7 @@ const DriveStack = () => {
 			<Stack.Screen
 				name='EditDriveDetailsScreen'
 				component={EditDriveDetailsScreen}
-				options={{ title: 'Edit Drive Details' }}
+				options={({ route }) => ({ title: 'Edit Drive #' + route.params.id })}
 			/>
 			<Stack.Screen
 				name='CreateDriveScreen'

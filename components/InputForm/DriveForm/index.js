@@ -5,60 +5,66 @@ import DateTimeModal from '../DateTimeModal';
 import NumberRangeLine from '../NumberRangeLine';
 import moment from 'moment';
 
-const DriveForm = ({ data, setData, verify, onSubmit }) => {
-	const [title, setTitle] = useState('');
-	const [location, setLocation] = useState('');
-	const [date, setDate] = useState(null);
-	const [desc, setDesc] = useState('');
-	const [vols, setVols] = useState({ min: null, max: null });
+const DriveForm = ({ data, verify, onSubmit }) => {
+	const [title, setTitle] = useState(data.title);
+	const [location, setLocation] = useState(data.location);
+	const [date, setDate] = useState(data.date ? new Date(data.date) : null);
+	const [desc, setDesc] = useState(data.description);
+	const [vols, setVols] = useState(data.volunteers);
+
+	const [isValidated, setValidated] = useState({
+		title: true,
+		location: true,
+		date: true,
+		description: true,
+		volunteers: true,
+	});
 
 	useEffect(() => {
 		if (verify) {
-			setErrorText({
-				title: validate.title ? false : 'Title is Required',
-				location: validate.location ? false : 'Location is Required',
-				date: validate.date ? false : 'Date is Required',
-				description: validate.description ? false : 'Description is Required',
-				volunteers: validate.volunteers
-					? false
-					: 'No. of Volunteers are Required',
+			console.log(verify);
+			// check if something is left or validation
+			setValidated({
+				title: TitleValidation(title),
+				location: LocationValidation(location),
+				date: DateValidation(date),
+				description: DescriptionValidation(desc),
+				volunteers: TitleValidation(vols),
 			});
-
-			let hasError =
-				validate.title &&
-				validate.location &&
-				validate.date &&
-				validate.description &&
-				validate.volunteers;
-
-			onSubmit(!hasError);
 		}
 	}, [verify]);
 
-	//\\\\\\\\\\\\ Validation Functions
-	const [validate, setValidate] = useState({
-		title: false,
-		location: false,
-		date: false,
-		description: false,
-		volunteers: false,
-	});
+	useEffect(() => {
+		if (verify) {
+			let notValidated =
+				isValidated.title ||
+				isValidated.location ||
+				isValidated.date ||
+				isValidated.description ||
+				isValidated.volunteers;
 
-	const [ErrorText, setErrorText] = useState({
-		title: false,
-		location: false,
-		date: false,
-		description: false,
-		volunteers: false,
-	});
+			if (notValidated == false) {
+				onSubmit({
+					title: title,
+					location: location,
+					date: date,
+					description: desc,
+					volunteers: vols,
+				});
+			} else {
+				onSubmit(false);
+			}
+		}
+	}, [isValidated]);
+
+	//\\\\\\\\\\\\ Validation Functions
 
 	const TitleValidation = (text) => {
 		// if validation fails, return false else true
 		let message = false;
 		if (text.length == 0) {
-			message = 'Location is Required';
+			message = 'Title is Required';
 		}
-		setValidate({ ...validate, title: !message });
 		setTitle(text);
 		return message;
 	};
@@ -69,7 +75,6 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 		if (text.length == 0) {
 			message = 'Location is Required';
 		}
-		setValidate({ ...validate, location: !message });
 		setLocation(text);
 		return message;
 	};
@@ -80,7 +85,6 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 		if (now > date) {
 			message = 'Event Time must be in future, not in past';
 		}
-		setValidate({ ...validate, date: !message });
 		setDate(date);
 		return message;
 	};
@@ -91,19 +95,31 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 		if (text.length < 8) {
 			message = 'Description is too short for explanation';
 		}
-		setValidate({ ...validate, description: !message });
 		setDesc(text);
 		return message;
 	};
 
-	const VolunteersValidation = (min, max) => {
+	const VolunteersValidation = (minValue, maxValue) => {
 		// if validation fails, return false else true
 		let message = false;
-		if (min > max) {
-			message = 'Minimum Value is higher than maximum ';
+		const min = parseInt(minValue);
+		const max = parseInt(maxValue);
+
+		if (minValue == null) {
+			message =
+				maxValue == null
+					? 'Min Number for Volunteers is Required'
+					: 'Min Value Missing';
+		} else if (isNaN(min) || isNaN(max)) {
+			message =
+				maxValue != null && isNaN(max)
+					? 'Range must be in number'
+					: 'Min value is not a number';
+		} else if (min > max) {
+			message = 'Min value must be smaller than Max value';
 		}
-		setValidate({ ...validate, volunteers: !message });
-		setVols({ min, max });
+
+		setVols({ min: minValue, max: maxValue });
 		return message;
 	};
 
@@ -118,7 +134,7 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 				value={title}
 				placeholder='i.e. Donut Drive, XYZ School'
 				validate={TitleValidation}
-				error={ErrorText.title}
+				error={isValidated.title}
 			/>
 
 			{/* Location */}
@@ -128,7 +144,7 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 				value={location}
 				placeholder='i.e. ABC School, Nazimababad'
 				validate={LocationValidation}
-				error={ErrorText.location}
+				error={isValidated.location}
 			/>
 
 			{/* Date and Time */}
@@ -137,7 +153,7 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 				label={'Event Time'}
 				value={date}
 				validate={DateValidation}
-				error={ErrorText.date}
+				error={isValidated.date}
 			/>
 
 			{/* Drive Description */}
@@ -147,7 +163,7 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 				value={desc}
 				placeholder='Brief introduction about your Drive'
 				validate={DescriptionValidation}
-				error={ErrorText.description}
+				error={isValidated.description}
 			/>
 
 			{/* Volunteer Required */}
@@ -156,7 +172,7 @@ const DriveForm = ({ data, setData, verify, onSubmit }) => {
 				label={'No. of Volunteers Required'}
 				value={vols}
 				validate={VolunteersValidation}
-				error={ErrorText.volunteers}
+				error={isValidated.volunteers}
 			/>
 		</View>
 	);

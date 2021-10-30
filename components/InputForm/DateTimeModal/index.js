@@ -22,21 +22,15 @@ const DateTimeModal = ({ label, value, validate, index, error }) => {
 	}, []);
 
 	useEffect(() => {
-		if (date) {
+		if (date || typeof error == 'string') {
 			validateHandler();
-		}
-	}, [date]);
-
-	useEffect(() => {
-		if (error) {
-			HighlightError(error);
 		} else {
 			UnhighlightError();
 		}
-	}, [error]);
+	}, [date, error]);
 
 	const validateHandler = () => {
-		const message = validate(date);
+		const message = typeof error == 'string' ? error : validate(date);
 		if (message) {
 			HighlightError(message);
 		} else {
