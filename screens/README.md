@@ -8,9 +8,9 @@
 | ------- | ----------------------------- | ----------- |
 | ADM 1.1 | Drive Manager Screen          | &#9745;     |
 | ADM 1.2 | Drive Details Screen          | &#9745;     |
-| ADM 1.3 | Add Drive Screen              | &#9744;     |
-| ADM 1.4 | Edit Drive Details Screen     | &#9744;     |
-| ADM 1.5 | Drive Participants Screenn    | &#9744;     |
+| ADM 1.3 | Add Drive Screen              | &#9745;     |
+| ADM 1.4 | Edit Drive Details Screen     | &#9745;     |
+| ADM 1.5 | Drive Participants Screen     | &#9744;     |
 | ------- | -----------------------       | ----------- |
 | ADM 2.1 | Pickup Manager Screen         | &#9745;     |
 | ADM 2.2 | Pickup Details Screen         | &#9745;     |
