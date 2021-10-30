@@ -2,6 +2,7 @@ import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import PickupStack from './PickupStack';
 import DriveStack from './DriveStack';
+import VendorStack from './VendorStack';
 import CustomDrawerContent from '../components/CustomDrawerContent';
 
 const DrawerStyles = {
@@ -37,6 +38,11 @@ const RootDrawer = () => {
 			<Drawer.Screen
 				name='Pickup Manager'
 				component={PickupStack}
+				options={{ headerShown: false }}
+			/>
+			<Drawer.Screen
+				name='Vendor Manager'
+				component={VendorStack}
 				options={{ headerShown: false }}
 			/>
 		</Drawer.Navigator>
