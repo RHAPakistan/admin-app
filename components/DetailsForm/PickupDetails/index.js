@@ -2,29 +2,15 @@ import React from 'react';
 import { View } from 'react-native';
 
 import TextLine from '../TextLine';
-import TextLineClickable from '../TextLineClickable';
 import ButtonLine from '../ButtonLine';
+import TextLineClickable from '../TextLineClickable';
+import ButtonToTextClickable from '../ButtonToTextClickable';
 import TextDescription from '../TextDescription';
 
 import styles from '../styles';
 
 const PickupDetails = ({ data }) => {
 	let indexOffset = 1;
-
-	const ButtonToTextClickable = ({ data, index, label, title }) => {
-		const { value, action } = data;
-
-		const dataProps = { index, label, title, value, action };
-		return (
-			<View>
-				{!value ? (
-					<ButtonLine {...dataProps} />
-				) : (
-					<TextLineClickable {...dataProps} />
-				)}
-			</View>
-		);
-	};
 
 	let CompletionLine =
 		data.COMPLETION_TIME || data.CANCELLATION_TIME ? (

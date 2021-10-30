@@ -6,7 +6,7 @@ import SelectDropoffScreen from '../screens/pickup_module/SelectDropoffScreen';
 import SelectVolunteerScreen from '../screens/pickup_module/SelectVolunteerScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
-import PrimaryHeader from '../components/PrimaryHeader';
+import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
 
 const Stack = createStackNavigator();
 const title = 'Location: Karachi East';

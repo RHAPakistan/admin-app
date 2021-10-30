@@ -1,25 +1,27 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import Colors from '../styles/Colors';
+import Colors from '../../styles/Colors';
+
+import styles from './styles';
 
 const PrimaryHeader = (navigation, title) => {
 	const MenuButton = () => {
 		return (
-			<TouchableOpacity
+			<Pressable
 				style={styles.headerButton}
 				onPress={() => navigation.openDrawer()}>
 				<Ionicons name='menu' size={30} color={Colors.white} />
-			</TouchableOpacity>
+			</Pressable>
 		);
 	};
 	const BellButton = () => {
 		return (
-			<TouchableOpacity
+			<Pressable
 				style={styles.headerButton}
 				onPress={() => navigation.push('NotificationScreen')}>
 				<Ionicons name='notifications' size={24} color={Colors.white} />
-			</TouchableOpacity>
+			</Pressable>
 		);
 	};
 
@@ -35,14 +37,5 @@ const PrimaryHeader = (navigation, title) => {
 		},
 	};
 };
-
-const styles = StyleSheet.create({
-	headerButton: {
-		height: 56,
-		width: 56,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-});
 
 export default PrimaryHeader;

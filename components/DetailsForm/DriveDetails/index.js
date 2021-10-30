@@ -5,25 +5,23 @@ import TextLine from '../TextLine';
 import TextDescription from '../TextDescription';
 
 const DriveDetails = ({ data }) => {
-	const TimeLine = data.CREATION_TIME ? (
-		<TextLine index={0} label='Creation Time' value={data.CREATION_TIME} />
+	const TimeLine = data.creation_time ? (
+		<TextLine index={0} label='Creation Time' value={data.creation_time} />
 	) : (
-		<TextLine index={0} label='Last Modified' value={data.LAST_MODIFIED} />
+		<TextLine index={0} label='Last Modified' value={data.last_modified} />
 	);
 
-	const VolunteerLine = data.VOLUNTEERS.min ? (
-		<TextLine
-			index={5}
-			label='Volunteer Required'
-			value={data.VOLUNTEERS.min + ' - ' + data.VOLUNTEERS.max}
-		/>
-	) : (
-		<TextLine
-			index={5}
-			label='Volunteer Required'
-			value={data.VOLUNTEERS.max}
-		/>
-	);
+	const VolunteerLine = () => {
+		const { min, max } = data.volunteers;
+
+		return (
+			<TextLine
+				index={5}
+				label='Volunteer Required'
+				value={(min ? min : '0') + ' - ' + (max ? max : '')}
+			/>
+		);
+	};
 
 	return (
 		<View>
@@ -31,23 +29,23 @@ const DriveDetails = ({ data }) => {
 			{TimeLine}
 
 			{/* Drive Name / title */}
-			<TextLine index={1} label='Drive Title' value={data.DRIVE_TITLE} />
+			<TextLine index={1} label='Drive Title' value={data.title} />
 
-			{/* Drive lOCATION/aDDRESS (String) */}
-			<TextLine index={2} label='Drive Location' value={data.DRIVE_LOC} />
+			{/* Drive lOCATION/ADDRESS (String) */}
+			<TextLine index={2} label='Drive Location' value={data.location} />
 
 			{/* Date when drive will happen */}
-			<TextLine index={3} label='Drive Date' value={data.DRIVE_DATE} />
+			<TextLine index={3} label='Event Time' value={data.date} />
 
 			{/* Food Description */}
 			<TextDescription
 				index={4}
 				label='Drive Description'
-				value={data.DESCRIPTION}
+				value={data.description}
 			/>
 
 			{/* Volunteers Required */}
-			{VolunteerLine}
+			<VolunteerLine />
 		</View>
 	);
 };

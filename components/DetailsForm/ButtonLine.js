@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, Pressable, View } from 'react-native';
 import styles from './styles';
+import GlobalStyles from '../../styles/GlobalStyles';
 
 const ButtonLine = ({ label, title, action, index }) => {
 	let nthChild = index % 2 == 0 ? styles.oddChild : styles.evenChild;
@@ -9,11 +10,11 @@ const ButtonLine = ({ label, title, action, index }) => {
 			<View>
 				<Text style={styles.Label}>{label}:</Text>
 			</View>
-			<TouchableOpacity onPress={action}>
-				<View style={styles.Button}>
-					<Text style={styles.ButtonTitle}>{title}</Text>
-				</View>
-			</TouchableOpacity>
+			<Pressable
+				onPress={action}
+				style={[GlobalStyles.MediumButton, GlobalStyles.bgGreen]}>
+				<Text style={GlobalStyles.MediumButtonTitle}>{title}</Text>
+			</Pressable>
 		</View>
 	);
 };
