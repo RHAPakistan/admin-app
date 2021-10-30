@@ -1,22 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, Pressable, View } from 'react-native';
 import styles from '../styles';
 
-const PickupButton = ({ data, action, isActive }) => {
-	const activeStyles = {
-		Button: isActive ? styles.activeButton : null,
-		ButtonTitle: isActive ? styles.activeButtonTitle : styles.buttonTitleText,
-		ButtonInfo: isActive ? styles.activeButtonInfo : styles.buttonInfoText,
+const PickupButton = ({ data, onPress }) => {
+	const [ButtonStyle, setButtonStyles] = useState(null);
+	const [TitleStyle, setTitleStyles] = useState(styles.buttonTitleText);
+	const [InfoStyle, setInfoStyles] = useState(styles.buttonInfoText);
+
+	const onPressInHandler = () => {
+		setButtonStyles(styles.activeButton);
+		setTitleStyles(styles.activeButtonTitle);
+		setInfoStyles(styles.activeButtonInfo);
 	};
+
+	const onPressHandler = () => {
+		onPress(data.id);
+	};
+
+	const onPressOutHandler = () => {
+		setButtonStyles(null);
+		setTitleStyles(styles.buttonTitleText);
+		setInfoStyles(styles.buttonInfoText);
+	};
+
 	return (
-		<Pressable onPress={action} style={[styles.button, activeStyles.Button]}>
+		<Pressable
+			onPressIn={onPressInHandler}
+			onPress={onPressHandler}
+			onPressOut={onPressOutHandler}
+			style={[styles.button, ButtonStyle]}>
 			<View style={styles.buttonHeader}>
-				<Text style={activeStyles.ButtonTitle}>#{data.id}</Text>
-				<Text style={activeStyles.ButtonInfo}>{data.time}</Text>
+				<Text style={TitleStyle}>#{data.id}</Text>
+				<Text style={InfoStyle}>{data.time}</Text>
 			</View>
 
 			<View style={styles.buttonHeader}>
-				<Text style={activeStyles.ButtonInfo}>{data.address}</Text>
+				<Text style={InfoStyle}>{data.address}</Text>
 			</View>
 		</Pressable>
 	);

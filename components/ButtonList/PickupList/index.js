@@ -1,22 +1,25 @@
 import React from 'react';
+import { FlatList, View } from 'react-native';
 
 import PickupButton from './PickupButton';
-import ButtonList from '../';
 
-const PickupList = ({ action, dismissed, clearDismissed, status }) => {
+import styles from '../styles';
+
+const PickupList = ({ onPress, data }) => {
 	// fetch data here
-	const data = [
-		{ id: 1, time: '2m ago', address: 'Plot 111, XYZ Street' },
-		{ id: 2, time: '5m ago', address: 'Plot 222, XYZ Street' },
-		{ id: 3, time: '10m ago', address: 'Plot 333, XYZ Street' },
-		{ id: 4, time: '15m ago', address: 'Plot 444, XYZ Street' },
-		{ id: 5, time: '34m ago', address: 'Plot 555, XYZ Street' },
-		{ id: 6, time: '1h 2m ago', address: 'Plot 666, XYZ Street' },
-	];
+
+	const renderItem = ({ item }) => (
+		<PickupButton data={item} onPress={onPress} />
+	);
+
 	return (
-		<ButtonList {...{ action, data, dismissed, clearDismissed }}>
-			<PickupButton />
-		</ButtonList>
+		<View style={styles.list}>
+			<FlatList
+				data={data}
+				renderItem={renderItem}
+				keyExtractor={(item) => item.id}
+			/>
+		</View>
 	);
 };
 

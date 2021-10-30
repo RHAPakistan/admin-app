@@ -1,13 +1,15 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
 
-import DriveButton from './DriveButton';
+import VendorButton from './VendorButton';
 
 import styles from '../styles';
 
-const DriveList = ({ onPress, data }) => {
+const VendorList = ({ onPress, data }) => {
+	// fetch data here
+
 	const renderItem = ({ item }) => (
-		<DriveButton data={item} onPress={onPress} />
+		<VendorButton data={item} onPress={onPress} />
 	);
 
 	return (
@@ -21,4 +23,4 @@ const DriveList = ({ onPress, data }) => {
 	);
 };
 
-export default DriveList;
+export default VendorList;

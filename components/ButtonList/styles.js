@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 import Colors from '../../styles/Colors';
 
-const buttonElevation = 4;
 const styles = StyleSheet.create({
 	list: {
 		borderTopColor: Colors.grey,
@@ -19,14 +18,6 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 16,
 		borderWidth: 1,
 		borderColor: Colors.lightGrey,
-	},
-
-	buttonShadow: {
-		shadowColor: Colors.black,
-		shadowOffset: { width: 0, height: 0.5 * buttonElevation },
-		shadowOpacity: 0.3,
-		shadowRadius: 0.8 * buttonElevation,
-		elevation: buttonElevation,
 	},
 
 	buttonHeader: {

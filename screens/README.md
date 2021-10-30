@@ -17,7 +17,7 @@
 | ADM 2.3 | Assign Drop-off Screen        | &#9744;     |
 | ADM 2.4 | Assign Volunteer Screen       | &#9744;     |
 | ------- | -----------------------       | ----------- |
-| ADM 3.1 | Vendor Manager Screen         | &#9744;     |
+| ADM 3.1 | Vendor Manager Screen         | &#9745;     |
 | ADM 3.2 | Vendor Details Screen         | &#9744;     |
 | ADM 3.3 | Add Vendor Screen             | &#9744;     |
 | ADM 3.4 | Edit Vendor details Screen    | &#9744;     |

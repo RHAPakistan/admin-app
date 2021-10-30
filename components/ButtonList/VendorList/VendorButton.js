@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, Pressable, View } from 'react-native';
 import styles from '../styles';
 
-const DriveButton = ({ data, onPress }) => {
+const VendorButton = ({ data, onPress }) => {
 	const [ButtonStyle, setButtonStyles] = useState(null);
 	const [TitleStyle, setTitleStyles] = useState(styles.buttonTitleText);
 	const [InfoStyle, setInfoStyles] = useState(styles.buttonInfoText);
@@ -35,10 +35,13 @@ const DriveButton = ({ data, onPress }) => {
 
 			<View style={styles.buttonHeader}>
 				<Text style={InfoStyle}>{data.address}</Text>
-				<Text style={InfoStyle}>{data.date}</Text>
+			</View>
+
+			<View style={styles.buttonHeader}>
+				<Text style={InfoStyle}>{data.phone}</Text>
 			</View>
 		</Pressable>
 	);
 };
 
-export default DriveButton;
+export default VendorButton;
