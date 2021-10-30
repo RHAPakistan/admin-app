@@ -6,31 +6,32 @@ import SelectDropdown from 'react-native-select-dropdown';
 import styles from './styles';
 import Colors from '../../styles/Colors';
 
-const SelectOptions = ({ setValue, label, data }) => {
+const Options = ({ onChange, label, data }) => {
+	const onChangeHandler = (selectedItem, index) => {
+		onChange({ selectedItem, index });
+	};
 	return (
-		<View style={styles.selectOptions}>
-			<View style={styles.selectLabelWrap}>
-				<Text style={styles.selectLabel}>{label + ':'}</Text>
+		<View style={styles.container}>
+			<View style={styles.LabelWrap}>
+				<Text style={styles.LabelText}>{label + ':'}</Text>
 			</View>
 
-			<View style={styles.selectButtonWrap}>
+			<View style={{ flex: 1, maxWidth: '75%' }}>
 				<SelectDropdown
 					data={data}
-					buttonStyle={styles.selectButton}
-					dropdownStyle={styles.selectDropdown}
+					buttonStyle={styles.inputBox}
+					dropdownStyle={styles.Dropdown}
 					defaultValueByIndex={0}
 					statusBarTranslucent={true}
 					renderDropdownIcon={() => (
 						<Entypo name='chevron-down' size={24} color={Colors.black} />
 					)}
 					dropdownIconPosition='right'
-					onSelect={(selectedItem, index) => {
-						setValue([selectedItem, index]);
-					}}
+					onSelect={onChangeHandler}
 				/>
 			</View>
 		</View>
 	);
 };
 
-export default SelectOptions;
+export default Options;

@@ -13,9 +13,9 @@ const Search = ({ onSubmit, placeholder }) => {
 
 	return (
 		<View style={styles.container}>
-			<View style={styles.inputBoxWrap}>
+			<View style={{ flex: 1 }}>
 				<TextInput
-					style={styles.inputBox}
+					style={[styles.inputBox, { fontSize: 16, paddingHorizontal: 8 }]}
 					autoCapitalize='none'
 					autoCorrect={false}
 					clearButtonMode='always'

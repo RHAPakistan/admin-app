@@ -1,59 +1,40 @@
 import React, { useState } from 'react';
-import {
-	ScrollView,
-	Text,
-	TouchableWithoutFeedback,
-	View,
-	TouchableOpacity,
-} from 'react-native';
+import { ScrollView, Text, Pressable, View, Keyboard } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Entypo } from '@expo/vector-icons';
 
-import SelectOptions from '../../components/SelectOptions';
-import DriveList from '../../components/ButtonList/DriveList';
+import Options from '../../components/ManagerOptions/Options';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import Colors from '../../styles/Colors';
 
 const DriveManagerScreen = ({ navigation }) => {
-	const [status, setStatus] = useState([]);
-	const [dismissed, setDismissed] = useState(false);
-
+	const onChange = (query) => {
+		console.log('Drive Status Changed', query);
+	};
 	return (
 		<ScrollView style={GlobalStyles.container}>
-			<TouchableWithoutFeedback onPress={() => setDismissed(true)}>
+			<Pressable onPress={Keyboard.dismiss}>
 				<View>
 					<StatusBar style='light' />
 
 					<View style={GlobalStyles.screenTitle}>
 						<Text style={GlobalStyles.screenTitleText}>Drive Manager</Text>
 
-						<TouchableOpacity
+						<Pressable
 							style={GlobalStyles.screenTitleButton}
 							onPress={() => navigation.push('CreateDriveScreen')}>
 							<Entypo name='plus' size={30} color={Colors.white} />
-						</TouchableOpacity>
+						</Pressable>
 					</View>
 
-					<SelectOptions
-						setValue={setStatus}
+					<Options
+						onChange={onChange}
 						label='Status'
 						data={['Egypt', 'Canada', 'Australia', 'Ireland']}
 					/>
 				</View>
-			</TouchableWithoutFeedback>
-			<DriveList
-				{...{
-					action: (id) => {
-						navigation.navigate('DriveDetailsScreen', { id: id });
-					},
-					clearDismissed: () => {
-						setDismissed(false);
-					},
-					dismissed,
-					status,
-				}}
-			/>
+			</Pressable>
 		</ScrollView>
 	);
 };

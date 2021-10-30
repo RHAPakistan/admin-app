@@ -8,9 +8,18 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 	},
+	LabelWrap: {
+		justifyContent: 'center',
+	},
 
-	inputBoxWrap: {
-		flex: 1,
+	LabelText: {
+		fontSize: 21,
+		fontWeight: 'bold',
+	},
+
+	Dropdown: {
+		borderRadius: 8,
+		marginTop: 8,
 	},
 
 	inputBox: {
@@ -20,8 +29,6 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		borderColor: Colors.lightGrey,
 		backgroundColor: Colors.white,
-		fontSize: 16,
-		paddingHorizontal: 8,
 	},
 });
 
