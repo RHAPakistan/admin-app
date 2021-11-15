@@ -7,7 +7,7 @@ import GlobalStyles from '../../styles/GlobalStyles';
 const VendorHistoryScreen = ({ navigation, route }) => {
 	const { id } = route.params;
 	return (
-		<ScrollView style={GlobalStyles.container}>
+		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
 			<Text>This is VendorHistoryScreen</Text>

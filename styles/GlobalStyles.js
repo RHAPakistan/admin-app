@@ -81,6 +81,13 @@ const GlobalStyles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+
+	hrGrey: {
+		width: '100%',
+		height: 2,
+		backgroundColor: Colors.grey,
+		marginVertical: 8,
+	},
 });
 
 export default GlobalStyles;

@@ -6,7 +6,7 @@ import GlobalStyles from '../../styles/GlobalStyles';
 
 const CreateVendorScreen = ({ navigation }) => {
 	return (
-		<ScrollView style={GlobalStyles.container}>
+		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
 			<Text>This is CreateVendorScreen</Text>
