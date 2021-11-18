@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, Pressable, View } from 'react-native';
 import styles from '../styles';
 
-const VendorButton = ({ data, onPress }) => {
+const DropoffButton = ({ data, onPress }) => {
 	const [ButtonStyle, setButtonStyles] = useState(null);
 	const [TitleStyle, setTitleStyles] = useState(styles.buttonTitleText);
 	const [InfoStyle, setInfoStyles] = useState(styles.buttonInfoText);
@@ -31,7 +31,6 @@ const VendorButton = ({ data, onPress }) => {
 			style={[styles.button, ButtonStyle]}>
 			<View style={styles.buttonHeader}>
 				<Text style={TitleStyle}>{data.title}</Text>
-				<Text style={InfoStyle}>{data.people_count}</Text>
 			</View>
 
 			<View style={styles.buttonHeader}>
@@ -45,4 +44,4 @@ const VendorButton = ({ data, onPress }) => {
 	);
 };
 
-export default VendorButton;
+export default DropoffButton;
