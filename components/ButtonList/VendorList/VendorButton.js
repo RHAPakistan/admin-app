@@ -31,6 +31,7 @@ const VendorButton = ({ data, onPress }) => {
 			style={[styles.button, ButtonStyle]}>
 			<View style={styles.buttonHeader}>
 				<Text style={TitleStyle}>{data.title}</Text>
+				<Text style={InfoStyle}>{data.people_count}</Text>
 			</View>
 
 			<View style={styles.buttonHeader}>

@@ -15,18 +15,21 @@ const DropoffManagerScreen = ({ navigation }) => {
 			title: 'ABC',
 			phone: '+92 345 1234567',
 			address: 'Plot 111, XYZ Street',
+			people_count: '30',
 		},
 		{
 			id: '2',
 			title: 'FGH',
 			phone: '+92 345 1234567',
 			address: 'Plot 222, XYZ Street',
+			people_count: '20',
 		},
 		{
 			id: '3',
 			title: 'IJK',
 			phone: '+92 345 1234567',
 			address: 'Plot 333, XYZ Street',
+			people_count: '35',
 		},
 	]);
 
