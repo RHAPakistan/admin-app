@@ -5,6 +5,7 @@ import GlobalStyles from '../../../styles/GlobalStyles';
 
 import TextLine from '../TextLine';
 import TextLineClickable from '../TextLineClickable';
+import TextDescription from '../TextDescription';
 
 const DropoffDetails = ({ data }) => {
 	const TimeLine = data.creation_time ? (
@@ -29,7 +30,7 @@ const DropoffDetails = ({ data }) => {
 			<TextLine index={2} label='Contact Phone' value={data.contact_phone} />
 
 			{/* Dropoff Name */}
-			<TextLine index={3} label='Dropoff Name' value={data.business_name} />
+			<TextLine index={3} label='Dropoff Name' value={data.dropoff_name} />
 
 			{/* Address with map location */}
 			<TextLineClickable
@@ -43,7 +44,7 @@ const DropoffDetails = ({ data }) => {
 			<TextLine index={5} label='People Count' value={data.people_count} />
 
 			{/* Description */}
-			<TextLine index={6} label='Description' value={data.description} />
+			<TextDescription index={6} label='Description' value={data.description} />
 
 			<View style={GlobalStyles.hrGrey}></View>
 
