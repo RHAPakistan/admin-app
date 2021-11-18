@@ -40,7 +40,7 @@ const CreateDriveScreen = ({ navigation }) => {
 					title='Add Drive'
 					action={() => setSubmitPressed(true)}
 				/>
-				<ActionBox title='Cancel' action={() => navigation.goBack()} />
+				<ActionBox title='Cancel' action={navigation.goBack} />
 			</View>
 		</ScrollView>
 	);

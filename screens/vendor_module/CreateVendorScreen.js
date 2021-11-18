@@ -39,7 +39,7 @@ const CreateVendorScreen = ({ navigation }) => {
 					title='Add Vendor'
 					action={() => setSubmitPressed(true)}
 				/>
-				<ActionBox title='Cancel' action={() => navigation.goBack()} />
+				<ActionBox title='Cancel' action={navigation.goBack} />
 			</View>
 		</ScrollView>
 	);

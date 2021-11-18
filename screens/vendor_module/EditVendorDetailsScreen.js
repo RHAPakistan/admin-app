@@ -41,7 +41,7 @@ const EditVendorDetailsScreen = ({ navigation, route }) => {
 					title='Add Vendor'
 					action={() => setSubmitPressed(true)}
 				/>
-				<ActionBox title='Cancel' action={() => navigation.goBack()} />
+				<ActionBox title='Cancel' action={navigation.goBack} />
 			</View>
 		</ScrollView>
 	);
