@@ -31,10 +31,10 @@
 | ADM 5.1 | Volunteer Induction Screen    | &#9744;     |
 | ADM 5.2 | Induction Details Screen      | &#9744;     |
 | ------- | -----------------------       | ----------- |
-| ADM 6.1 | Drop-off Manager Screen       | &#9744;     |
-| ADM 6.2 | Drop-off Details Screen       | &#9744;     |
-| ADM 6.3 | Add Drop-off Screen           | &#9744;     |
-| ADM 6.4 | Edit Drop-off details Screen  | &#9744;     |
+| ADM 6.1 | Drop-off Manager Screen       | &#9745;     |
+| ADM 6.2 | Drop-off Details Screen       | &#9745;     |
+| ADM 6.3 | Add Drop-off Screen           | &#9745;     |
+| ADM 6.4 | Edit Drop-off details Screen  | &#9745;     |
 | ADM 6.5 | Drop-off History Screen       | &#9744;     |
 | ------- | -----------------------       | ----------- |
 | ADM 7.1 | Dashboard Screen              | &#9744;     |

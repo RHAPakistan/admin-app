@@ -44,7 +44,7 @@ const DropoffManagerScreen = ({ navigation }) => {
 
 	return (
 		<Pressable onPress={Keyboard.dismiss} style={GlobalStyles.container}>
-			<StatusBar style='dark' />
+			<StatusBar style='light' />
 
 			<View style={GlobalStyles.screenTitle}>
 				<Text style={GlobalStyles.screenTitleText}>Dropoff Manager</Text>
