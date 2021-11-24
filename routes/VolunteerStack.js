@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import VolunteerManagerScreen from '../screens/vendor_module/VolunteerManagerScreen';
-import VolunteerDetailsScreen from '../screens/vendor_module/VolunteerDetailsScreen';
-import EditVolunteerDetailsScreen from '../screens/vendor_module/EditVolunteerDetailsScreen';
-import VolunteerHistoryScreen from '../screens/vendor_module/VolunteerHistoryScreen';
+import VolunteerManagerScreen from '../screens/volunteer_module/VolunteerManagerScreen';
+import VolunteerDetailsScreen from '../screens/volunteer_module/VolunteerDetailsScreen';
+import EditVolunteerDetailsScreen from '../screens/volunteer_module/EditVolunteerDetailsScreen';
+import VolunteerHistoryScreen from '../screens/volunteer_module/VolunteerHistoryScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
 import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
