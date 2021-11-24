@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
 import { Keyboard, Text, Pressable, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Entypo } from '@expo/vector-icons';
 
 import Search from '../../components/ManagerOptions/Search';
 
 import GlobalStyles from '../../styles/GlobalStyles';
-import VendorList from '../../components/ButtonList/VendorList';
+import VolunteerList from '../../components/ButtonList/VolunteerList';
 
 const VolunteerManagerScreen = ({ navigation }) => {
 	const [data, setData] = useState([
 		{
 			id: '1',
-			title: 'Student Biryani, Branch 2',
+			name: 'ABC Doe Smith',
 			phone: '+92 345 1234567',
-			address: 'Plot 111, XYZ Street',
 		},
 		{
 			id: '2',
-			title: 'FGH',
+			name: 'FGH Doe Smith',
 			phone: '+92 345 1234567',
-			address: 'Plot 222, XYZ Street',
 		},
 		{
 			id: '3',
-			title: 'IJK',
+			name: 'IJK Doe Smith',
 			phone: '+92 345 1234567',
-			address: 'Plot 333, XYZ Street',
 		},
 	]);
 
@@ -45,16 +41,12 @@ const VolunteerManagerScreen = ({ navigation }) => {
 
 			<View style={GlobalStyles.screenTitle}>
 				<Text style={GlobalStyles.screenTitleText}>Volunteer Manager</Text>
-				<Pressable
-					style={GlobalStyles.screenTitleButton}
-					onPress={() => navigation.push('CreateVendorScreen')}>
-					<Entypo name='plus' size={30} color={Colors.white} />
-				</Pressable>
+				
 			</View>
 
-			<Search onSubmit={onSubmit} placeholder='Search Vendor' />
+			<Search onSubmit={onSubmit} placeholder='Search Volunteer' />
 
-			<VendorList data={data} onPress={onPressHandler} />
+			<VolunteerList data={data} onPress={onPressHandler} />
 		</Pressable>
 	);
 };
