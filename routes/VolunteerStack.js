@@ -1,0 +1,55 @@
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import VolunteerManagerScreen from '../screens/vendor_module/VolunteerManagerScreen';
+import VolunteerDetailsScreen from '../screens/vendor_module/VolunteerDetailsScreen';
+import EditVolunteerDetailsScreen from '../screens/vendor_module/EditVolunteerDetailsScreen';
+import VolunteerHistoryScreen from '../screens/vendor_module/VolunteerHistoryScreen';
+import NotificationScreen from '../screens/NotificationScreen';
+
+import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
+import HeaderWithEdit from '../components/ScreenHeaders/HeaderWithEdit';
+
+const Stack = createStackNavigator();
+
+const VolunteerStack = () => {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name='VolunteerManagerScreen'
+				component={VolunteerManagerScreen}
+				options={({ navigation }) => {
+					const title = 'Location: Karachi East';
+					return PrimaryHeader(navigation, title);
+				}}
+			/>
+			<Stack.Screen
+				name='VolunteerDetailsScreen'
+				component={VolunteerDetailsScreen}
+				options={({ navigation, route }) => {
+					const title = 'Volunteer #' + route.params.id;
+					const screen = 'EditVolunteerDetailsScreen';
+					return HeaderWithEdit(navigation, route, title, screen);
+				}}
+			/>
+			<Stack.Screen
+				name='EditVolunteerDetailsScreen'
+				component={EditVolunteerDetailsScreen}
+				options={({ route }) => ({ title: 'Edit Volunteer #' + route.params.id })}
+			/>
+			<Stack.Screen
+				name='VolunteerHistoryScreen'
+				component={VolunteerHistoryScreen}
+				options={({ route }) => ({
+					title: 'Volunteer #' + route.params.id + ' History',
+				})}
+			/>
+			<Stack.Screen
+				name='NotificationScreen'
+				component={NotificationScreen}
+				options={{ title: 'Notifications' }}
+			/>
+		</Stack.Navigator>
+	);
+};
+
+export default VolunteerStack;
