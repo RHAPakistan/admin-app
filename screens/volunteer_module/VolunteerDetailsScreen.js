@@ -10,16 +10,22 @@ const VolunteerDetailsScreen = ({ navigation, route }) => {
 	const { id } = route.params;
 
 	const data = {
-		contact_name: 'John Doe Smith',
-		contact_phone: '+92 345 1234567',
-		contact_email: 'email@example.com',
-		creation_date: 'September 14, 2021 8:32 PM',
-		last_modified: 'September 14, 2021 8:32 PM',
-		business_name: 'Student Biryani, Branch 2',
-		business_address: 'consectetur adipiscing elit',
-		business_map: 'https://maps.app.goo.gl/vvAkDEKa4dVSoM3P7',
-		total_pickups: 32,
-		last_pickup: 'November 14, 2021 8:32 PM',
+		account_creation: 'September 14, 2021 8:32 PM',
+		name: 'John Doe Smith',
+		cnic: '12345-1234567-1',
+		birth_date: 'May 10, 1997',
+		address: 'House M, XYZ Street, ABC Town',
+		phone: '+92 345 1234567',
+		email: 'email@example.com',
+		workplace: 'XYZ Corp, Karachi',
+		facebook: 'link to facebook',
+		emergency_contact: '+92 300 1234567',
+		emergency_relation: 'Elder Brother',
+		conditions: 'Aesthema',
+		vaccinated: 'Yes',
+		pickups_delivered: 38,
+		pickups_cancelled: 3,
+		time_spent: '29h 14m',
 	};
 
 	return (
@@ -32,7 +38,9 @@ const VolunteerDetailsScreen = ({ navigation, route }) => {
 				<ActionBox
 					type='primary'
 					title='Pickup History'
-					action={() => navigation.navigate('VolunteerHistoryScreen', { id: id })}
+					action={() =>
+						navigation.navigate('VolunteerHistoryScreen', { id: id })
+					}
 				/>
 			</View>
 
