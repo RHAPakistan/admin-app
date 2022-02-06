@@ -23,8 +23,8 @@
 | ADM 3.4 | Edit Vendor details Screen    | &#9745;     |
 | ADM 3.5 | Vendor History Screen         | &#9744;     |
 | ------- | -----------------------       | ----------- |
-| ADM 4.1 | Volunteer Manager Screen      | &#9744;     |
-| ADM 4.2 | Volunteer Details Screen      | &#9744;     |
+| ADM 4.1 | Volunteer Manager Screen      | &#9745;     |
+| ADM 4.2 | Volunteer Details Screen      | &#9745;     |
 | ADM 4.3 | Edit Volunteer Details Screen | &#9744;     |
 | ADM 4.4 | Volunteer History Screen      | &#9744;     |
 | ------- | -----------------------       | ----------- |

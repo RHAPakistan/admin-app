@@ -5,6 +5,7 @@ import DriveStack from './DriveStack';
 import VendorStack from './VendorStack';
 import DropoffStack from './DropoffStack';
 import VolunteerStack from './VolunteerStack';
+import InductionStack from './InductionStack';
 import CustomDrawerContent from '../components/CustomDrawerContent';
 
 const DrawerStyles = {
@@ -55,6 +56,11 @@ const RootDrawer = () => {
 			<Drawer.Screen
 				name='Volunteer Manager'
 				component={VolunteerStack}
+				options={{ headerShown: false }}
+			/>
+			<Drawer.Screen
+				name='Induction Manager'
+				component={InductionStack}
 				options={{ headerShown: false }}
 			/>
 		</Drawer.Navigator>
