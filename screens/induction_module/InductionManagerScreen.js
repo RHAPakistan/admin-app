@@ -5,24 +5,21 @@ import { StatusBar } from 'expo-status-bar';
 import Search from '../../components/ManagerOptions/Search';
 
 import GlobalStyles from '../../styles/GlobalStyles';
-import VolunteerList from '../../components/ButtonList/VolunteerList';
+import InductionList from '../../components/ButtonList/InductionList';
 
 const InductionManagerScreen = ({ navigation }) => {
 	const [data, setData] = useState([
 		{
 			id: '1',
-			name: 'ABC Doe Smith',
-			phone: '+92 345 1234567',
+			name: 'ABC Doe Smith',time: '2m ago',
 		},
 		{
 			id: '2',
-			name: 'FGH Doe Smith',
-			phone: '+92 345 1234567',
+			name: 'FGH Doe Smith',time: '5m ago',
 		},
 		{
 			id: '3',
-			name: 'IJK Doe Smith',
-			phone: '+92 345 1234567',
+			name: 'IJK Doe Smith',time: '10m ago',
 		},
 	]);
 
@@ -32,7 +29,7 @@ const InductionManagerScreen = ({ navigation }) => {
 	};
 
 	const onPressHandler = (id) => {
-		navigation.navigate('VolunteerDetailsScreen', { id });
+		navigation.navigate('InductionDetailsScreen', { id });
 	};
 
 	return (
@@ -40,13 +37,13 @@ const InductionManagerScreen = ({ navigation }) => {
 			<StatusBar style='light' />
 
 			<View style={GlobalStyles.screenTitle}>
-				<Text style={GlobalStyles.screenTitleText}>Volunteer Manager</Text>
+				<Text style={GlobalStyles.screenTitleText}>Induction Manager</Text>
 				
 			</View>
 
-			<Search onSubmit={onSubmit} placeholder='Search Volunteer' />
+			<Search onSubmit={onSubmit} placeholder='Search Name' />
 
-			<VolunteerList data={data} onPress={onPressHandler} />
+			<InductionList data={data} onPress={onPressHandler} />
 		</Pressable>
 	);
 };
