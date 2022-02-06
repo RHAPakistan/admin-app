@@ -29,30 +29,32 @@ const InductionDetailsScreen = ({ navigation, route }) => {
 	};
 
 	return (
-		<ScrollView contentContainerStyle={GlobalStyles.container}>
-			<StatusBar style='dark' />
+		<View style={GlobalStyles.container}>
+			<ScrollView>
+				<StatusBar style='dark' />
 
-			<View style={{ flex: 1 }}>
-				<InductionDetails data={data} />
+				<View style={{ flex: 1 }}>
+					<InductionDetails data={data} />
 
-				<ActionBox
-					type='primary'
-					title='Pickup History'
-					action={() =>
-						navigation.navigate('VolunteerHistoryScreen', { id: id })
-					}
-				/>
-			</View>
+					<ActionBox
+						type='primary'
+						title='Pickup History'
+						action={() =>
+							navigation.navigate('VolunteerHistoryScreen', { id: id })
+						}
+					/>
+				</View>
 
-			<View>
-				{/* When Cancelling or deactivating, a modal should appear to ask if admin really wants to cancel the pickup */}
-				<ActionBox
-					type='cancel'
-					title='Deactivate Account'
-					action={() => console.log('Deactivate Button Clicked')}
-				/>
-			</View>
-		</ScrollView>
+				<View>
+					{/* When Cancelling or deactivating, a modal should appear to ask if admin really wants to cancel the pickup */}
+					<ActionBox
+						type='cancel'
+						title='Deactivate Account'
+						action={() => console.log('Deactivate Button Clicked')}
+					/>
+				</View>
+			</ScrollView>
+		</View>
 	);
 };
 

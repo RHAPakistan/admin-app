@@ -29,7 +29,8 @@ const VolunteerDetailsScreen = ({ navigation, route }) => {
 	};
 
 	return (
-		<ScrollView contentContainerStyle={GlobalStyles.container}>
+		<View style={GlobalStyles.container}>
+			<ScrollView>
 			<StatusBar style='dark' />
 
 			<View style={{ flex: 1 }}>
@@ -53,6 +54,7 @@ const VolunteerDetailsScreen = ({ navigation, route }) => {
 				/>
 			</View>
 		</ScrollView>
+		</View>
 	);
 };
 
