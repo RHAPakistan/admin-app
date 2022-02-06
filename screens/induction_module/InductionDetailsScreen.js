@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View } from 'react-native';
 
 import GlobalStyles from '../../styles/GlobalStyles';
-import VolunteerDetails from '../../components/DetailsForm/VolunteerDetails';
+import InductionDetails from '../../components/DetailsForm/InductionDetails';
 import ActionBox from '../../components/ActionBox';
 
 const InductionDetailsScreen = ({ navigation, route }) => {
@@ -33,7 +33,7 @@ const InductionDetailsScreen = ({ navigation, route }) => {
 			<StatusBar style='dark' />
 
 			<View style={{ flex: 1 }}>
-				<VolunteerDetails data={data} />
+				<InductionDetails data={data} />
 
 				<ActionBox
 					type='primary'
