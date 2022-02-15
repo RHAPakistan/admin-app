@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, Pressable, View, Keyboard } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -6,19 +6,28 @@ import Options from '../../components/ManagerOptions/Options';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import PickupList from '../../components/ButtonList/PickupList';
+const  adminApi = require("../../helpers/adminApi");
 
 const PickupManagerScreen = ({ navigation }) => {
-	const [data, setData] = useState([
-		{ id: '1', time: '2m ago', address: 'Plot 111, XYZ Street' },
-		{ id: '2', time: '5m ago', address: 'Plot 222, XYZ Street' },
-		{ id: '3', time: '10m ago', address: 'Plot 333, XYZ Street' },
-		{ id: '4', time: '15m ago', address: 'Plot 444, XYZ Street' },
-		{ id: '5', time: '34m ago', address: 'Plot 555, XYZ Street' },
-		{ id: '6', time: '1h 2m ago', address: 'Plot 666, XYZ Street' },
-	]);
-
-	const onChange = (query) => {
+	const [data, setData] = useState([]);
+	
+	useEffect(()=>{
+		const fetchData = async()=>{
+			const resp = await adminApi.get_pickups();
+			return resp.pickups;
+		}
+		fetchData()
+		.then((response)=>{
+			setData(response);
+		})
+		.catch((e)=>{
+			console.log(e);
+		})
+	},[]);
+	const onChange = async(query) => {
 		// fetch data here
+		const response = await adminApi.get_pickups();
+		setData(response.pickups);
 		console.log('Pickup Status Changed', query);
 	};
 
@@ -39,8 +48,6 @@ const PickupManagerScreen = ({ navigation }) => {
 				label='Status'
 				data={[
 					'All',
-					'Vendors',
-					'Guests',
 					'Unassigned',
 					'Pending',
 					'Processing',

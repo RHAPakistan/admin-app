@@ -17,3 +17,13 @@ Project is currently in development development phase
 Muhammad Ibtehaj Khan
 Jawad Mustafa
 Hassan Anwer
+
+## About the code
+
+pickup status:
+
+0 -> Unassigned
+1 -> Pending
+2 -> Processing
+3 -> Completed
+4 -> Cancelled
