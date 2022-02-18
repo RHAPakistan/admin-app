@@ -11,21 +11,16 @@ const VolunteerDetailsScreen = ({ navigation, route }) => {
 
 	const data = {
 		account_creation: 'September 14, 2021 8:32 PM',
-		name: 'John Doe Smith',
-		cnic: '12345-1234567-1',
-		birth_date: 'May 10, 1997',
-		address: 'House M, XYZ Street, ABC Town',
-		phone: '+92 345 1234567',
-		email: 'email@example.com',
-		workplace: 'XYZ Corp, Karachi',
-		facebook: 'link to facebook',
-		emergency_contact: '+92 300 1234567',
-		emergency_relation: 'Elder Brother',
-		conditions: 'Aesthema',
-		vaccinated: 'Yes',
-		pickups_delivered: 38,
-		pickups_cancelled: 3,
-		time_spent: '29h 14m',
+		name: id.fullName,
+		cnic: id.cnic,
+		birth_date: id.dateOfBirth,
+		address: id.address,
+		phone: id.contactNumber,
+		email: id.email,
+		workplace: "",
+		pickups_delivered: "",
+		pickups_cancelled: "",
+		time_spent: "",
 	};
 
 	return (

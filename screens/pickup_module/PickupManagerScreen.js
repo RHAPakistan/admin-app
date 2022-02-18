@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, Pressable, View, Keyboard } from 'react-native';
+import { Text, Pressable, View, Keyboard, Card, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import Options from '../../components/ManagerOptions/Options';
@@ -32,8 +32,11 @@ const PickupManagerScreen = ({ navigation }) => {
 	};
 
 	const onPressHandler = (id) => {
+		// console.log(id);
+		console.log(id);
 		navigation.navigate('PickupDetailsScreen', { id });
 	};
+
 
 	return (
 		<Pressable onPress={Keyboard.dismiss} style={GlobalStyles.container}>

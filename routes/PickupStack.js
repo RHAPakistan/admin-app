@@ -24,7 +24,7 @@ const PickupStack = () => {
 			<Stack.Screen
 				name='PickupDetailsScreen'
 				component={PickupDetailsScreen}
-				options={({ route }) => ({ title: 'Pickup #' + route.params.id })}
+				options={({ route }) => ({ title: 'Pickup #'})}
 			/>
 			<Stack.Screen
 				name='SelectDropoffScreen'

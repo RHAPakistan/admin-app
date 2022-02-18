@@ -8,8 +8,8 @@ import styles from '../styles';
 const PickupList = ({ onPress, data }) => {
 	// fetch data here
 
-	const renderItem = ({ item }) => (
-		<PickupButton data={item} onPress={onPress} />
+	const renderItem = ({ item, index }) => (
+		<PickupButton data={item} onPress={()=>{onPress(item)}} index = {index}/>
 	);
 
 	return (
@@ -17,7 +17,7 @@ const PickupList = ({ onPress, data }) => {
 			<FlatList
 				data={data}
 				renderItem={renderItem}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => item._id}
 			/>
 		</View>
 	);

@@ -9,7 +9,7 @@ const VolunteerList = ({ onPress, data }) => {
 	// fetch data here
 
 	const renderItem = ({ item }) => (
-		<VolunteerButton data={item} onPress={onPress} />
+		<VolunteerButton data={item} onPress={()=>{onPress(item)}} />
 	);
 
 	return (
@@ -17,7 +17,7 @@ const VolunteerList = ({ onPress, data }) => {
 			<FlatList
 				data={data}
 				renderItem={renderItem}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => item._id}
 			/>
 		</View>
 	);

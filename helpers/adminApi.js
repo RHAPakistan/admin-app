@@ -65,7 +65,71 @@ module.exports = {
             console.log("error");
         })
     return resp;
-    }
+    },
 
+    get_volunteers: async () =>{
+        const resp = await fetch(API_URL.concat("/api/admin/volunteer"), {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>{
+            // console.log(response);
+            return response.json();
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e) =>{
+            console.log(e);
+            console.log("error");
+        })
+    return resp;
+    },
+
+    get_dropoffs: async () =>{
+        const resp = await fetch(API_URL.concat("/api/admin/dropoff"), {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>{
+            // console.log(response);
+            return response.json();
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e) =>{
+            console.log(e);
+            console.log("error");
+        })
+    return resp;        
+    },
+
+    get_providers: async () =>{
+        const resp = await fetch(API_URL.concat("/api/admin/provider"),{
+            method: 'GET',
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .then((json)=>{
+            return json
+        })
+        .catch((e)=>{
+            console.log(e);
+            console.log("error!");
+        })
+    return resp;
+    }
 
 }

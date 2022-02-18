@@ -6,7 +6,6 @@ const PickupButton = ({ data, onPress }) => {
 	const [ButtonStyle, setButtonStyles] = useState(null);
 	const [TitleStyle, setTitleStyles] = useState(styles.buttonTitleText);
 	const [InfoStyle, setInfoStyles] = useState(styles.buttonInfoText);
-
 	const onPressInHandler = () => {
 		setButtonStyles(styles.activeButton);
 		setTitleStyles(styles.activeButtonTitle);
@@ -30,12 +29,12 @@ const PickupButton = ({ data, onPress }) => {
 			onPressOut={onPressOutHandler}
 			style={[styles.button, ButtonStyle]}>
 			<View style={styles.buttonHeader}>
-				<Text style={TitleStyle}>#{data.id}</Text>
-				<Text style={InfoStyle}>{data.time}</Text>
+				<Text style={TitleStyle}>#{data._id}</Text>
+				<Text style={InfoStyle}>{data.placementTime}</Text>
 			</View>
 
 			<View style={styles.buttonHeader}>
-				<Text style={InfoStyle}>{data.address}</Text>
+				<Text style={InfoStyle}>{data.pickupAddress}</Text>
 			</View>
 		</Pressable>
 	);

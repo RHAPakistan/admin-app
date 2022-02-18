@@ -9,8 +9,9 @@ import ActionBox from '../../components/ActionBox';
 import GlobalStyles from '../../styles/GlobalStyles';
 
 const PickupDetailsScreen = ({ navigation, route }) => {
-	const { id } = route.params;
-
+	const currentPickup = route.params.id;
+	// console.log("=====");
+	// console.log(route.params);
 	let removeProgressBar = false;
 
 	const [dropoff, setDropoff] = useState({ name: '{DROPOFF_LOC}', id: '' });
@@ -24,20 +25,20 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	// Process Data Here
 
 	const data = {
-		BOOKING_TIME: '{TIME_DATE}',
+		BOOKING_TIME: currentPickup.placementTime,
 		// COMPLETION_TIME: '{COMPLETION_TIME}',
 		// CANCELLATION_TIME: '{CANCELLATION_TIME}',
-		CONTACT_NAME: '{CONTACT_NAME}',
-		CONTACT_PHONE: '{CONTACT_PHONE}',
+		CONTACT_NAME: currentPickup._id,
+		CONTACT_PHONE: currentPickup.provieder_phone,
 		PROVIDER: {
 			type: 'Registered',
-			name: '{PROVIDER_NAME}',
+			name: "",
 			action: () => console.log('Provider Button Pressed'),
 		},
-		PICKUP_LOCATION: () => console.log('Pickup Location Button Pressed'),
-		SURPLUS_TYPE: '{SURPLUS_TYPE}',
+		PICKUP_LOCATION: () => console.log(currentPickup.pickupAddress),
+		SURPLUS_TYPE: currentPickup.typeOfFood,
 		DESCRIPTION:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			currentPickup.description,
 		DROPOFF_LOC: {
 			value: dropoff.name,
 			action: () =>
