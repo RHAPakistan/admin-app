@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { ScrollView, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import ProgressBar from '../../components/ProgressBar';
 import PickupDetails from '../../components/DetailsForm/PickupDetails';
 import ActionBox from '../../components/ActionBox';
-
+import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
 
 const PickupDetailsScreen = ({ navigation, route }) => {
+	const socket = useContext(SocketContext);
 	const currentPickup = route.params.id;
 	// console.log("=====");
 	// console.log(route.params);
@@ -16,6 +17,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 
 	const [dropoff, setDropoff] = useState({ name: '{DROPOFF_LOC}', id: '' });
 	const [volunteer, setVolunteer] = useState({"fullName":"Volunteer name"});
+	const [progressCount, setProgressCount] = useState(1);
 
 	// Fetch Data from id Here
 
@@ -39,7 +41,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		DROPOFF_LOC: {
 			value: dropoff.name,
 			action: () =>
-				navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff }),
+				navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff, setProgressCount}),
 		},
 		VOLUNTEER: {
 			value: volunteer.fullName,
@@ -47,6 +49,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 				navigation.navigate('SelectVolunteerScreen', {
 					volunteer,
 					setVolunteer,
+					setProgressCount
 				}),
 		},
 	};
@@ -58,6 +61,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	const proceed = ()=>{
 		//change the status of the pickup to assigned
 		//send a notification to the assigned volutneer through the socket
+		socket.emit("assignPickup",{"pickup":currentPickup, "volunteer":volunteer});
 		navigation.navigate("AwaitVolunteerScreen");
 	}
 
@@ -67,7 +71,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 
 			<View style={{ flex: 1 }}>
 				{!removeProgressBar && (
-					<ProgressBar active={4} message='This is step four.' />
+					<ProgressBar active={progressCount} message='This is step one.' />
 				)}
 				<PickupDetails data={data} />
 				<ActionBox

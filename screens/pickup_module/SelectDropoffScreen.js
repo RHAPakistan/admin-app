@@ -6,7 +6,7 @@ import GlobalStyles from '../../styles/GlobalStyles';
 import { TextInput } from 'react-native-gesture-handler';
 
 const SelectDropoffScreen = ({ navigation, route }) => {
-	const { dropoff, setDropoff } = route.params;
+	const { dropoff, setDropoff, setProgressCount } = route.params;
 	const [selectedDropOff, setSelectedDropOff] = useState("");
 	const [dropoffLocation, setDropoffLocation] = useState("");
 	LogBox.ignoreLogs([
@@ -27,6 +27,7 @@ const SelectDropoffScreen = ({ navigation, route }) => {
 						name: dropoffLocation,
 						id: Math.random() * 10000 + '',
 					});
+					setProgressCount(2);
 					navigation.goBack();
 				}}
 			/>

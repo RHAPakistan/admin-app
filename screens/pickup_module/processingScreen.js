@@ -8,13 +8,14 @@ import ActionBox from '../../components/ActionBox';
 import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
 
-const awaitVolunteerScreen = ({ navigation, route }) => {
+const processingScreen = ({ navigation, route }) => {
 	const socket = useContext(SocketContext);
 	useEffect(()=>{
-		socket.on("acceptPickup",(socket_data)=>{
-			console.log("pickup accepted");
-			//navigate to processing state.
-			navigation.navigate("ProcessingScreen");
+		socket.on("finishPickup",(socket_data)=>{
+			console.log("pickup finished");
+			//navigate to completed state.
+            navigation.navigate("CompletedScreen");
+
 		})
 	},[])
 
@@ -23,9 +24,9 @@ const awaitVolunteerScreen = ({ navigation, route }) => {
 			<StatusBar style='dark' />
 
 			<View style={{ flex: 1 }}>
-					<ProgressBar active={4} message='This is step five.' />
+					<ProgressBar active={5} message='This is step 6.' />
 				</View>
-            <Text>Waiting for volunteer</Text>
+            <Text>Waiting for volunteer to finish</Text>
 			<View style={{ marginTop: 32 }}>
 				{/* When Cancelling, a modal should appear to ask if admin really wants to cancel the pickup */}
 				<ActionBox
@@ -38,4 +39,4 @@ const awaitVolunteerScreen = ({ navigation, route }) => {
 	);
 };
 
-export default awaitVolunteerScreen;
+export default processingScreen;
