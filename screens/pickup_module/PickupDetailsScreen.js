@@ -15,10 +15,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	let removeProgressBar = false;
 
 	const [dropoff, setDropoff] = useState({ name: '{DROPOFF_LOC}', id: '' });
-	const [volunteer, setVolunteer] = useState({
-		name: '{VOLUNTEER_NAME}',
-		id: '',
-	});
+	const [volunteer, setVolunteer] = useState({"fullName":"Volunteer name"});
 
 	// Fetch Data from id Here
 
@@ -45,7 +42,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 				navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff }),
 		},
 		VOLUNTEER: {
-			value: volunteer.name,
+			value: volunteer.fullName,
 			action: () =>
 				navigation.navigate('SelectVolunteerScreen', {
 					volunteer,
@@ -56,6 +53,12 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 
 	if (data.CANCELLATION_TIME || data.COMPLETION_TIME) {
 		removeProgressBar = true;
+	}
+
+	const proceed = ()=>{
+		//change the status of the pickup to assigned
+		//send a notification to the assigned volutneer through the socket
+		navigation.navigate("AwaitVolunteerScreen");
 	}
 
 	return (
@@ -70,7 +73,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 				<ActionBox
 					type='primary'
 					title='Proceed'
-					action={() => console.log('Proceed Button Clicked')}
+					action={proceed}
 				/>
 			</View>
 

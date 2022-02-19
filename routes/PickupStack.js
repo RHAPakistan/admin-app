@@ -5,6 +5,7 @@ import PickupDetailsScreen from '../screens/pickup_module/PickupDetailsScreen';
 import SelectDropoffScreen from '../screens/pickup_module/SelectDropoffScreen';
 import SelectVolunteerScreen from '../screens/pickup_module/SelectVolunteerScreen';
 import NotificationScreen from '../screens/NotificationScreen';
+import AwaitVolunteerScreen from '../screens/pickup_module/awaitVolunteerScreen';
 
 import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
 
@@ -41,6 +42,11 @@ const PickupStack = () => {
 				component={NotificationScreen}
 				options={{ title: 'Notifications' }}
 			/>
+			<Stack.Screen
+				name='AwaitVolunteerScreen'
+				component={AwaitVolunteerScreen}
+				options={{ title: 'Await Volunteer Screen'}}
+			/>			
 		</Stack.Navigator>
 	);
 };

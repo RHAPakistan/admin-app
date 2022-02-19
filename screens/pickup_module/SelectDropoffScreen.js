@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, LogBox, ScrollView, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import GlobalStyles from '../../styles/GlobalStyles';
+import { TextInput } from 'react-native-gesture-handler';
 
 const SelectDropoffScreen = ({ navigation, route }) => {
 	const { dropoff, setDropoff } = route.params;
+	const [selectedDropOff, setSelectedDropOff] = useState("");
+	const [dropoffLocation, setDropoffLocation] = useState("");
 	LogBox.ignoreLogs([
 		'Non-serializable values were found in the navigation state',
 	]);
@@ -15,13 +18,13 @@ const SelectDropoffScreen = ({ navigation, route }) => {
 			<StatusBar style='dark' />
 
 			<Text>This is Assign Dropoff Screen</Text>
-			<Text>{dropoff.name}</Text>
+			<TextInput placeholder='Type dropoff location' onChangeText={setDropoffLocation} />
 
 			<Button
 				title='Assign'
 				onPress={() => {
 					setDropoff({
-						name: Math.random() * 10000 + '',
+						name: dropoffLocation,
 						id: Math.random() * 10000 + '',
 					});
 					navigation.goBack();
