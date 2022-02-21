@@ -11,6 +11,7 @@ import GlobalStyles from '../../styles/GlobalStyles';
 const awaitVolunteerScreen = ({ navigation, route }) => {
 	const socket = useContext(SocketContext);
 	useEffect(()=>{
+		console.log("listening for volunteer's acceptance");
 		socket.on("acceptPickup",(socket_data)=>{
 			console.log("pickup accepted");
 			//navigate to processing state.

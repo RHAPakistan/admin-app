@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { ScrollView, View } from 'react-native';
+import { LogBox, ScrollView, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import ProgressBar from '../../components/ProgressBar';
@@ -11,6 +11,9 @@ import GlobalStyles from '../../styles/GlobalStyles';
 const PickupDetailsScreen = ({ navigation, route }) => {
 	const socket = useContext(SocketContext);
 	const currentPickup = route.params.id;
+	LogBox.ignoreLogs([
+		'VirtualizedLists should never be nested inside plain ScrollViews with the same orientation - use another VirtualizedList-backed container instead.',
+	]);
 	// console.log("=====");
 	// console.log(route.params);
 	let removeProgressBar = false;

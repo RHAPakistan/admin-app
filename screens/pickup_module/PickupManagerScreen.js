@@ -27,7 +27,7 @@ const PickupManagerScreen = ({ navigation }) => {
 			console.log(e);
 		})		
 		//this will add a new request from provider in real time
-		socket.on("initiateRequest", (socket_data)=>{
+		socket.on("initiatePickup", (socket_data)=>{
 			console.log("a pickup request initiated by " + socket_data.message._id);
 			data.push(socket_data.message);
 			setData(data);
