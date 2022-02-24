@@ -7,10 +7,12 @@ import PickupDetails from '../../components/DetailsForm/PickupDetails';
 import ActionBox from '../../components/ActionBox';
 import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
+import * as SecureStore from 'expo-secure-store';
+const adminApi = require("../../helpers/adminApi");
 
 const PickupDetailsScreen = ({ navigation, route }) => {
 	const socket = useContext(SocketContext);
-	const currentPickup = route.params.id;
+	var currentPickup = route.params.id;
 	LogBox.ignoreLogs([
 		'VirtualizedLists should never be nested inside plain ScrollViews with the same orientation - use another VirtualizedList-backed container instead.',
 	]);
@@ -19,7 +21,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	let removeProgressBar = false;
 
 	const [dropoff, setDropoff] = useState({ name: '{DROPOFF_LOC}', id: '' });
-	const [volunteer, setVolunteer] = useState({"fullName":"Volunteer name"});
+	const [volunteer, setVolunteer] = useState({"fullName":"none"});
 	const [progressCount, setProgressCount] = useState(1);
 
 	// Fetch Data from id Here
@@ -61,8 +63,21 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		removeProgressBar = true;
 	}
 
-	const proceed = ()=>{
-		//change the status of the pickup to assigned
+	const proceed = async()=>{
+		
+		//add admin and volunteer field to the currentPickup
+		currentPickup.admin = await SecureStore.getItemAsync("user_id");
+		currentPickup.status = 1
+		if(currentPickup.volunteer!="none"){
+			currentPickup.volunteer = volunteer._id;
+			currentPickup.broadcast=false
+		}
+		else{
+			currentPickup.broadcast=true
+		}
+		var resp = await adminApi.update_pickups(currentPickup._id, currentPickup);
+		console.log(resp);
+		//change the status of the pickup to 1 (assigned)
 		//send a notification to the assigned volutneer through the socket
 		socket.emit("assignPickup",{"pickup":currentPickup, "volunteer":volunteer});
 		navigation.navigate("AwaitVolunteerScreen");

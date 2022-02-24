@@ -9,7 +9,7 @@ export const socket = socketio.connect(
 
 socket.on("request id", async (data)=>{
     console.log("received request for provider id");
-    let prov_id = "6210b0e4418b9ffab8be14d0"
+    let prov_id = await SecureStore.getItemAsync("user_id");
     socket.emit("send id",{"_id":prov_id});
     socket.off("request id");
 })

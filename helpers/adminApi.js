@@ -32,7 +32,7 @@ module.exports = {
 
                 if (json) {
                     await SecureStore.setItemAsync('auth_token', json.token);
-                    await SecureStore.setItemAsync('provider_id', json._id);
+                    await SecureStore.setItemAsync('user_id', json._id);
                     return true
                 } else {
                     return false
@@ -130,6 +130,27 @@ module.exports = {
             console.log("error!");
         })
     return resp;
+    },
+
+    update_pickups: async (id, obj) =>{
+        const token = await SecureStore.getItemAsync("auth_token")
+        const resp = await fetch(API_URL.concat(`/api/admin/pickup/${id}`),{
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type':'application/json',
+                'Authorization': "Token  " + token
+            },
+            body: JSON.stringify(obj)
+        })
+        .then((response)=>{
+            console.log(response);
+            return response
+        })
+        .then((json)=>{
+            //console.log("Pickup updated? ",json);
+            return json
+        })
     }
 
 }
