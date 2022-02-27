@@ -68,11 +68,13 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		//add admin and volunteer field to the currentPickup
 		currentPickup.admin = await SecureStore.getItemAsync("user_id");
 		currentPickup.status = 1
-		if(currentPickup.volunteer!="none"){
+		console.log("Volunteer at pickupDetailsScreen:71 ", volunteer);
+		if(volunteer.fullName != "none"){
 			currentPickup.volunteer = volunteer._id;
 			currentPickup.broadcast=false
 		}
 		else{
+			console.log("broadcast=true");
 			currentPickup.broadcast=true
 		}
 		var resp = await adminApi.update_pickups(currentPickup._id, currentPickup);
