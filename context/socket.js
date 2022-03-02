@@ -2,6 +2,7 @@ import * as SecureStore from 'expo-secure-store';
 import socketio from "socket.io-client";
 import React from "react";
 import {SOCKET_URL} from "../config.json";
+const localStorage = require("../helpers/localStorage");
 
 // export const socket = socketio.connect(
 //     SOCKET_URL
@@ -19,7 +20,8 @@ export const socket = socketio.connect(
 );
 export const initiateSocketConnection = async()=>{
 
-    let prov_id = await SecureStore.getItemAsync("user_id");
+    let prov_id = await localStorage.getData("user_id");
+    console.log("id -> ",prov_id);
     socket.emit("send id",{"_id":prov_id});
     console.log("Listening");
 }

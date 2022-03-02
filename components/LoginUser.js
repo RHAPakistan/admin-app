@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Animated, View, TouchableOpacity, Text, TextInput, StyleSheet, ScrollView, Platform } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { styles } from './styles';
-import * as SecureStore from 'expo-secure-store';
 var adminApi = require("../helpers/adminApi.js");
 
 

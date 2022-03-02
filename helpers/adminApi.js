@@ -3,6 +3,7 @@ import { concat } from 'react-native-reanimated';
 import { retrySymbolicateLogNow } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 import { API_URL } from "../config.json";
 import {initiateSocketConnection} from "../context/socket";
+const localStorage = require("./localStorage");
 
 module.exports = {
     //this funtion returns true if the user is valid else false
@@ -33,8 +34,8 @@ module.exports = {
                 console.log("succesful network request");
 
                 if (json) {
-                    await SecureStore.setItemAsync('auth_token', json.token);
-                    await SecureStore.setItemAsync('user_id', json._id);
+                    await localStorage.storeData('auth_token', json.token);
+                    await localStorage.storeData('user_id', json._id);
                     initiateSocketConnection();
                     return true
                 } else {
@@ -136,7 +137,7 @@ module.exports = {
     },
 
     update_pickups: async (id, obj) =>{
-        const token = await SecureStore.getItemAsync("auth_token")
+        const token = await localStorage.getData("auth_token");
         const resp = await fetch(API_URL.concat(`/api/admin/pickup/${id}`),{
             method: 'PATCH',
             headers: {

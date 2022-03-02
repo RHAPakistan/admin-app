@@ -30,7 +30,7 @@ const RootDrawer = () => {
 	return (
 		<Drawer.Navigator
 			screenOptions={DrawerStyles}
-			initialRouteName='Vendor Manager'
+			initialRouteName='Pickup Manager'
 			backBehavior='history'
 			drawerContent={(props) => <CustomDrawerContent {...props} />}>
 			<Drawer.Screen

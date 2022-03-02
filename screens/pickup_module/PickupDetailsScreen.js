@@ -8,6 +8,7 @@ import ActionBox from '../../components/ActionBox';
 import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
 import * as SecureStore from 'expo-secure-store';
+const localStorage = require("../../helpers/localStorage");
 const adminApi = require("../../helpers/adminApi");
 
 const PickupDetailsScreen = ({ navigation, route }) => {
@@ -20,7 +21,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	// console.log(route.params);
 	let removeProgressBar = false;
 
-	const [dropoff, setDropoff] = useState({ name: '{DROPOFF_LOC}', id: '' });
+	const [dropoff, setDropoff] = useState({ name: 'none', id: '' });
 	const [volunteer, setVolunteer] = useState({"fullName":"none"});
 	const [progressCount, setProgressCount] = useState(1);
 
@@ -66,8 +67,10 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	const proceed = async()=>{
 		
 		//add admin and volunteer field to the currentPickup
-		currentPickup.admin = await SecureStore.getItemAsync("user_id");
+		currentPickup.admin = await localStorage.getData("user_id");
+		//change the status of the pickup to 1 (assigned)
 		currentPickup.status = 1
+		currentPickup.deliveryAddress = dropoff.name;
 		console.log("Volunteer at pickupDetailsScreen:71 ", volunteer);
 		if(volunteer.fullName != "none"){
 			currentPickup.volunteer = volunteer._id;
@@ -77,12 +80,16 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 			console.log("broadcast=true");
 			currentPickup.broadcast=true
 		}
-		var resp = await adminApi.update_pickups(currentPickup._id, currentPickup);
-		console.log(resp);
-		//change the status of the pickup to 1 (assigned)
+
+		//incase volunteer or dropoff is not assigned then don't proceed
+		if (currentPickup.deliveryAddress=="none" ||  currentPickup.volunteer=="none"){
+			alert("Please assign dropoff and volunteer both");
+		} else{
 		//send a notification to the assigned volutneer through the socket
-		socket.emit("assignPickup",{"pickup":currentPickup, "volunteer":volunteer});
+		// socket.emit("assignPickup",{"pickup":currentPickup, "volunteer":volunteer});
+		socket.emit("assignPickup",{"message":currentPickup});
 		navigation.navigate("AwaitVolunteerScreen");
+		}
 	}
 
 	return (
