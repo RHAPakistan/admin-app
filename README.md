@@ -17,3 +17,18 @@ Project is currently in development development phase
 Muhammad Ibtehaj Khan
 Jawad Mustafa
 Hassan Anwer
+
+## About the code
+
+pickup status:
+
+0 -> Unassigned
+1 -> Pending
+2 -> Processing
+3 -> Completed
+4 -> Cancelled
+
+### command to run apps in multiple emulators
+adb -s emulator-5556 shell am start -a android.intent.action.VIEW -d exp://192.168.100.32:19001
+Starting: Intent { act=android.intent.action.VIEW dat=exp://192.168.100.32:19001 }
+
