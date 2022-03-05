@@ -40,10 +40,16 @@ const PickupManagerScreen = ({ navigation }) => {
 		
 	},[]);
 	const onChange = async(query) => {
-		// fetch data here
-		const response = await adminApi.get_pickups();
-		setData(response.pickups);
-		console.log('Pickup Status Changed', query);
+		// fetch data here;
+		if (query.index==0){
+			const response = await adminApi.get_pickups();
+			setData(response.pickups);
+		}
+		else{
+			const response = await adminApi.get_pickups({"status":query.index});
+			setData(response.pickups);
+			console.log('Pickup Status Changed', query);
+		}
 	};
 
 	const onPressHandler = (id) => {

@@ -17,11 +17,12 @@ const SelectVolunteerScreen = ({ navigation, route }) => {
 	const [volunteerSelected, setVolunteerSelected] = useState("");
 	useEffect(()=>{
 		const fetchData = async() =>{
-			const resp = await adminApi.get_volunteers();
+			const resp = await adminApi.get_volunteers({"ongoing_pickup":false});
 			return resp;
 		}
 		fetchData()
 		.then((response)=>{
+			console.log(response);
 			setVolunteersList(response);
 		})
 		.catch((e)=>{

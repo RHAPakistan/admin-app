@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { LogBox, ScrollView, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -24,23 +24,36 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	const [dropoff, setDropoff] = useState({ name: 'none', id: '' });
 	const [volunteer, setVolunteer] = useState({"fullName":"none"});
 	const [progressCount, setProgressCount] = useState(1);
-
+	const [current_provider, setCurrentProvider] = useState({});
 	// Fetch Data from id Here
-
+	useEffect(()=>{
+		const get_prov = async()=>{
+			var current_provider = await adminApi.get_provider(currentPickup.provider);
+			return current_provider
+		}
+		get_prov()
+		.then((response)=>{
+			setCurrentProvider(response);
+		})
+		.catch((e)=>{
+			console.log(e);
+		})
+	},[])
+	
 	// Process Data Here
 
 	const data = {
 		BOOKING_TIME: currentPickup.placementTime,
 		// COMPLETION_TIME: '{COMPLETION_TIME}',
 		// CANCELLATION_TIME: '{CANCELLATION_TIME}',
-		CONTACT_NAME: currentPickup._id,
-		CONTACT_PHONE: currentPickup.provieder_phone,
+		CONTACT_NAME: current_provider.fullName,
+		CONTACT_PHONE: current_provider.contactNumber,
 		PROVIDER: {
 			type: 'Registered',
-			name: "",
+			name: current_provider.fullName,
 			action: () => console.log('Provider Button Pressed'),
 		},
-		PICKUP_LOCATION: () => console.log(currentPickup.pickupAddress),
+		PICKUP_LOCATION: currentPickup.pickupAddress,
 		SURPLUS_TYPE: currentPickup.typeOfFood,
 		DESCRIPTION:
 			currentPickup.description,

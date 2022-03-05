@@ -9,6 +9,7 @@ module.exports = {
     //this funtion returns true if the user is valid else false
     //the funtion also adds the token to secure storage as "auth_token"
     signin: async (email, password) => {
+        console.log(API_URL.concat("/api/admin/auth/"));
         const resp = await fetch(API_URL.concat("/api/admin/auth/"), {
             method: 'POST',
             headers: {
@@ -49,8 +50,14 @@ module.exports = {
         return resp
     },
 
-    get_pickups: async () =>{
-        const resp = await fetch(API_URL.concat("/api/admin/pickup"), {
+    get_pickups: async (query) =>{
+        var query_string = API_URL.concat("/api/admin/pickup?");
+        // query_string = query?query_string.concat(`?status=${query.status?query.status:0}`):query_string;
+        // console.log(query_string);
+        for(const key in query){
+            query_string = query_string.concat(`${key}=${query[key]}`);
+        }
+        const resp = await fetch(query_string, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -58,7 +65,6 @@ module.exports = {
             }
         })
         .then((response)=>{
-            // console.log(response);
             return response.json();
         })
         .then((json)=>{
@@ -71,8 +77,14 @@ module.exports = {
     return resp;
     },
 
-    get_volunteers: async () =>{
-        const resp = await fetch(API_URL.concat("/api/admin/volunteer"), {
+    get_volunteers: async (query) =>{
+        var query_string = API_URL.concat("/api/admin/volunteer?");
+        // query_string = query?query_string.concat(`?status=${query.status?query.status:0}`):query_string;
+        // console.log(query_string);
+        for(const key in query){
+            query_string = query_string.concat(`${key}=${query[key]}`);
+        }
+        const resp = await fetch(query_string, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -117,6 +129,27 @@ module.exports = {
 
     get_providers: async () =>{
         const resp = await fetch(API_URL.concat("/api/admin/provider"),{
+            method: 'GET',
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .then((json)=>{
+            return json
+        })
+        .catch((e)=>{
+            console.log(e);
+            console.log("error!");
+        })
+    return resp;
+    },
+
+    get_provider: async(id) =>{
+        const resp = await fetch(API_URL.concat(`/api/admin/provider/${id}`),{
             method: 'GET',
             headers:{
                 Accept: 'application/json',
