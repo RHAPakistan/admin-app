@@ -59,14 +59,6 @@ const SelectVolunteerScreen = ({ navigation, route }) => {
 		<ScrollView style={{flex:1}}>
 			<StatusBar style='dark' />
 			<VolunteerList data={volunteersList} onPress = {onPressVolunteer} />
-			{/* <Button
-				title='Assign'
-				onPress={() => {
-					setVolunteer(volunteerSelected);
-					setProgressCount(3);
-					navigation.goBack();
-				}}
-			/> */}
 		</ScrollView>
 	);
 };

@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import { TextInput } from 'react-native-gesture-handler';
+import {styles} from '../styles';
 
 const SelectDropoffScreen = ({ navigation, route }) => {
 	const { dropoff, setDropoff, setProgressCount } = route.params;
@@ -12,7 +13,6 @@ const SelectDropoffScreen = ({ navigation, route }) => {
 	LogBox.ignoreLogs([
 		'Non-serializable values were found in the navigation state',
 	]);
-
 	return (
 		<ScrollView style={GlobalStyles.container}>
 			<StatusBar style='dark' />
@@ -21,6 +21,7 @@ const SelectDropoffScreen = ({ navigation, route }) => {
 			<TextInput placeholder='Type dropoff location' onChangeText={setDropoffLocation} />
 
 			<Button
+				
 				title='Assign'
 				onPress={() => {
 					setDropoff({

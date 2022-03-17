@@ -37,6 +37,8 @@ module.exports = {
                 if (json) {
                     await localStorage.storeData('auth_token', json.token);
                     await localStorage.storeData('user_id', json._id);
+                    await localStorage.storeData('fullName', json.fullName);
+                    await localStorage.storeData('phone', json.contactNumber);
                     initiateSocketConnection();
                     return true
                 } else {

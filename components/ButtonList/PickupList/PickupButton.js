@@ -29,12 +29,21 @@ const PickupButton = ({ data, onPress }) => {
 			onPressOut={onPressOutHandler}
 			style={[styles.button, ButtonStyle]}>
 			<View style={styles.buttonHeader}>
-				<Text style={TitleStyle}>#{data._id}</Text>
+				<Text style={TitleStyle}>Status:{data.status}</Text>
 				<Text style={InfoStyle}>{data.placementTime}</Text>
 			</View>
 
 			<View style={styles.buttonHeader}>
-				<Text style={InfoStyle}>{data.pickupAddress}</Text>
+				<Text style={InfoStyle}>Pickup Address: {data.pickupAddress}</Text>
+			</View>
+			<View style={styles.buttonHeader}>
+				<Text style={InfoStyle}>Description: {data.description==""?"None":data.description}</Text>
+			</View>
+			<View style={styles.buttonHeader}>
+				<Text style={InfoStyle}>Amount: {data.amountOfFood==""?"None":data.amountOfFood}</Text>
+			</View>
+			<View style={styles.buttonHeader}>
+				<Text style={InfoStyle}>Type: {data.typeOfFood==""?"None":data.typeOfFood}</Text>
 			</View>
 		</Pressable>
 	);
