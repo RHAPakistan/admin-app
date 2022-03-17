@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import {
 	DrawerContentScrollView,
@@ -8,6 +8,7 @@ import {
 
 import styles from './styles';
 import Colors from '../../styles/Colors';
+import localStorage from "../../helpers/localStorage";
 
 const LogoutProps = {
 	style: {
@@ -26,12 +27,32 @@ const LogoutProps = {
 };
 
 const CustomDrawerContent = (props) => {
+
+	const [name, setName] = useState("Guest");
+	const [phone, setPhone] = useState("Phone")
+	
+	useEffect(()=>{
+		//get name
+		const fetchData = async() =>{
+			const fullName = await localStorage.getData('fullName');
+			const phone = await localStorage.getData('phone');
+			return {fullName, phone}
+		}
+
+		fetchData()
+		.then((response)=>{
+			const {fullName, phone} = response;
+			setName(fullName);
+			setPhone(phone);
+		})
+
+	})
 	return (
 		<ScrollView>
 			<View style={styles.drawerHeader}>
 				<View style={styles.drawerHeaderTitle}>
-					<Text style={styles.drawerHeaderName}>John Doe Smith</Text>
-					<Text style={styles.drawerHeaderPhone}>+92 345 1234567</Text>
+					<Text style={styles.drawerHeaderName}>{name}</Text>
+					<Text style={styles.drawerHeaderPhone}>{phone}</Text>
 				</View>
 			</View>
 			<DrawerContentScrollView

@@ -68,15 +68,26 @@ const PickupDetails = ({ data }) => {
 				action={() => console.log('Phone Number Clicked')}
 			/>
 
+			
+
+
 			{/* vendor/provider name or Type if Guest */}
 			{ProviderLine}
 
 			{/* Go to google map when clicked to find the location */}
-			<ButtonLine
+			{/* <ButtonLine
 				index={indexOffset + 4}
 				label='Pickup Location'
 				title='Map'
 				action={data.PICKUP_LOCATION}
+			/> */}
+
+			{/*textbox that holds the value of the pickup pickupAddress*/}
+			<TextLineClickable
+				index={indexOffset + 4}
+				label='Pickup Location'
+				value={data.PICKUP_LOCATION}
+				action={() => console.log('Pickup location clicked')}
 			/>
 
 			{/* Surplus type */}

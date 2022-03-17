@@ -6,13 +6,13 @@ import Colors from '../../styles/Colors';
 import styles from './styles';
 
 const HeaderWithEdit = (navigation, route, title, screen) => {
-	
-	const { data } = route.params;
+	const { id } = route.params;
+
 	const EditButton = () => {
 		return (
 			<Pressable
 				style={styles.headerButton}
-				onPress={() => navigation.navigate(screen, { id: data })}>
+				onPress={() => navigation.navigate(screen, { id: id })}>
 				<FontAwesome name='edit' size={24} color={Colors.black} />
 			</Pressable>
 		);

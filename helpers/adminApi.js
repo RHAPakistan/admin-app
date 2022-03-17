@@ -3,11 +3,13 @@ import { concat } from 'react-native-reanimated';
 import { retrySymbolicateLogNow } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 import { API_URL } from "../config.json";
 import {initiateSocketConnection} from "../context/socket";
+const localStorage = require("./localStorage");
 
 module.exports = {
     //this funtion returns true if the user is valid else false
     //the funtion also adds the token to secure storage as "auth_token"
     signin: async (email, password) => {
+        console.log(API_URL.concat("/api/admin/auth/"));
         const resp = await fetch(API_URL.concat("/api/admin/auth/"), {
             method: 'POST',
             headers: {
@@ -33,8 +35,10 @@ module.exports = {
                 console.log("succesful network request");
 
                 if (json) {
-                    await SecureStore.setItemAsync('auth_token', json.token);
-                    await SecureStore.setItemAsync('user_id', json._id);
+                    await localStorage.storeData('auth_token', json.token);
+                    await localStorage.storeData('user_id', json._id);
+                    await localStorage.storeData('fullName', json.fullName);
+                    await localStorage.storeData('phone', json.contactNumber);
                     initiateSocketConnection();
                     return true
                 } else {
@@ -48,8 +52,41 @@ module.exports = {
         return resp
     },
 
-    get_pickups: async () =>{
-        const resp = await fetch(API_URL.concat("/api/admin/pickup"), {
+    get_pickups: async (query) =>{
+        var query_string = API_URL.concat("/api/admin/pickup?");
+        // query_string = query?query_string.concat(`?status=${query.status?query.status:0}`):query_string;
+        // console.log(query_string);
+        for(const key in query){
+            query_string = query_string.concat(`${key}=${query[key]}`);
+        }
+        const resp = await fetch(query_string, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e) =>{
+            console.log(e);
+            console.log("error");
+        })
+    return resp;
+    },
+
+    get_volunteers: async (query) =>{
+        var query_string = API_URL.concat("/api/admin/volunteer?");
+        // query_string = query?query_string.concat(`?status=${query.status?query.status:0}`):query_string;
+        // console.log(query_string);
+        for(const key in query){
+            query_string = query_string.concat(`${key}=${query[key]}`);
+        }
+        const resp = await fetch(query_string, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -68,28 +105,6 @@ module.exports = {
             console.log("error");
         })
     return resp;
-    },
-
-    get_volunteers: async () =>{
-        const resp = await fetch(API_URL.concat("/api/admin/volunteer"), {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((response)=>{
-            // console.log(response);
-            return response.json();
-        })
-        .then((json)=>{
-            return json;
-        })
-        .catch((e) =>{
-            console.log(e);
-            console.log("error");
-        })
-        return resp;
     },
 
     get_dropoffs: async () =>{
@@ -135,8 +150,29 @@ module.exports = {
     return resp;
     },
 
+    get_provider: async(id) =>{
+        const resp = await fetch(API_URL.concat(`/api/admin/provider/${id}`),{
+            method: 'GET',
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .then((json)=>{
+            return json
+        })
+        .catch((e)=>{
+            console.log(e);
+            console.log("error!");
+        })
+    return resp;
+    },
+
     update_pickups: async (id, obj) =>{
-        const token = await SecureStore.getItemAsync("auth_token")
+        const token = await localStorage.getData("auth_token");
         const resp = await fetch(API_URL.concat(`/api/admin/pickup/${id}`),{
             method: 'PATCH',
             headers: {
@@ -179,7 +215,7 @@ module.exports = {
     },
 
     update_drive: async(id, obj) =>{
-        const token = await SecureStore.getItemAsync("auth_token")
+        const token = await localStorage.getData("auth_token");
         const resp = await fetch(API_URL.concat(`/api/admin/drive/${id}`),{
             method: 'PATCH',
             headers: {
@@ -199,7 +235,7 @@ module.exports = {
         })
     },
     create_drive: async(data)=>{
-        const token = await SecureStore.getItemAsync("auth_token")
+        const token = await await localStorage.getData("auth_token");
         const resp = await fetch(API_URL.concat('/api/admin/drive/'),{
             method: 'POST',
             headers: {
