@@ -48,7 +48,7 @@ const DriveManagerScreen = ({ navigation }) => {
 	};
 
 	const onPressHandler = (data) => {
-		navigation.navigate('DriveDetailsScreen', { data });
+		navigation.navigate('DriveDetailsScreen', {id: data });
 	};
 
 	return (

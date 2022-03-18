@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image, Button, TouchableOpacity} from 'react-na
 import { styles } from "./styles";
 import LoginUser from "../components/LoginUser";
 import LoginGuest from "../components/LoginGuest";
-// "API_URL":    "http://192.168.18.81:5000"
+
 const HomeScreen = ({navigation}) => {
 
   const [isUserLoginClicked, setIsUserLoginClicked] = useState(false);

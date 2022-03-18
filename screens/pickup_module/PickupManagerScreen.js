@@ -13,6 +13,15 @@ const PickupManagerScreen = ({ navigation }) => {
 	const socket = useContext(SocketContext);
 	const [data, setData] = useState([]);
 	
+
+	const turnOnSocket = async() =>{
+		socket.on("initiatePickup", (socket_data)=>{
+			console.log("a pickup request initiated by " + socket_data.message._id);
+			data.push(socket_data.message);
+			setData(data);
+			console.log(data);
+		})
+	}
 	useEffect(()=>{
 		console.log("pickup manager screen mounted");
 		const fetchData = async()=>{
@@ -22,17 +31,14 @@ const PickupManagerScreen = ({ navigation }) => {
 		fetchData()
 		.then((response)=>{
 			setData(response);
+		//this will add a new request from provider in real time
+			turnOnSocket();
 		})
 		.catch((e)=>{
 			console.log(e);
 		})		
-		//this will add a new request from provider in real time
-		socket.on("initiatePickup", (socket_data)=>{
-			console.log("a pickup request initiated by " + socket_data.message._id);
-			data.push(socket_data.message);
-			setData(data);
-			console.log(data);
-		})
+		
+
 		return () => {
 			console.log("turning off socket");
 			socket.off("initiateRequest");
@@ -40,10 +46,16 @@ const PickupManagerScreen = ({ navigation }) => {
 		
 	},[]);
 	const onChange = async(query) => {
-		// fetch data here
-		const response = await adminApi.get_pickups();
-		setData(response.pickups);
-		console.log('Pickup Status Changed', query);
+		// fetch data here;
+		if (query.index==0){
+			const response = await adminApi.get_pickups();
+			setData(response.pickups);
+		}
+		else{
+			const response = await adminApi.get_pickups({"status":query.index});
+			setData(response.pickups);
+			console.log('Pickup Status Changed', query);
+		}
 	};
 
 	const onPressHandler = (id) => {

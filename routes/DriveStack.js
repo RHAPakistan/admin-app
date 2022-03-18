@@ -28,7 +28,7 @@ const DriveStack = () => {
 				component={DriveDetailsScreen}
 				options={({ navigation, route }) => {
 					//console.log("The header: ", route);
-					const title = 'Drive #' + route.params.data._id;
+					const title = 'Drive #' + route.params.id._id;
 					const screen = 'EditDriveDetailsScreen';
 					return HeaderWithEdit(navigation, route, title, screen);
 				}}

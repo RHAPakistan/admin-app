@@ -12,7 +12,7 @@ const DriveDetailsScreen = ({ navigation, route }) => {
 	const [isActive, setIsActive] = useState(false);
 
 	useEffect(()=>{
-		setData(route.params.data);
+		setData(route.params.id);
 		if(data.status == 1) setIsActive(true)
 	},[data, isActive]);
 	// Fetch Data From id

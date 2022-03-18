@@ -17,11 +17,12 @@ const SelectVolunteerScreen = ({ navigation, route }) => {
 	const [volunteerSelected, setVolunteerSelected] = useState("");
 	useEffect(()=>{
 		const fetchData = async() =>{
-			const resp = await adminApi.get_volunteers();
+			const resp = await adminApi.get_volunteers({"ongoing_pickup":false});
 			return resp;
 		}
 		fetchData()
 		.then((response)=>{
+			console.log(response);
 			setVolunteersList(response);
 		})
 		.catch((e)=>{
@@ -58,14 +59,6 @@ const SelectVolunteerScreen = ({ navigation, route }) => {
 		<ScrollView style={{flex:1}}>
 			<StatusBar style='dark' />
 			<VolunteerList data={volunteersList} onPress = {onPressVolunteer} />
-			{/* <Button
-				title='Assign'
-				onPress={() => {
-					setVolunteer(volunteerSelected);
-					setProgressCount(3);
-					navigation.goBack();
-				}}
-			/> */}
 		</ScrollView>
 	);
 };
