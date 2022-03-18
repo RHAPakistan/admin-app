@@ -20,12 +20,12 @@ export default function App() {
 					<Stack.Screen
 						name="Home"
 						component={HomeScreen}
-						options={{ title: 'Home' }, { headerShown: false }}
+						options={{ title: 'Home' , headerShown: false }}
 					/>
 					<Stack.Screen
 						name="Drawer"
 						component={RootDrawer}
-						options={{ title: 'Drawer' }, { headerShown: false }}
+						options={{ title: 'Drawer' , headerShown: false }}
 					/>
 				</Stack.Navigator>
 			</NavigationContainer>
