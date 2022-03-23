@@ -101,7 +101,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		//send a notification to the assigned volutneer through the socket
 		// socket.emit("assignPickup",{"pickup":currentPickup, "volunteer":volunteer});
 		socket.emit("assignPickup",{"message":currentPickup});
-		navigation.navigate("AwaitVolunteerScreen");
+		navigation.navigate("AwaitVolunteerScreen",{"pickup":currentPickup, "provider":current_provider, "dropoff":dropoff, "volunteer":volunteer});
 		}
 	}
 
@@ -109,7 +109,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
-			<View style={{ flex: 1 }}>
+			<View >
 				{!removeProgressBar && (
 					<ProgressBar active={progressCount} message='This is step one.' />
 				)}

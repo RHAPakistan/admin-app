@@ -12,7 +12,7 @@ const  adminApi = require("../../helpers/adminApi");
 const PickupManagerScreen = ({ navigation }) => {
 	const socket = useContext(SocketContext);
 	const [data, setData] = useState([]);
-	
+	const [status_no, setStatus] = useState(0);	
 
 	const turnOnSocket = async() =>{
 		socket.on("initiatePickup", (socket_data)=>{
@@ -61,7 +61,9 @@ const PickupManagerScreen = ({ navigation }) => {
 	const onPressHandler = (id) => {
 		// console.log(id);
 		console.log(id);
+		if(status_no==0){
 		navigation.navigate('PickupDetailsScreen', { id });
+		}
 	};
 
 

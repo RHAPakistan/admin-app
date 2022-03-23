@@ -4,30 +4,69 @@ import { StatusBar } from 'expo-status-bar';
 
 import ProgressBar from '../../components/ProgressBar';
 import PickupDetails from '../../components/DetailsForm/PickupDetails';
+import PickupDetailsFixed from '../../components/DetailsForm/PickupDetailsFixed';
 import ActionBox from '../../components/ActionBox';
 import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
+import adminApi from "../../helpers/adminApi";
 
 const processingScreen = ({ navigation, route }) => {
+	console.log("PARAMS ARE _>", route.params);
 	const socket = useContext(SocketContext);
-	useEffect(()=>{
-		socket.on("finishPickup",(socket_data)=>{
+	const pickup = route.params.pickup;
+	const current_provider = route.params.provider;
+	const volunteer = route.params.volunteer;
+	useEffect(() => {
+
+		const fetchData = async()=>{
+
+		}
+		socket.on("finishPickup", (socket_data) => {
 			console.log("pickup finished");
 			//navigate to completed state.
-            navigation.navigate("CompletedScreen");
+			navigation.navigate("CompletedScreen", {"pickup": socket_data.message,"provider":socket_data.provider,"volunteer":socket_data.volunteer});
 
 		})
-	},[])
+	}, [])
+	
+	const data = {
+		BOOKING_TIME: pickup.placementTime,
+		// COMPLETION_TIME: '{COMPLETION_TIME}',
+		// CANCELLATION_TIME: '{CANCELLATION_TIME}',
+		CONTACT_NAME: current_provider.fullName,
+		CONTACT_PHONE: current_provider.contactNumber,
+		PROVIDER: {
+			type: 'Registered',
+			name: current_provider.fullName,
+			action: () => console.log('Provider Button Pressed'),
+		},
+		PICKUP_LOCATION: pickup.pickupAddress,
+		SURPLUS_TYPE: pickup.typeOfFood,
+		DESCRIPTION:
+			pickup.description,
+		DROPOFF_LOC: {
+			value: pickup.deliveryAddress,
+			action: () =>
+				navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff, setProgressCount }),
+		},
+		VOLUNTEER: {
+			value: volunteer.fullName,
+			action: () =>
+				navigation.navigate('SelectVolunteerScreen', {
+					volunteer,
+					setVolunteer,
+					setProgressCount
+				}),
+		},
+	};
 
 	return (
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
-			<View style={{ flex: 1 }}>
-					<ProgressBar active={5} message='This is step 6.' />
-				</View>
-            <Text>Waiting for volunteer to finish</Text>
-			<View style={{ marginTop: 32 }}>
+			<ProgressBar active={5} message='Waiting for the volunteer to finish.' />
+			<PickupDetailsFixed data={data}/>
+			<View>
 				{/* When Cancelling, a modal should appear to ask if admin really wants to cancel the pickup */}
 				<ActionBox
 					type='cancel'

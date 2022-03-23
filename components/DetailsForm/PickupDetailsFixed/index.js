@@ -9,7 +9,7 @@ import TextDescription from '../TextDescription';
 
 import styles from '../styles';
 
-const PickupDetails = ({ data }) => {
+const PickupDetailsFixed = ({ data }) => {
 	let indexOffset = 1;
 
 	let CompletionLine =
@@ -83,7 +83,7 @@ const PickupDetails = ({ data }) => {
 			/> */}
 
 			{/*textbox that holds the value of the pickup pickupAddress*/}
-			<TextLineClickable
+			<TextLine
 				index={indexOffset + 4}
 				label='Pickup Location'
 				value={data.PICKUP_LOCATION}
@@ -96,6 +96,7 @@ const PickupDetails = ({ data }) => {
 				label='Surplus Type'
 				value={data.SURPLUS_TYPE}
 			/>
+			
 
 			{/* Food Description */}
 			<TextDescription
@@ -108,22 +109,20 @@ const PickupDetails = ({ data }) => {
 			<View style={styles.splitter}></View>
 
 			{/* Assign dropoff location */}
-			<ButtonToTextClickable
+			<TextLine
 				index={indexOffset + 7}
 				label='Drop-off Location'
-				title='Assign'
-				data={data.DROPOFF_LOC}
+				value={data.DROPOFF_LOC.value}
 			/>
 
 			{/* Assign volunteer manually */}
-			<ButtonToTextClickable
+			<TextLine
 				index={indexOffset + 8}
 				label='Volunteer'
-				title='Assign'
-				data={data.VOLUNTEER}
+				value={data.VOLUNTEER.value}
 			/>
 		</View>
 	);
 };
 
-export default PickupDetails;
+export default PickupDetailsFixed;

@@ -10,21 +10,7 @@ import styles from './styles';
 import Colors from '../../styles/Colors';
 import localStorage from "../../helpers/localStorage";
 
-const LogoutProps = {
-	style: {
-		marginHorizontal: 0,
-		marginVertical: 0,
-		height: 48,
-		borderRadius: 0,
-	},
-	labelStyle: {
-		marginHorizontal: 8,
-		fontSize: 16,
-	},
-	inactiveTintColor: Colors.green,
-	label: 'Logout',
-	onPress: () => console.log('Logout Button Pressed'),
-};
+
 
 const CustomDrawerContent = (props) => {
 
@@ -47,6 +33,26 @@ const CustomDrawerContent = (props) => {
 		})
 
 	})
+	const logout = (navigation)=>{
+		localStorage.clearAsyncStorage();
+		navigation.navigate("Home");
+	}
+
+	const LogoutProps = {
+		style: {
+			marginHorizontal: 0,
+			marginVertical: 0,
+			height: 48,
+			borderRadius: 0,
+		},
+		labelStyle: {
+			marginHorizontal: 8,
+			fontSize: 16,
+		},
+		inactiveTintColor: Colors.green,
+		label: 'Logout',
+		onPress: () => logout(props.navigation),
+	};
 	return (
 		<ScrollView>
 			<View style={styles.drawerHeader}>
