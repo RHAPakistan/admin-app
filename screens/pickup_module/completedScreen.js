@@ -7,18 +7,33 @@ import PickupDetailsFixed from '../../components/DetailsForm/PickupDetailsFixed'
 import ActionBox from '../../components/ActionBox';
 import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
+import adminApi from "../../helpers/adminApi";
 
 const CompletedScreen = ({ navigation, route }) => {
 	const socket = useContext(SocketContext);
 	const pickup = route.params.pickup;
-	const current_provider = route.params.provider;
-	const volunteer = route.params.volunteer;
+	const [current_provider, setCurrentProvider] = useState({});
+	const [volunteer, setVolunteer] = useState({});
 	useEffect(() => {
 		socket.on("finishPickup", (socket_data) => {
 			console.log("pickup finished");
 			//navigate to completed state.
 
 		})
+		const fetchData = async()=>{
+			const vol_resp = route.params.pickup.volunteer?
+			await adminApi.get_volunteers({"_id":route.params.pickup.volunteer})
+			:
+			{"fullName":"none"}
+			const prov_resp = await adminApi.get_provider(route.params.pickup.provider)
+			return [vol_resp, prov_resp];
+		}
+		fetchData()
+		.then((response)=>{
+			const [vol_resp, prov_resp] = response;
+			setVolunteer(vol_resp);
+			setCurrentProvider(prov_resp);
+		})	
 	}, [])
 	const data = {
 		BOOKING_TIME: pickup.placementTime,

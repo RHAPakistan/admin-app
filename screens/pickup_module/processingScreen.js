@@ -14,18 +14,30 @@ const processingScreen = ({ navigation, route }) => {
 	console.log("PARAMS ARE _>", route.params);
 	const socket = useContext(SocketContext);
 	const pickup = route.params.pickup;
-	const current_provider = route.params.provider;
-	const volunteer = route.params.volunteer;
+	const [current_provider, setCurrentProvider] = useState({});
+	const [volunteer, setVolunteer] = useState({});
 	useEffect(() => {
 
-		const fetchData = async()=>{
-
-		}
 		socket.on("finishPickup", (socket_data) => {
 			console.log("pickup finished");
 			//navigate to completed state.
 			navigation.navigate("CompletedScreen", {"pickup": socket_data.message,"provider":socket_data.provider,"volunteer":socket_data.volunteer});
 
+		})
+	
+		const fetchData = async()=>{
+			const vol_resp = route.params.pickup.volunteer?
+			await adminApi.get_volunteers({"_id":route.params.pickup.volunteer})
+			:
+			{"fullName":"none"}
+			const prov_resp = await adminApi.get_provider(route.params.pickup.provider)
+			return [vol_resp, prov_resp];
+		}
+		fetchData()
+		.then((response)=>{
+			const [vol_resp, prov_resp] = response;
+			setVolunteer(vol_resp);
+			setCurrentProvider(prov_resp);
 		})
 	}, [])
 	

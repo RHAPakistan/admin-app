@@ -50,20 +50,21 @@ const PickupManagerScreen = ({ navigation }) => {
 		if (query.index==0){
 			const response = await adminApi.get_pickups();
 			setData(response.pickups);
+			setStatus(status_no);
 		}
 		else{
-			const response = await adminApi.get_pickups({"status":query.index});
+			const response = await adminApi.get_pickups({"status":query.index-1});
 			setData(response.pickups);
+			const indie = query.index - 1;
+			setStatus(indie);
 			console.log('Pickup Status Changed', query);
+			console.log(status_no);
 		}
 	};
 
 	const onPressHandler = (id) => {
-		// console.log(id);
-		console.log(id);
-		if(status_no==0){
-		navigation.navigate('PickupDetailsScreen', { id });
-		}
+		navigation.navigate('PickupDetailsScreen', { pickup:id });
+
 	};
 
 

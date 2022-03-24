@@ -13,7 +13,7 @@ const adminApi = require("../../helpers/adminApi");
 
 const PickupDetailsScreen = ({ navigation, route }) => {
 	const socket = useContext(SocketContext);
-	var currentPickup = route.params.id;
+	var currentPickup = route.params.pickup;
 	LogBox.ignoreLogs([
 		'VirtualizedLists should never be nested inside plain ScrollViews with the same orientation - use another VirtualizedList-backed container instead.',
 	]);
@@ -27,6 +27,16 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	const [current_provider, setCurrentProvider] = useState({});
 	// Fetch Data from id Here
 	useEffect(()=>{
+
+		if (currentPickup.status==1){
+			navigation.navigate("AwaitVolunteerScreen",{pickup:currentPickup});
+		}
+		else if (currentPickup.status==2){
+			navigation.navigate("ProcessingScreen", {pickup:currentPickup});
+		}
+		else if (currentPickup.status==3){
+			navigation.navigate("CompletedScreen", {pickup:currentPickup});
+		}
 		const get_prov = async()=>{
 			var current_provider = await adminApi.get_provider(currentPickup.provider);
 			return current_provider
