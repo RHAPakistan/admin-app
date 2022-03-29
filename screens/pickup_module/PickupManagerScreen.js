@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { Text, Pressable, View, Keyboard, Card, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -15,24 +15,52 @@ const PickupManagerScreen = ({ navigation }) => {
 	const [status_no, setStatus] = useState(0);	
 
 	const turnOnSocket = async() =>{
-		socket.on("initiatePickup", (socket_data)=>{
+		socket.on("initiatePickupListen", (socket_data)=>{
 			console.log("a pickup request initiated by " + socket_data.message._id);
-			data.push(socket_data.message);
-			setData(data);
-			console.log(data);
+			// data.push(socket_data.message);
+			data_copy = [...data];
+			data_copy.push(socket_data.message);
+			setData(data_copy);
+			// console.log(data);
 		})
+	}
+
+	const getData = ()=>{
+		return data;
 	}
 	useEffect(()=>{
 		console.log("pickup manager screen mounted");
 		const fetchData = async()=>{
 			const resp = await adminApi.get_pickups();
+			//this will add a new request from provider in real time
+			turnOnSocket();
+			socket.on("informCancelPickupAtStatus0", (socket_data)=>{
+				console.log("Pickup cancelled here", socket_data.pickup);
+				setData((prevState)=>{
+					var data_copy = [...prevState];
+					console.log("current ", data_copy);
+					for( var i = 0; i < data_copy.length; i++){ 
+						if ( data_copy[i]._id === socket_data.pickup._id) { 
+							console.log("remove this");
+							data_copy.splice(i, 1); 
+							console.log(data_copy);
+							return(data_copy);
+							break;
+						}
+					
+					}
+					return(data_copy);
+				})
+				
+				
+			})
 			return resp.pickups;
 		}
 		fetchData()
 		.then((response)=>{
+			console.log("set data");
 			setData(response);
-		//this will add a new request from provider in real time
-			turnOnSocket();
+
 		})
 		.catch((e)=>{
 			console.log(e);
@@ -41,7 +69,8 @@ const PickupManagerScreen = ({ navigation }) => {
 
 		return () => {
 			console.log("turning off socket");
-			socket.off("initiateRequest");
+			socket.off("initiatePickupListen");
+			socket.off("informCancelPickupAtStatus0")
 		}
 		
 	},[]);
