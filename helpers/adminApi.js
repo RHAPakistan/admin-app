@@ -59,6 +59,7 @@ module.exports = {
         for(const key in query){
             query_string = query_string.concat(`${key}=${query[key]}`);
         }
+        console.log(query_string);
         const resp = await fetch(query_string, {
             method: 'GET',
             headers: {

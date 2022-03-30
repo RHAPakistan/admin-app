@@ -18,15 +18,14 @@ const PickupManagerScreen = ({ navigation }) => {
 		socket.on("initiatePickupListen", (socket_data)=>{
 			console.log("a pickup request initiated by " + socket_data.message._id);
 			// data.push(socket_data.message);
-			data_copy = [...data];
-			data_copy.push(socket_data.message);
-			setData(data_copy);
+			setData((prevState)=>{
+				var data_copy = [...prevState];
+				data_copy.push(socket_data.message);
+				return data_copy;
+			})
+
 			// console.log(data);
 		})
-	}
-
-	const getData = ()=>{
-		return data;
 	}
 	useEffect(()=>{
 		console.log("pickup manager screen mounted");
@@ -34,7 +33,7 @@ const PickupManagerScreen = ({ navigation }) => {
 			const resp = await adminApi.get_pickups();
 			//this will add a new request from provider in real time
 			turnOnSocket();
-			socket.on("informCancelPickupAtStatus0", (socket_data)=>{
+			socket.on("informCancelPickup", (socket_data)=>{
 				console.log("Pickup cancelled here", socket_data.pickup);
 				setData((prevState)=>{
 					var data_copy = [...prevState];
@@ -51,14 +50,11 @@ const PickupManagerScreen = ({ navigation }) => {
 					}
 					return(data_copy);
 				})
-				
-				
 			})
 			return resp.pickups;
 		}
 		fetchData()
 		.then((response)=>{
-			console.log("set data");
 			setData(response);
 
 		})
@@ -70,7 +66,7 @@ const PickupManagerScreen = ({ navigation }) => {
 		return () => {
 			console.log("turning off socket");
 			socket.off("initiatePickupListen");
-			socket.off("informCancelPickupAtStatus0")
+			socket.off("informCancelPickup")
 		}
 		
 	},[]);

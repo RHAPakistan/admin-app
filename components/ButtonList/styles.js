@@ -5,6 +5,7 @@ import Colors from '../../styles/Colors';
 const styles = StyleSheet.create({
 	list: {
 		borderTopColor: Colors.grey,
+		flex:1,
 		borderTopWidth: 2,
 		paddingBottom: 24,
 		marginHorizontal: 16,

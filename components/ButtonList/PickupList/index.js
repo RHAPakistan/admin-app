@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, ScrollView,View } from 'react-native';
 
 import PickupButton from './PickupButton';
 
@@ -13,13 +13,13 @@ const PickupList = ({ onPress, data }) => {
 	);
 
 	return (
-		<View style={styles.list}>
+		<ScrollView style={styles.list}>
 			<FlatList
 				data={data}
 				renderItem={renderItem}
 				keyExtractor={(item) => item._id}
 			/>
-		</View>
+		</ScrollView>
 	);
 };
 

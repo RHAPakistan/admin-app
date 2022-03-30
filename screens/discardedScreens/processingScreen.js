@@ -10,21 +10,30 @@ import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
 import adminApi from "../../helpers/adminApi";
 
-
-const awaitVolunteerScreen = ({ navigation, route }) => {
+const processingScreen = ({ navigation, route }) => {
+	console.log("PARAMS ARE _>", route.params);
 	const socket = useContext(SocketContext);
-	const currentPickup = route.params.pickup;
+	const [pickup, setPickup] = useState(route.params.pickup);
 	const [current_provider, setCurrentProvider] = useState({});
-	const dropoff = {"name":route.params.pickup.deliveryAddress};
 	const [volunteer, setVolunteer] = useState({});
+	const [progress, setProgress] = useState(5);
+	const [heading, setHeading] = useState("Waiting for volunteer to finish");
 	useEffect(() => {
-		console.log("listening for volunteer's acceptance");
-		socket.on("acceptPickup", (socket_data) => {
-			console.log("pickup accepted");
-			//navigate to processing state.
-			navigation.navigate("ProcessingScreen", {"pickup": socket_data.message,"provider":socket_data.provider,"volunteer":socket_data.volunteer});
-		})
 
+		socket.on("finishPickup", (socket_data) => {
+			console.log("pickup finished");
+			setPickup(socket_data.message);
+			setCurrentProvider(socket_data.provider);
+			setVolunteer(socket_data.volunteer);
+			setHeading("Pickup Completed");
+			setProgress(6);
+			//navigate to completed state.
+			// navigation.navigate("CompletedScreen", 
+			// {"pickup": socket_data.message,"provider":socket_data.provider,
+			// "volunteer":socket_data.volunteer});
+
+		})
+	
 		const fetchData = async()=>{
 			const vol_resp = route.params.pickup.volunteer?
 			await adminApi.get_volunteers({"_id":route.params.pickup.volunteer})
@@ -39,11 +48,10 @@ const awaitVolunteerScreen = ({ navigation, route }) => {
 			setVolunteer(vol_resp);
 			setCurrentProvider(prov_resp);
 		})
-
 	}, [])
-
+	
 	const data = {
-		BOOKING_TIME: currentPickup.placementTime,
+		BOOKING_TIME: pickup.placementTime,
 		// COMPLETION_TIME: '{COMPLETION_TIME}',
 		// CANCELLATION_TIME: '{CANCELLATION_TIME}',
 		CONTACT_NAME: current_provider.fullName,
@@ -53,12 +61,12 @@ const awaitVolunteerScreen = ({ navigation, route }) => {
 			name: current_provider.fullName,
 			action: () => console.log('Provider Button Pressed'),
 		},
-		PICKUP_LOCATION: currentPickup.pickupAddress,
-		SURPLUS_TYPE: currentPickup.typeOfFood,
+		PICKUP_LOCATION: pickup.pickupAddress,
+		SURPLUS_TYPE: pickup.typeOfFood,
 		DESCRIPTION:
-			currentPickup.description,
+			pickup.description,
 		DROPOFF_LOC: {
-			value: dropoff.name,
+			value: pickup.deliveryAddress,
 			action: () =>
 				navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff, setProgressCount }),
 		},
@@ -72,13 +80,14 @@ const awaitVolunteerScreen = ({ navigation, route }) => {
 				}),
 		},
 	};
+
 	return (
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
-			<ProgressBar active={4} message='Waiting for volunteer.' />
-			<PickupDetailsFixed data={data} />
-			<View style={{ marginTop: 32 }}>
+			<ProgressBar active={progress} message={heading} />
+			<PickupDetailsFixed data={data}/>
+			<View>
 				{/* When Cancelling, a modal should appear to ask if admin really wants to cancel the pickup */}
 				<ActionBox
 					type='cancel'
@@ -90,4 +99,4 @@ const awaitVolunteerScreen = ({ navigation, route }) => {
 	);
 };
 
-export default awaitVolunteerScreen;
+export default processingScreen;

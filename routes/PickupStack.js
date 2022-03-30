@@ -5,9 +5,6 @@ import PickupDetailsScreen from '../screens/pickup_module/PickupDetailsScreen';
 import SelectDropoffScreen from '../screens/pickup_module/SelectDropoffScreen';
 import SelectVolunteerScreen from '../screens/pickup_module/SelectVolunteerScreen';
 import NotificationScreen from '../screens/NotificationScreen';
-import AwaitVolunteerScreen from '../screens/pickup_module/awaitVolunteerScreen';
-import ProcessingScreen from '../screens/pickup_module/processingScreen';
-import CompletedScreen from '../screens/pickup_module/completedScreen';
 import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
 
 const Stack = createStackNavigator();
@@ -26,7 +23,7 @@ const PickupStack = () => {
 			<Stack.Screen
 				name='PickupDetailsScreen'
 				component={PickupDetailsScreen}
-				options={({ route }) => ({ title: 'Pickup #'})}
+				options={({ route }) => ({ title: 'Pickup #'+route.params.pickup._id})}
 			/>
 			<Stack.Screen
 				name='SelectDropoffScreen'
@@ -43,7 +40,7 @@ const PickupStack = () => {
 				component={NotificationScreen}
 				options={{ title: 'Notifications' }}
 			/>
-			<Stack.Screen
+			{/* <Stack.Screen
 				name='AwaitVolunteerScreen'
 				component={AwaitVolunteerScreen}
 				options={{ title: 'Await Volunteer Screen'}}
@@ -57,7 +54,7 @@ const PickupStack = () => {
 				name='CompletedScreen'
 				component={CompletedScreen}
 				options={{ title: 'Completed Screen'}}
-			/>						
+			/>						 */}
 		</Stack.Navigator>
 	);
 };

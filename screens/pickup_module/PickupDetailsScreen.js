@@ -8,12 +8,15 @@ import ActionBox from '../../components/ActionBox';
 import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
 import * as SecureStore from 'expo-secure-store';
+import PickupDetailsFixed from '../../components/DetailsForm/PickupDetailsFixed';
+import InputModal from '../../components/inputModal';
+
 const localStorage = require("../../helpers/localStorage");
 const adminApi = require("../../helpers/adminApi");
 
 const PickupDetailsScreen = ({ navigation, route }) => {
 	const socket = useContext(SocketContext);
-	var currentPickup = route.params.pickup;
+	const [currentPickup, setPickup] = useState(route.params.pickup);
 	LogBox.ignoreLogs([
 		'VirtualizedLists should never be nested inside plain ScrollViews with the same orientation - use another VirtualizedList-backed container instead.',
 	]);
@@ -22,32 +25,70 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	let removeProgressBar = false;
 
 	const [dropoff, setDropoff] = useState({ name: 'none', id: '' });
-	const [volunteer, setVolunteer] = useState({"fullName":"none"});
+	const [volunteer, setVolunteer] = useState("none");
 	const [progressCount, setProgressCount] = useState(1);
 	const [current_provider, setCurrentProvider] = useState({});
+	const [dropoffModalVisible, setDropoffModalVisible] = useState(false);
+	const [heading, setHeading] = useState("Waiting for volunteer to finish");
 	// Fetch Data from id Here
 	useEffect(()=>{
 
-		if (currentPickup.status==1){
-			navigation.navigate("AwaitVolunteerScreen",{pickup:currentPickup});
-		}
-		else if (currentPickup.status==2){
-			navigation.navigate("ProcessingScreen", {pickup:currentPickup});
-		}
-		else if (currentPickup.status==3){
-			navigation.navigate("CompletedScreen", {pickup:currentPickup});
-		}
-		const get_prov = async()=>{
+		const get_data = async()=>{
 			var current_provider = await adminApi.get_provider(currentPickup.provider);
-			return current_provider
+			var current_pickup = await adminApi.get_pickups({_id:currentPickup._id});
+			return [current_pickup.pickups[0], current_provider];
 		}
-		get_prov()
+		get_data()
 		.then((response)=>{
-			setCurrentProvider(response);
+			const [current_pickup,current_provider] = response;
+			setCurrentProvider(current_provider);
+			console.log("currnnnn",current_pickup);
+			console.log("currnnnn",currentPickup);
+			setPickup(current_pickup);
+			if (currentPickup.status==1){
+				setProgressCount(4);
+				setHeading("Waiting for volunteer to pickup food");		
+			}
+			else if (currentPickup.status==2){
+				setProgressCount(5);
+				setHeading("Waiting for volunteer to finish pickup");
+			}
+			else if (currentPickup.status==3){
+				setProgressCount(6);
+				setHeading("Pickup Completed");
+			}
 		})
 		.catch((e)=>{
 			console.log(e);
 		})
+
+		socket.on("acceptPickup", (socket_data) => {
+			console.log("pickup accepted");
+			setProgressCount(5);
+			setHeading("Waiting for volunteer to pickup food");
+			console.log(socket_data.volunteer);
+			setVolunteer(socket_data.volunteer.fullName);
+			//navigate to processing state.
+			// navigation.navigate("ProcessingScreen", {"pickup": socket_data.message,"provider":socket_data.provider,"volunteer":socket_data.volunteer});
+		})
+		socket.on("finishPickup", (socket_data) => {
+			console.log("pickup finished");
+			setPickup(socket_data.message);
+			setCurrentProvider(socket_data.provider);
+			setVolunteer(socket_data.volunteer.fullName);
+			setHeading("Pickup Completed");
+			setProgressCount(6);
+			//navigate to completed state.
+			// navigation.navigate("CompletedScreen", 
+			// {"pickup": socket_data.message,"provider":socket_data.provider,
+			// "volunteer":socket_data.volunteer});
+
+		})
+
+		return ()=>{
+			socket.off("finishPickup");
+			socket.off("acceptPickup");
+		}
 	},[])
 	
 	// Process Data Here
@@ -70,10 +111,11 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		DROPOFF_LOC: {
 			value: dropoff.name,
 			action: () =>
-				navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff, setProgressCount}),
+			setDropoffModalVisible(!dropoffModalVisible)
+			// navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff, setProgressCount}),
 		},
 		VOLUNTEER: {
-			value: volunteer.fullName,
+			value: volunteer,
 			action: () =>
 				navigation.navigate('SelectVolunteerScreen', {
 					volunteer,
@@ -95,7 +137,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		currentPickup.status = 1
 		currentPickup.deliveryAddress = dropoff.name;
 		console.log("Volunteer at pickupDetailsScreen:71 ", volunteer);
-		if(volunteer.fullName != "none"){
+		if(volunteer != "none"){
 			currentPickup.volunteer = volunteer._id;
 			currentPickup.broadcast=false
 		}
@@ -111,26 +153,49 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		//send a notification to the assigned volutneer through the socket
 		// socket.emit("assignPickup",{"pickup":currentPickup, "volunteer":volunteer});
 		socket.emit("assignPickup",{"message":currentPickup});
-		navigation.navigate("AwaitVolunteerScreen",{"pickup":currentPickup, "provider":current_provider, "dropoff":dropoff, "volunteer":volunteer});
+		setProgressCount(4);
+		setHeading("Waiting for volunteer");
+		// navigation.navigate("AwaitVolunteerScreen",{"pickup":currentPickup, "provider":current_provider, "dropoff":dropoff, "volunteer":volunteer});
 		}
+	}
+
+	const assignDropoff = (props)=>{
+		setDropoff({
+			name: props,
+			id: Math.random() * 10000 + ''
+		});
+		setProgressCount((prevstate)=>{
+			return prevstate+1;
+		});
+		setDropoffModalVisible(!dropoffModalVisible);
 	}
 
 	return (
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
-
+			<InputModal modalVisible={dropoffModalVisible} setModalVisible={setDropoffModalVisible} 
+			 onPress={assignDropoff}/>
 			<View >
 				{!removeProgressBar && (
-					<ProgressBar active={progressCount} message='This is step one.' />
+					<ProgressBar active={progressCount} message={heading} />
 				)}
+				{
+					progressCount<4?
+				<View>
 				<PickupDetails data={data} />
 				<ActionBox
 					type='primary'
 					title='Proceed'
 					action={proceed}
-				/>
-			</View>
+				/>	
+				</View>		
+				:
+				<PickupDetailsFixed data={data} />
+				}
 
+			</View>
+			{
+			progressCount<6?
 			<View style={{ marginTop: 32 }}>
 				{/* When Cancelling, a modal should appear to ask if admin really wants to cancel the pickup */}
 				<ActionBox
@@ -139,6 +204,13 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 					action={() => console.log('Cancel Button Clicked')}
 				/>
 			</View>
+			:
+			<ActionBox
+			type='primary'
+			title='Go to Pickup Manager'
+			action={() => navigation.navigate("PickupManagerScreen")}
+			/>
+			}
 		</ScrollView>
 	);
 };

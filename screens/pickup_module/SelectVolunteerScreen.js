@@ -42,7 +42,7 @@ const SelectVolunteerScreen = ({ navigation, route }) => {
 					text:"Yes",
 					onPress: ()=>{
 						setVolunteer(item);
-						setProgressCount(3);
+						setProgressCount((prevState)=>{return prevState+1});
 						navigation.goBack();
 					}
 				},
