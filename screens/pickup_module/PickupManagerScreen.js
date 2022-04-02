@@ -112,10 +112,11 @@ const PickupManagerScreen = ({ navigation }) => {
 				data={[
 					'All',
 					'Unassigned',
-					'Pending',
-					'Processing',
+					'Assigned',
+					'Pick food',
+					'Deliver Food',
 					'Completed',
-					'Cancelled',
+					'Cancelled'
 				]}
 			/>
 

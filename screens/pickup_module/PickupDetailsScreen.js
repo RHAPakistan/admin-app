@@ -29,7 +29,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	const [progressCount, setProgressCount] = useState(1);
 	const [current_provider, setCurrentProvider] = useState({});
 	const [dropoffModalVisible, setDropoffModalVisible] = useState(false);
-	const [heading, setHeading] = useState("Waiting for volunteer to finish");
+	const [heading, setHeading] = useState("Assign Dropoff and Volunteer");
 	// Fetch Data from id Here
 	useEffect(() => {
 
@@ -51,17 +51,21 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 				setPickup(current_pickup);
 				if (currentPickup.status==1){
 					setProgressCount(2);
-					setHeading("Waiting for volunteer to pickup food");		
+					setHeading("Waiting for volunteer to accept Pickup");		
 				}
 				else if (currentPickup.status==2){
 					setProgressCount(3);
-					setHeading("Waiting for volunteer to finish pickup");
+					setHeading("Waiting for volunteer to pickup food");
 				}
 				else if (currentPickup.status==3){
 					setProgressCount(4);
-					setHeading("Pickup Completed");
+					setHeading("Waiting for volunteer to deliver food");
 				}
 				else if (currentPickup.status==4){
+					setProgressCount(5);
+					setHeading("Pickup Finished");
+				}
+				else if (currentPickup.status==5){
 					setProgressCount(5);
 					setHeading("Pickup Cancelled");
 				}
