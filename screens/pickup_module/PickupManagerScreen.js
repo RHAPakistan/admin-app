@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { Text, Pressable, View, Keyboard, Card, TouchableOpacity } from 'react-native';
+import { LogBox,Text, Pressable, View, Keyboard, Card, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import Options from '../../components/ManagerOptions/Options';
@@ -8,7 +8,9 @@ import GlobalStyles from '../../styles/GlobalStyles';
 import PickupList from '../../components/ButtonList/PickupList';
 
 const  adminApi = require("../../helpers/adminApi");
-
+LogBox.ignoreLogs([
+	'VirtualizedLists should never be nested inside plain ScrollViews with the same orientation - use another VirtualizedList-backed container instead.',
+]);
 const PickupManagerScreen = ({ navigation }) => {
 	const socket = useContext(SocketContext);
 	const [data, setData] = useState([]);
@@ -31,26 +33,7 @@ const PickupManagerScreen = ({ navigation }) => {
 		console.log("pickup manager screen mounted");
 		const fetchData = async()=>{
 			const resp = await adminApi.get_pickups();
-			//this will add a new request from provider in real time
-			turnOnSocket();
-			socket.on("informCancelPickup", (socket_data)=>{
-				console.log("Pickup cancelled here", socket_data.pickup);
-				setData((prevState)=>{
-					var data_copy = [...prevState];
-					console.log("current ", data_copy);
-					for( var i = 0; i < data_copy.length; i++){ 
-						if ( data_copy[i]._id === socket_data.pickup._id) { 
-							console.log("remove this");
-							data_copy.splice(i, 1); 
-							console.log(data_copy);
-							return(data_copy);
-							break;
-						}
-					
-					}
-					return(data_copy);
-				})
-			})
+
 			return resp.pickups;
 		}
 		fetchData()
@@ -62,7 +45,18 @@ const PickupManagerScreen = ({ navigation }) => {
 			console.log(e);
 		})		
 		
-
+		//this will add a new request from provider in real time
+		turnOnSocket();
+		socket.on("informCancelPickup", (socket_data)=>{
+			console.log("Pickup cancelled here", socket_data.pickup);
+			fetchData()
+			.then((response)=>{
+				setData(response)
+			})
+			.catch((e)=>{
+				console.log(e);
+			})
+		})
 		return () => {
 			console.log("turning off socket");
 			socket.off("initiatePickupListen");

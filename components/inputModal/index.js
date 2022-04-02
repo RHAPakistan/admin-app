@@ -15,17 +15,6 @@ const InputModal = (props) => {
 	LogBox.ignoreLogs([
 		'Non-serializable values were found in the navigation state',
 	]);
-
-	// const assignDropoff = ()=>{
-	// 	setDropoff({
-	// 		name: dropoffLocation,
-	// 		id: Math.random() * 10000 + ''
-	// 	});
-	// 	setProgressCount((prevstate)=>{
-	// 		return prevstate+1;
-	// 	});
-	// 	setModalVisible(!modalVisible);
-	// }
     return(
     <Modal
         animationType="slide"

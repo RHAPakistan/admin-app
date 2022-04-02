@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { LogBox, ScrollView, View } from 'react-native';
+import { LogBox, ScrollView, View, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import ProgressBar from '../../components/ProgressBar';
@@ -41,9 +41,8 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		get_data()
 		.then((response)=>{
 			const [current_pickup,current_provider] = response;
+			//if current pickup not in database? handle this
 			setCurrentProvider(current_provider);
-			console.log("currnnnn",current_pickup);
-			console.log("currnnnn",currentPickup);
 			setPickup(current_pickup);
 			if (currentPickup.status==1){
 				setProgressCount(4);
@@ -56,6 +55,10 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 			else if (currentPickup.status==3){
 				setProgressCount(6);
 				setHeading("Pickup Completed");
+			}
+			else if (currentPickup.status==4){
+				setProgressCount(6);
+				setHeading("Pickup Cancelled");
 			}
 		})
 		.catch((e)=>{
@@ -84,10 +87,52 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 			// "volunteer":socket_data.volunteer});
 
 		})
+		socket.on("informCancelPickup", (socket_data)=>{
+			console.log("Pickup cancelled on admin's side",socket_data);
+			if(socket_data.role=="provider"){
+			Alert.alert(
+                "Pickup cancelled",
+                "Go back to dashboard.",
+                [
+                    {
+                        text:"Ok, go back to dashboard",
+                        onPress: ()=>{navigation.navigate("PickupManagerScreen")}
+                    }   
+                ]
+            )
+			}
+			if(socket_data.role=="volunteer" && socket_data.status==2){
+				console.log("volunteer cancelled?");
+				get_data()
+				.then((response)=>{
+					const [current_pickup,current_provider] = response;
+					//if current pickup not in database? handle this
+					setCurrentProvider(current_provider);
+					setPickup(current_pickup);
+					if (currentPickup.status==1){
+						setProgressCount(4);
+						setHeading("Waiting for volunteer");		
+					}
+					else if (currentPickup.status==2){
+						setProgressCount(5);
+						setHeading("Waiting for volunteer to finish pickup");
+					}
+					else if (currentPickup.status==3){
+						setProgressCount(6);
+						setHeading("Pickup Completed");
+					}
+				})
+				.catch((e)=>{
+					console.log(e);
+				})
+								
+			}
+		})
 
 		return ()=>{
 			socket.off("finishPickup");
 			socket.off("acceptPickup");
+			socket.off("informCancelPickup");
 		}
 	},[])
 	
