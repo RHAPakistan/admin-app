@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { LogBox,Text, Pressable, View, Keyboard, Card, TouchableOpacity } from 'react-native';
+import { LogBox, Text, Pressable, View, Keyboard, Card, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import Options from '../../components/ManagerOptions/Options';
@@ -7,72 +7,83 @@ import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
 import PickupList from '../../components/ButtonList/PickupList';
 
-const  adminApi = require("../../helpers/adminApi");
+const adminApi = require("../../helpers/adminApi");
 LogBox.ignoreLogs([
 	'VirtualizedLists should never be nested inside plain ScrollViews with the same orientation - use another VirtualizedList-backed container instead.',
 ]);
 const PickupManagerScreen = ({ navigation }) => {
 	const socket = useContext(SocketContext);
 	const [data, setData] = useState([]);
-	const [status_no, setStatus] = useState(0);	
+	const [status_no, setStatus] = useState(0);
 
-	const turnOnSocket = async() =>{
-		socket.on("initiatePickupListen", (socket_data)=>{
-			console.log("a pickup request initiated by " + socket_data.message._id);
-			// data.push(socket_data.message);
-			setData((prevState)=>{
-				var data_copy = [...prevState];
-				data_copy.push(socket_data.message);
-				return data_copy;
-			})
+	useEffect(() => {
 
-			// console.log(data);
-		})
-	}
-	useEffect(()=>{
-		console.log("pickup manager screen mounted");
-		const fetchData = async()=>{
-			const resp = await adminApi.get_pickups();
+		const onMount = navigation.addListener('focus', () => {
+			// The screen is focused
+			// Call any action and update data
+			console.log("Navigated to pickup manager");
+			const fetchData = async () => {
+				const resp = await adminApi.get_pickups();
 
-			return resp.pickups;
-		}
-		fetchData()
-		.then((response)=>{
-			setData(response);
-
-		})
-		.catch((e)=>{
-			console.log(e);
-		})		
-		
-		//this will add a new request from provider in real time
-		turnOnSocket();
-		socket.on("informCancelPickup", (socket_data)=>{
-			console.log("Pickup cancelled here", socket_data.pickup);
+				return resp.pickups;
+			}
 			fetchData()
-			.then((response)=>{
-				setData(response)
+				.then((response) => {
+					setData(response);
+
+				})
+				.catch((e) => {
+					console.log(e);
+				})
+			//this will add a new request from provider in real time
+			socket.on("initiatePickupListen", (socket_data) => {
+				console.log("a pickup request initiated by " + socket_data.message._id);
+				// data.push(socket_data.message);
+				setData((prevState) => {
+					var data_copy = [...prevState];
+					data_copy.push(socket_data.message);
+					return data_copy;
+				})
+
 			})
-			.catch((e)=>{
-				console.log(e);
+			socket.on("informCancelPickup", (socket_data) => {
+				console.log("Pickup cancelled here", socket_data.pickup);
+				fetchData()
+					.then((response) => {
+						setData(response)
+					})
+					.catch((e) => {
+						console.log(e);
+					})
 			})
-		})
-		return () => {
-			console.log("turning off socket");
+			console.log("turning ON sockets => initiatePickupListen | informCancelPickup");
+		});
+
+		const onUnmount = navigation.addListener('blur', ()=>{
+			console.log("turning off sockets => initiatePickupListen | informCancelPickup");
 			socket.off("initiatePickupListen");
 			socket.off("informCancelPickup")
+		});
+		const unsub = () => {
+			console.log("remove all listeners");
+			onMount();
+			onUnmount();
+
 		}
-		
-	},[]);
-	const onChange = async(query) => {
+		// Return the function to unsubscribe from the event so it gets removed on unmount
+		return () => unsub();
+	}, [navigation])
+
+
+	const onChange = async (query) => {
 		// fetch data here;
-		if (query.index==0){
+		if (query.index == 0) {
 			const response = await adminApi.get_pickups();
 			setData(response.pickups);
 			setStatus(status_no);
 		}
-		else{
-			const response = await adminApi.get_pickups({"status":query.index-1});
+		else {
+			const response = await adminApi.get_pickups({ "status": query.index - 1 });
 			setData(response.pickups);
 			const indie = query.index - 1;
 			setStatus(indie);
@@ -82,7 +93,7 @@ const PickupManagerScreen = ({ navigation }) => {
 	};
 
 	const onPressHandler = (id) => {
-		navigation.navigate('PickupDetailsScreen', { pickup:id });
+		navigation.navigate('PickupDetailsScreen', { pickup: id });
 
 	};
 

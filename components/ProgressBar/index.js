@@ -16,8 +16,8 @@ const ProgressBar = ({ active, message }) => {
 				<Indicator value={3} active={active} />
 				<Line value={4} active={active} />
 				<Indicator value={4} active={active} />
-				<Line value={5} active={active} />
-				<Indicator value={5} active={active} />
+				{/* <Line value={5} active={active} />
+				<Indicator value={5} active={active} /> */}
 			</View>
 			<Text style={styles.message}>{message}</Text>
 		</View>
