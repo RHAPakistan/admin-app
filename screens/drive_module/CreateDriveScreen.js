@@ -32,7 +32,7 @@ const CreateDriveScreen = ({ navigation }) => {
 			//console.log("The submit value is: ",value);
 			createDrive(value)
 			.then((response)=>{
-				console.log(response);
+				//console.log(response);
 				alert("Successfully created drive")
 			})
 			.catch((e)=>{
