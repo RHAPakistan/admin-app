@@ -21,7 +21,7 @@ const DriveManagerScreen = ({ navigation }) => {
 	useEffect(()=>{
 		fetchData(1)
 		.then((response)=>{
-			console.log(response);
+			//console.log(response);
 			setData(response);
 		})
 		.catch((e)=>{
@@ -38,13 +38,13 @@ const DriveManagerScreen = ({ navigation }) => {
 		else status = -1
 		fetchData(status)
 		.then((response)=>{
-			console.log(response);
+			//console.log(response);
 			setData(response);
 		})
 		.catch((e)=>{
 			console.log(e);
 		})
-		console.log('Drive Status Changed', query);
+		//console.log('Drive Status Changed', query);
 	};
 
 	const onPressHandler = (data) => {

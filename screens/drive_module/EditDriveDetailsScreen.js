@@ -27,7 +27,7 @@ const EditDriveDetailsScreen = ({ navigation, route }) => {
 			//console.log("The submit value is: ",value);
 			editDrive(data._id,value)
 			.then((response)=>{
-				console.log(response);
+				//console.log(response);
 				alert("Successfully updated drive")
 			})
 			.catch((e)=>{

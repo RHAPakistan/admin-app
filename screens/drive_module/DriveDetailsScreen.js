@@ -10,10 +10,12 @@ const adminApi = require("../../helpers/adminApi");
 const DriveDetailsScreen = ({ navigation, route }) => {
 	const [data, setData] = useState({});
 	const [isActive, setIsActive] = useState(false);
+	const [isInActive, setIsInActive] = useState(false);
 
 	useEffect(()=>{
 		setData(route.params.id);
 		if(data.status == 1) setIsActive(true)
+		if (data.status == 0) setIsInActive(true)
 	},[data, isActive]);
 	// Fetch Data From id
 	// Process Data here
@@ -22,7 +24,7 @@ const DriveDetailsScreen = ({ navigation, route }) => {
 		return resp;
 	}
 
-	async function cancel_or_deactivate (text, status){
+	async function updateStatus (text, status){
 		console.log("Status", status)
 		Alert.alert(
 			"Warning!",
@@ -37,7 +39,7 @@ const DriveDetailsScreen = ({ navigation, route }) => {
 					setIsActive(!isActive);
 					updateDrive(data._id, data)
 					.then((response)=>{
-						console.log(response);
+						//console.log(response);
 						alert(`Sucessfully ${text} the Drive`)
 						//navigation.navigate('DriveManagerScreen');
 					})
@@ -71,6 +73,19 @@ const DriveDetailsScreen = ({ navigation, route }) => {
 						navigation.navigate('DriveParticipantsScreen', { id: data._id })
 					}
 				/>
+				{
+					isActive ? 
+					<ActionBox
+						type='primary'
+						title='Completed'
+						action={() => updateStatus('Completed', 2)}
+					/> :  isInActive ?
+					<ActionBox
+						type='primary'
+						title='Activate'
+						action={() => updateStatus('Activate', 1)}
+					/> : <View></View>
+				}
 			</View>
 
 			{
@@ -80,13 +95,13 @@ const DriveDetailsScreen = ({ navigation, route }) => {
 					<ActionBox
 						type='cancel'
 						title='Deactivate'
-						action={() => cancel_or_deactivate('Deactivate', 0)}
+						action={() => updateStatus('Deactivate', 0)}
 					/>
 
 					<ActionBox
 						type='cancel'
 						title='Cancel'
-						action={() => cancel_or_deactivate('Cancel', -1)}
+						action={() => updateStatus('Cancel', -1)}
 					/>
 				</View>
 				: <View></View>
