@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React,{useRef} from 'react';
 import { ScrollView, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import ActionBox from '../../components/ActionBox';
 
 import GlobalStyles from '../../styles/GlobalStyles';
-import DriveForm from '../../components/InputForm/DriveForm';
+import DriveForm from '../../components/InputForm/DriveFormV2';
 const adminApi = require("../../helpers/adminApi");
 const CreateDriveScreen = ({ navigation }) => {
 	const data = {
@@ -18,44 +18,42 @@ const CreateDriveScreen = ({ navigation }) => {
 		duration: "",
 		description: ""
 	};
-	const [isSubmitPressed, setSubmitPressed] = useState(false);
+
+	const formRef = useRef(0);
 
 	const createDrive = async(data)=>{
 		const resp = await adminApi.create_drive(data);
 		return resp;
 	}
 
-	const onSubmit = (value) => {
-		if (value) {
-			
+	const onSubmitHandler = ()=>{
+		if(formRef.current.validate()){
+			const value = formRef.current.getValues()
 			value['maxCount'] = Number(value.maxCount);
-			//console.log("The submit value is: ",value);
+			
 			createDrive(value)
 			.then((response)=>{
-				//console.log(response);
+				// console.log(response);
 				alert("Successfully created drive")
+				navigation.goBack();
 			})
 			.catch((e)=>{
 				console.log(e);
-				
 			})
-			navigation.goBack();
-		} else {
-			setSubmitPressed(false);
 		}
-	};
+	}
 
 	return (
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
 
 			{/* Input Form Here */}
-			<DriveForm data={data} verify={isSubmitPressed} onSubmit={onSubmit} />
+			<DriveForm data={data} ref={formRef}/>
 			<View style={{ marginTop: 8 }}>
 				<ActionBox
 					type='primary'
 					title='Add Drive'
-					action={() => setSubmitPressed(true)}
+					action={onSubmitHandler}
 				/>
 				<ActionBox title='Cancel' action={navigation.goBack} />
 			</View>
