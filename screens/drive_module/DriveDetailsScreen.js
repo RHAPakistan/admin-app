@@ -30,30 +30,30 @@ const DriveDetailsScreen = ({ navigation, route }) => {
 			"Warning!",
 			`Do you want to ${text} this Drive`,
 			[
-			  {
-				text:"Yes",
-				onPress: () => {
-					var updatedData = data;
-					updatedData['status'] = status;
-					setData(updatedData);
-					setIsActive(!isActive);
-					updateDrive(data._id, data)
-					.then((response)=>{
-						//console.log(response);
-						alert(`Sucessfully ${text} the Drive`)
-						//navigation.navigate('DriveManagerScreen');
-					})
-					.catch((e)=>{
-						console.log(e);
-					})
+				{
+					text:"Yes",
+					onPress: () => {
+						var updatedData = data;
+						updatedData['status'] = status;
+						setData(updatedData);
+						setIsActive(!isActive);
+						updateDrive(data._id, data)
+						.then((response)=>{
+							//console.log(response);
+							alert(`Sucessfully ${text} the Drive`)
+							//navigation.navigate('DriveManagerScreen');
+						})
+						.catch((e)=>{
+							console.log(e);
+						})
 
+					}
+				},
+				{
+					text:"No",
+					onPress: () => {console.log("No pressed")},
+					style:"Cancel"
 				}
-			  },
-			  {
-				text:"No",
-				onPress: () => {console.log("Ok pressed")},
-				style:"Cancel"
-			  }
 			]
 		)
 	};

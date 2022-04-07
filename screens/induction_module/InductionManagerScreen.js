@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Keyboard, Text, Pressable, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -6,30 +6,34 @@ import Search from '../../components/ManagerOptions/Search';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import InductionList from '../../components/ButtonList/InductionList';
+const adminApi = require("../../helpers/adminApi");
 
 const InductionManagerScreen = ({ navigation }) => {
-	const [data, setData] = useState([
-		{
-			id: '1',
-			name: 'ABC Doe Smith',time: '2m ago',
-		},
-		{
-			id: '2',
-			name: 'FGH Doe Smith',time: '5m ago',
-		},
-		{
-			id: '3',
-			name: 'IJK Doe Smith',time: '10m ago',
-		},
-	]);
+	const [data, setData] = useState([]);
+
+	const fetchData = async()=>{
+		const resp = await adminApi.get_induction_requests();
+		return resp;
+	}
+
+	useEffect(()=>{
+		fetchData()
+		.then((response)=>{
+			console.log("Induction Requests: ",response);
+			setData(response);
+		})
+		.catch((e)=>{
+			console.log(e);
+		})
+	},[]);
 
 	const onSubmit = (query) => {
 		// on submit, fetch data based on search query
 		console.log('Vendor Searched', query);
 	};
 
-	const onPressHandler = (id) => {
-		navigation.navigate('InductionDetailsScreen', { id });
+	const onPressHandler = (data) => {
+		navigation.navigate('InductionDetailsScreen', { data });
 	};
 
 	return (
