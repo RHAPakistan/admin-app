@@ -14,7 +14,7 @@ const InductionButton = ({ data, onPress }) => {
 	};
 
 	const onPressHandler = () => {
-		onPress(data.id);
+		onPress(data);
 	};
 
 	const onPressOutHandler = () => {
@@ -30,8 +30,8 @@ const InductionButton = ({ data, onPress }) => {
 			onPressOut={onPressOutHandler}
 			style={[styles.button, ButtonStyle]}>
 			<View style={styles.buttonHeader}>
-				<Text style={TitleStyle}>{data.name}</Text>
-				<Text style={InfoStyle}>{data.time}</Text>
+				<Text style={TitleStyle}>{data.fullname}</Text>
+				<Text style={InfoStyle}>{data.creation_time}</Text>
 			</View>
 		</Pressable>
 	);

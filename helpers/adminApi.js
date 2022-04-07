@@ -247,6 +247,72 @@ module.exports = {
         return resp;
     },
 
+    get_induction_requests: async() =>{
+        const resp = await fetch(API_URL.concat('/api/admin/induction/'),{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>{
+            // console.log(response);
+            return response.json();
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e) =>{
+            console.log("error: ",e);
+        })
+        return resp;
+    },
+
+    approveInductionRequest: async (id, email)=>{
+        console.log("Id email: ",id,email);
+        const res = await fetch(API_URL.concat(`/api/admin/induction/approve/${id}`), {
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({email})
+        })
+        .then((response)=>{
+            console.log("Approve induction API res: ",response);
+            return response.json();
+        })
+        .then((json)=>{
+            return json
+        })
+        .catch((e)=>{
+            console.log("Error: ",e)
+        })
+        return res;
+    },
+
+    disapproveInductionRequest: async (id, email, rejectionReasons)=>{
+        const res = await fetch(API_URL.concat(`/api/admin/induction/disapprove/${id}`), {
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({email, rejectionReasons})
+        })
+        .then((response)=>{
+            console.log("Disapprove induction API res: ",response);
+            return response.json();
+        })
+        .then((json)=>{
+            return json
+        })
+        .catch((e)=>{
+            console.log("Error: ",e)
+        })
+        return res;
+    },
+
     update_drive: async(id, obj) =>{
         const token = await localStorage.getData("auth_token");
         const resp = await fetch(API_URL.concat(`/api/admin/drive/${id}`),{

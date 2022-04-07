@@ -25,9 +25,8 @@ const InductionStack = () => {
 				name='InductionDetailsScreen'
 				component={InductionDetailsScreen}
 				options={({ navigation, route }) => {
-					const title = 'Induction #' + route.params.id;
-					const screen = 'EditInductionDetailsScreen';
-					return HeaderWithEdit(navigation, route, title, screen);
+					const title = 'Induction #' + route.params.data._id;
+					return PrimaryHeader(navigation, title);
 				}}
 			/>
 			<Stack.Screen
