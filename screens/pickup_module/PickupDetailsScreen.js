@@ -195,7 +195,6 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		//change the status of the pickup to 1 (assigned)
 		currentPickup.status = 1
 		currentPickup.deliveryAddress = dropoff.name;
-		console.log("Volunteer at pickupDetailsScreen:71 ", volunteer);
 		if(volunteer.fullName != "none"){
 			currentPickup.volunteer = volunteer._id;
 			currentPickup.broadcast=false
