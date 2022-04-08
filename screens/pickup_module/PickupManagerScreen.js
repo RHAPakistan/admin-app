@@ -6,7 +6,6 @@ import Options from '../../components/ManagerOptions/Options';
 import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
 import PickupList from '../../components/ButtonList/PickupList';
-
 const adminApi = require("../../helpers/adminApi");
 LogBox.ignoreLogs([
 	'VirtualizedLists should never be nested inside plain ScrollViews with the same orientation - use another VirtualizedList-backed container instead.',
@@ -14,7 +13,7 @@ LogBox.ignoreLogs([
 const PickupManagerScreen = ({ navigation }) => {
 	const socket = useContext(SocketContext);
 	const [data, setData] = useState([]);
-	const [status_no, setStatus] = useState(0);
+	const [status_no, setStatus] = useState(0); 
 
 	useEffect(() => {
 
