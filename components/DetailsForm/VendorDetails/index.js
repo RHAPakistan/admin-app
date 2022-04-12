@@ -1,20 +1,42 @@
 import moment from 'moment';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import GlobalStyles from '../../../styles/GlobalStyles';
 
 import TextLine from '../TextLine';
 import TextLineClickable from '../TextLineClickable';
+import adminApi from "../../../helpers/adminApi";
+const VendorDetails = ({data }) => {
+	const [pickups, setPickups] = React.useState(0);
 
-const VendorDetails = ({ data }) => {
+	const fetchData = async()=>{
+		var total_pickups = 0;
+		if(data._id){
+		const resp = await adminApi.get_pickups({"provider":data._id});
+		total_pickups = resp.pickups.length;
+	}
+		else{
+			return total_pickups
+		}
+		return total_pickups;
+	}
+
+	fetchData()
+	.then((response)=>{
+		console.log(response);
+		setPickups(response);
+	})
+	.catch((e)=>{
+		console.log(e);
+		})
 	const TimeLine = data.creation_time ? (
 		<TextLine index={0} label='Creation Time' value={data.creation_time} />
 	) : (
-		<TextLine index={0} label='Last Modified' value={data.last_modified} />
+		<TextLine index={0} label='Id' value={data._id} />
 	);
 
 	const LocationButtonHandler = () => {
-		console.log('Location:', data.business_map);
+		console.log('Location clicked');
 	};
 
 	return (
@@ -23,36 +45,36 @@ const VendorDetails = ({ data }) => {
 			{TimeLine}
 
 			{/* name of person to contact */}
-			<TextLine index={1} label='Contact Name' value={data.contact_name} />
+			<TextLine index={1} label='Contact Name' value={data.fullName} />
 
 			{/* Phone number of contact */}
-			<TextLine index={2} label='Contact Phone' value={data.contact_phone} />
+			<TextLine index={2} label='Contact Phone' value={data.contactNumber} />
 
 			{/* email of contact */}
-			<TextLine index={3} label='Contact Email' value={data.contact_email} />
+			<TextLine index={3} label='Contact Email' value={data.email} />
 
 			{/* Business Name */}
-			<TextLine index={4} label='Business Name' value={data.business_name} />
+			{/* <TextLine index={4} label='Business Name' value={data.business_name} /> */}
 
 			{/* Address with map location */}
 			<TextLineClickable
 				index={5}
-				label='Business Address'
-				value={data.business_address}
+				label='Address'
+				value={data.address}
 				action={LocationButtonHandler}
 			/>
 
 			<View style={GlobalStyles.hrGrey}></View>
 
 			{/* Total Pickups */}
-			<TextLine index={5} label='Total Pickups' value={data.total_pickups} />
+			<TextLine index={5} label='Total Pickups' value={pickups} />
 
 			{/* Last Pickup */}
-			<TextLine
+			{/* <TextLine
 				index={6}
 				label='Last Pickup'
 				value={moment(data.last_pickup).fromNow()}
-			/>
+			/> */}
 		</View>
 	);
 };

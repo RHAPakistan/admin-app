@@ -153,14 +153,14 @@ const VendorForm = ({ data, verify, onSubmit }) => {
 			/>
 
 			{/* Business Name */}
-			<TextInputLine
+			{/* <TextInputLine
 				index={3}
 				label='Business Name'
 				value={businessName}
 				placeholder='i.e. Student Biryani, Branch 2'
 				validate={BusinessNameValidation}
 				error={isValidated.business_name}
-			/>
+			/> */}
 
 			{/* Business Address */}
 			<TextInputLine
@@ -173,14 +173,14 @@ const VendorForm = ({ data, verify, onSubmit }) => {
 			/>
 
 			{/* Business Map */}
-			<TextInputLine
+			{/* <TextInputLine
 				index={5}
 				label='Google Map Link'
 				value={businessMap}
 				placeholder='i.e. https://maps.app.goo.gl/vvAkDEKa4dVSoM3P7'
 				validate={BusinessMapValidation}
 				error={isValidated.business_map}
-			/>
+			/> */}
 		</View>
 	);
 };

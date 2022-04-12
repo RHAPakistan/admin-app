@@ -27,7 +27,7 @@ const VendorStack = () => {
 				name='VendorDetailsScreen'
 				component={VendorDetailsScreen}
 				options={({ navigation, route }) => {
-					const title = 'Vendor #' + route.params.id;
+					const title = 'Provider #' + route.params.id;
 					const screen = 'EditVendorDetailsScreen';
 					return HeaderWithEdit(navigation, route, title, screen);
 				}}
@@ -35,18 +35,18 @@ const VendorStack = () => {
 			<Stack.Screen
 				name='EditVendorDetailsScreen'
 				component={EditVendorDetailsScreen}
-				options={({ route }) => ({ title: 'Edit Vendor #' + route.params.id })}
+				options={({ route }) => ({ title: 'Edit Provider #' + route.params.id })}
 			/>
 			<Stack.Screen
 				name='CreateVendorScreen'
 				component={CreateVendorScreen}
-				options={{ title: 'Add New Vendor' }}
+				options={{ title: 'Add New Provider' }}
 			/>
 			<Stack.Screen
 				name='VendorHistoryScreen'
 				component={VendorHistoryScreen}
 				options={({ route }) => ({
-					title: 'Vendor #' + route.params.id + ' History',
+					title: 'Provider #' + route.params.id + ' History',
 				})}
 			/>
 			<Stack.Screen

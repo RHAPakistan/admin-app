@@ -14,7 +14,7 @@ const VendorButton = ({ data, onPress }) => {
 	};
 
 	const onPressHandler = () => {
-		onPress(data.id);
+		onPress(data._id);
 	};
 
 	const onPressOutHandler = () => {
@@ -30,16 +30,16 @@ const VendorButton = ({ data, onPress }) => {
 			onPressOut={onPressOutHandler}
 			style={[styles.button, ButtonStyle]}>
 			<View style={styles.buttonHeader}>
-				<Text style={TitleStyle}>{data.title}</Text>
-				<Text style={InfoStyle}>{data.people_count}</Text>
+				<Text style={TitleStyle}>Name: {data.fullName}</Text>
+				<Text style={InfoStyle}>{data.email}</Text>
 			</View>
 
 			<View style={styles.buttonHeader}>
-				<Text style={InfoStyle}>{data.address}</Text>
+				<Text style={InfoStyle}>Address: {data.address}</Text>
 			</View>
 
 			<View style={styles.buttonHeader}>
-				<Text style={InfoStyle}>{data.phone}</Text>
+				<Text style={InfoStyle}>Contact: {data.contactNumber}</Text>
 			</View>
 		</Pressable>
 	);

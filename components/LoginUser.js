@@ -10,8 +10,7 @@ const LoginUser = ({ navigation, shutDownModal }) => {
     const [password, setPassword] = useState('');
 
     const loginClicked = async () => {
-        console.log(email);
-        console.log(password);
+        console.log("user logged in");
         var rp = await adminApi.signin(email,password);
         if(rp){
             navigation.navigate("Drawer");

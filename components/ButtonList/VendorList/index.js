@@ -17,7 +17,7 @@ const VendorList = ({ onPress, data }) => {
 			<FlatList
 				data={data}
 				renderItem={renderItem}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => item._id}
 			/>
 		</View>
 	);

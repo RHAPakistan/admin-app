@@ -5,6 +5,7 @@ import ActionBox from '../../components/ActionBox';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import VendorForm from '../../components/InputForm/VendorForm';
+import Signup from '../../components/providerSignup';
 
 const CreateVendorScreen = ({ navigation }) => {
 	const data = {
@@ -29,7 +30,8 @@ const CreateVendorScreen = ({ navigation }) => {
 
 	return (
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
-			<StatusBar style='dark' />
+			<Signup navigation={navigation}/>
+			{/* <StatusBar style='dark' />
 
 			<VendorForm data={data} verify={isSubmitPressed} onSubmit={onSubmit} />
 
@@ -40,7 +42,7 @@ const CreateVendorScreen = ({ navigation }) => {
 					action={() => setSubmitPressed(true)}
 				/>
 				<ActionBox title='Cancel' action={navigation.goBack} />
-			</View>
+			</View> */}
 		</ScrollView>
 	);
 };
