@@ -1,27 +1,41 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Alert } from 'react-native';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import VolunteerDetails from '../../components/DetailsForm/VolunteerDetails';
 import ActionBox from '../../components/ActionBox';
-
+import adminApi from "../../helpers/adminApi";
 const VolunteerDetailsScreen = ({ navigation, route }) => {
 	const { id } = route.params;
-
-	const data = {
-		account_creation: 'September 14, 2021 8:32 PM',
-		name: id.fullName,
-		cnic: id.cnic,
-		birth_date: id.dateOfBirth,
-		address: id.address,
-		phone: id.contactNumber,
-		email: id.email,
-		workplace: "",
-		pickups_delivered: "",
-		pickups_cancelled: "",
-		time_spent: "",
-	};
+	const onClickDeactiviate = async()=>{
+	
+		Alert.alert(
+			"Delete Provider",
+			"Are you sure you want to delete this provider?",
+			[
+				{
+					text:"Yes",
+					onPress: ()=>{
+						const deleteprov = async()=> await adminApi.delete_volunteer(id._id);
+						deleteprov()
+						.then((response)=>{
+							if(response){
+								navigation.goBack()
+							}
+							else{
+								alert("Volunteer couldn't be deleted");
+							}
+						})
+					}
+				},
+				{
+					text: "No",
+					onPress: () =>{console.log("No pressed")}
+				}
+			]
+		)
+}
 
 	return (
 		<View style={GlobalStyles.container}>
@@ -29,7 +43,7 @@ const VolunteerDetailsScreen = ({ navigation, route }) => {
 			<StatusBar style='dark' />
 
 			<View style={{ flex: 1 }}>
-				<VolunteerDetails data={data} />
+				<VolunteerDetails data={id} />
 
 				<ActionBox
 					type='primary'
@@ -45,7 +59,7 @@ const VolunteerDetailsScreen = ({ navigation, route }) => {
 				<ActionBox
 					type='cancel'
 					title='Deactivate Account'
-					action={() => console.log('Deactivate Button Clicked')}
+					action={onClickDeactiviate}
 				/>
 			</View>
 		</ScrollView>

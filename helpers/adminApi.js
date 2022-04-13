@@ -410,6 +410,60 @@ module.exports = {
             console.log("error");
         })
         return resp;
+    },
+    delete_provider: async(id)=>{
+        const token = await localStorage.getData('auth_token');
+        const resp = await fetch(API_URL.concat(`/api/admin/provider/${id}`), {
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer "+token
+            },
+
+        })
+        .then((response)=>{
+            return response.json()
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+        if(resp.success){
+            return true
+        }
+        else{
+            return false
+        }
+    },
+    delete_volunteer: async(id)=>{
+        const token = await localStorage.getData('auth_token');
+        const resp = await fetch(API_URL.concat(`/api/admin/volunteer/${id}`), {
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer "+token
+            },
+
+        })
+        .then((response)=>{
+            return response.json()
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+        if(resp.error==0){
+            return true
+        }
+        else{
+            return false
+        }
     }
 
 }

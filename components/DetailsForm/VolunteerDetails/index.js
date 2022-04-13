@@ -5,61 +5,81 @@ import GlobalStyles from '../../../styles/GlobalStyles';
 
 import TextLine from '../TextLine';
 import TextLineClickable from '../TextLineClickable';
-
+import adminApi from "../../../helpers/adminApi";
 const VolunteerDetails = ({ data }) => {
 	const LocationButtonHandler = () => {
 		console.log('Location:', data.business_map);
 	};
+	const [pickupsDelivered, setPickupsDelivered] = React.useState(0);
+	const [pickupsCancelled, setPickupsCancelled] = React.useState(0);
+	const fetchData = async () => {
+		let total_pickups = 0;
+		let cancel_pickups = 0;
+		if (data._id) {
+			const resp = await adminApi.get_pickups({ "volunteer": data._id });
+			const cancel_resp = await adminApi.get_pickups({ "volunteer": data._id })
+			total_pickups = resp.pickups.length;
+			cancel_pickups = cancel_resp.pickups.length;
+		}
+		else {
+			return [total_pickups, cancel_pickups];
+		}
+		return [total_pickups, cancel_pickups];
+	}
+
+	fetchData()
+		.then((response) => {
+			console.log(response);
+			setPickupsDelivered(response[0]);
+			setPickupsCancelled(response[1]);
+		})
+		.catch((e) => {
+			console.log(e);
+		})
 
 	return (
 		<View>
-			{/* Name of volunteer */}
-			<TextLine index={0} label='Name' value={data.name} />
+			{/* name of person to contact */}
+			<TextLine index={1} label='Contact Name' value={data.fullName} />
 
-			{/* Phone number of volunteer */}
-			<TextLine index={1} label='Phone' value={data.phone} />
+			{/* Phone number of contact */}
+			<TextLine index={2} label='Contact Phone' value={data.contactNumber} />
 
-			{/* Email of volunteer */}
-			<TextLine index={2} label='Email' value={data.email} />
+			{/* email of contact */}
+			<TextLine index={3} label='Contact Email' value={data.email} />
 
-			{/* CNIC of volunteer */}
-			<TextLine index={3} label='CNIC' value={data.cnic} />
+			{/* date of birth of contact */}
+			<TextLine index={4} label='Date of birth' value={data.dateOfBirth} />
 
-			{/* Date of Birth of volunteer */}
-			<TextLine index={4} label='Date of Birth' value={data.birth_date} />
-
-			{/* Home Address of volunteer */}
-			<TextLine index={5} label='Home Address' value={data.address} />
-
-			{/* Workplace of volunteer */}
-			<TextLine index={6} label='Workplace' value={data.workplace} />
-
-			{/* Facebook of volunteer */}
-			<TextLine index={7} label='Facebook' value={data.facebook} />
+			{/* addresss of birth of contact */}
+			<TextLine index={5} label='Address' value={data.address} />
+	
+			{/* gender of contact */}
+			<TextLine index={6} label='gender' value={data.gender} />
 
 			{/* Emergency Contact */}
-			<TextLine
+			{/* <TextLine
 				index={8}
 				label='Emergency Contact'
 				value={data.emergency_contact}
-			/>
+			/> */}
 
 			{/* Relation with contact */}
-			<TextLine
+			{/* <TextLine
 				index={9}
 				label='Relation with Contact'
 				value={data.emergency_relation}
-			/>
+			/> */}
 
 			{/* Workplace of volunteer */}
-			<TextLine
+			{/* <TextLine
 				index={10}
 				label='Allergy/Medical Condition'
 				value={data.conditions}
-			/>
+			/> */}
 
 			{/* Workplace of volunteer */}
-			<TextLine index={11} label='Covid Vaccinated' value={data.vaccinated} />
+			{/* <TextLine index={11} label='Covid Vaccinated' value={data.vaccinated} /> */}
 
 			<View style={GlobalStyles.hrGrey}></View>
 
@@ -67,18 +87,18 @@ const VolunteerDetails = ({ data }) => {
 			<TextLine
 				index={12}
 				label='Pickups Delivered'
-				value={data.pickups_delivered}
+				value={pickupsDelivered}
 			/>
 
 			{/* Cancelled Pickups */}
 			<TextLine
 				index={13}
 				label='Pickups Cancelled'
-				value={data.pickups_cancelled}
+				value={pickupsCancelled}
 			/>
 
 			{/* Total Time Spent picking & delivering pickups */}
-			<TextLine index={14} label='Total Time Spent' value={data.time_spent} />
+			{/* <TextLine index={14} label='Total Time Spent' value={data.time_spent} /> */}
 
 			{/* Last Pickup */}
 			{/* <TextLine

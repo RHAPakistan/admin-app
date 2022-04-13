@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Alert } from 'react-native';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import VendorDetails from '../../components/DetailsForm/VendorDetails';
@@ -25,6 +25,34 @@ const VendorDetailsScreen = ({ navigation, route }) => {
 
 	}, [navigation])
 
+	const onClickDeactiviate = async()=>{
+	
+			Alert.alert(
+				"Delete Provider",
+				"Are you sure you want to delete this provider?",
+				[
+					{
+						text:"Yes",
+						onPress: ()=>{
+							const deleteprov = async()=> await adminApi.delete_provider(id);
+							deleteprov()
+							.then((response)=>{
+								if(response){
+									navigation.goBack()
+								}
+								else{
+									alert("Provider couldn't be deleted");
+								}
+							})
+						}
+					},
+					{
+						text: "No",
+						onPress: () =>{console.log("No pressed")}
+					}
+				]
+			)
+	}
 	return (
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
@@ -44,7 +72,7 @@ const VendorDetailsScreen = ({ navigation, route }) => {
 				<ActionBox
 					type='cancel'
 					title='Deactivate Account'
-					action={() => console.log('Deactivate Button Clicked')}
+					action={onClickDeactiviate}
 				/>
 			</View>
 		</ScrollView>

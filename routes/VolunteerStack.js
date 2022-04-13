@@ -5,7 +5,7 @@ import VolunteerDetailsScreen from '../screens/volunteer_module/VolunteerDetails
 import EditVolunteerDetailsScreen from '../screens/volunteer_module/EditVolunteerDetailsScreen';
 import VolunteerHistoryScreen from '../screens/volunteer_module/VolunteerHistoryScreen';
 import NotificationScreen from '../screens/NotificationScreen';
-
+import VolunteerSignup from '../components/volunteerSignup';
 import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
 import HeaderWithEdit from '../components/ScreenHeaders/HeaderWithEdit';
 
@@ -26,7 +26,7 @@ const VolunteerStack = () => {
 				name='VolunteerDetailsScreen'
 				component={VolunteerDetailsScreen}
 				options={({ navigation, route }) => {
-					const title = 'Volunteer #' + route.params.id;
+					const title = 'Volunteer #' + route.params.id._id;
 					const screen = 'EditVolunteerDetailsScreen';
 					return HeaderWithEdit(navigation, route, title, screen);
 				}}
@@ -34,7 +34,7 @@ const VolunteerStack = () => {
 			<Stack.Screen
 				name='EditVolunteerDetailsScreen'
 				component={EditVolunteerDetailsScreen}
-				options={({ route }) => ({ title: 'Edit Volunteer #' + route.params.id })}
+				options={({ route }) => ({ title: 'Edit Volunteer #' + route.params.id._id })}
 			/>
 			<Stack.Screen
 				name='VolunteerHistoryScreen'
@@ -48,6 +48,11 @@ const VolunteerStack = () => {
 				component={NotificationScreen}
 				options={{ title: 'Notifications' }}
 			/>
+			<Stack.Screen
+				name='VolunteerSignup'
+				component={VolunteerSignup}
+				options={{ title: 'Volunteer Signup' }}
+			/>			
 		</Stack.Navigator>
 	);
 };

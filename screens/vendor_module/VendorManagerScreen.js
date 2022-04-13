@@ -13,7 +13,8 @@ const VendorManagerScreen = ({ navigation }) => {
 	const [data, setData] = useState([]);
 
 	useEffect(()=>{
-		const onMount = navigation.addListener('focus', ()=>{const fetchData = async()=>{
+		const onMount = navigation.addListener('focus', ()=>{
+			const fetchData = async()=>{
 			const resp = await adminApi.get_providers();
 			return resp
 		}

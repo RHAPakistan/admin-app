@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Keyboard, Text, Pressable, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
+import { Entypo } from '@expo/vector-icons';
 import Search from '../../components/ManagerOptions/Search';
 
 import GlobalStyles from '../../styles/GlobalStyles';
@@ -12,23 +12,25 @@ const VolunteerManagerScreen = ({ navigation }) => {
 	const [data, setData] = useState([]);
 
 	useEffect(()=>{
-		const fetchData = async()=>{
+		const onMount = navigation.addListener('focus', ()=>{
+			const fetchData = async()=>{
 			const resp = await adminApi.get_volunteers();
-			return resp;
+			return resp
 		}
 		fetchData()
 		.then((response)=>{
-			console.log(response);
 			setData(response);
 		})
-		.catch((e)=>{
-			console.log(e);
-		})
-	},[]);
+	});
+
+	const unsub = () =>{
+		onMount();
+	}
+	},[navigation])
 
 	const onSubmit = (query) => {
 		// on submit, fetch data based on search query
-		console.log('Vendor Searched', query);
+		console.log('Volunteer Searched', query);
 	};
 
 	const onPressHandler = (id) => {
@@ -41,10 +43,14 @@ const VolunteerManagerScreen = ({ navigation }) => {
 
 			<View style={GlobalStyles.screenTitle}>
 				<Text style={GlobalStyles.screenTitleText}>Volunteer Manager</Text>
-				
+				<Pressable
+					style={GlobalStyles.screenTitleButton}
+					onPress={() => navigation.navigate("VolunteerSignup")}>
+					<Entypo name='plus' size={30} color={Colors.white} />
+				</Pressable>
 			</View>
 
-			<Search onSubmit={onSubmit} placeholder='Search Volunteer' />
+			{/* <Search onSubmit={onSubmit} placeholder='Search Volunteer' /> */}
 
 			<VolunteerList data={data} onPress={onPressHandler} />
 		</Pressable>
