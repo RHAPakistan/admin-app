@@ -25,7 +25,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	let removeProgressBar = false;
 
 	const [dropoff, setDropoff] = useState({ name: 'none', id: '' });
-	const [volunteer, setVolunteer] = useState("none");
+	const [volunteer, setVolunteer] = useState({"fullName":"none"});
 	const [progressCount, setProgressCount] = useState(1);
 	const [current_provider, setCurrentProvider] = useState({});
 	const [dropoffModalVisible, setDropoffModalVisible] = useState(false);
@@ -174,7 +174,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 			// navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff, setProgressCount}),
 		},
 		VOLUNTEER: {
-			value: volunteer,
+			value: volunteer.fullName,
 			action: () =>
 				navigation.navigate('SelectVolunteerScreen', {
 					volunteer,
@@ -195,8 +195,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		//change the status of the pickup to 1 (assigned)
 		currentPickup.status = 1
 		currentPickup.deliveryAddress = dropoff.name;
-		console.log("Volunteer at pickupDetailsScreen:71 ", volunteer);
-		if(volunteer != "none"){
+		if(volunteer.fullName != "none"){
 			currentPickup.volunteer = volunteer._id;
 			currentPickup.broadcast=false
 		}

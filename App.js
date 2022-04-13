@@ -6,6 +6,9 @@ import RootDrawer from './routes/RootDrawer';
 import { SocketContext, socket } from './context/socket.js';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/home';
+import sendOTP from './components/ForgetPassword/sendOTP';
+import confirmOTP from './components/ForgetPassword/confirmOTP';
+import changePassword from './components/ForgetPassword/changePassword';
 
 export default function App() {
 	// Load token here
@@ -26,6 +29,23 @@ export default function App() {
 						name="Drawer"
 						component={RootDrawer}
 						options={{ title: 'Drawer' , headerShown: false }}
+					/>
+					<Stack.Screen
+						name="send_otp"
+						component={sendOTP}
+						options={{ headerShown: false }} 
+					/>
+
+						<Stack.Screen
+						name="confirm_otp"
+						component={confirmOTP}
+						options={{ headerShown: false }} 
+					/>
+
+						<Stack.Screen
+						name="change_password"
+						component={changePassword}
+						options={{ headerShown: false }} 
 					/>
 				</Stack.Navigator>
 			</NavigationContainer>
