@@ -6,7 +6,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import styles from './styles';
 import Colors from '../../styles/Colors';
 
-const Options = ({ onChange, label, data }) => {
+const Options = ({ onChange, label, data}) => {
 	const onChangeHandler = (selectedItem, index) => {
 		onChange({ selectedItem, index });
 	};
