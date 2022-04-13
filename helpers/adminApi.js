@@ -535,6 +535,32 @@ module.exports = {
             console.log("error");
         })
         return resp;
+    },
+
+    createVolunteer: async(volunteer_data) =>{
+        var tok = await localStorage.getData("auth_token");
+        var token = concat("Token ", tok);
+        const resp = await fetch(API_URL.concat("/api/volunteer/register"),{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Token  " + tok 
+              },
+              body: JSON.stringify(volunteer_data)
+        })
+        .then(async (response) => {
+            if (response.status>=400){
+                console.log("Bad request from server at createProvider");
+                return [false, response.status];
+            }
+            return response.json();
+        })            
+        .then(async (json) => {
+            return json;
+        })
+        .catch(async (e) => console.log(e))
+        return resp; 
     }
 
 }

@@ -31,7 +31,7 @@ const VolunteerSignup = ({ navigation }) => {
 
     const placeRequest = async (value)=>{
         console.log("Form Data",value);
-        const resp = await adminApi.createProvider(value);
+        const resp = await adminApi.createVolunteer(value);
         return resp;
     }
     const onSubmit = (value) => {
@@ -84,6 +84,7 @@ const VolunteerSignup = ({ navigation }) => {
 				gender: gender,
 				address: address,
                 password: password,
+				role:"registered",
                 ongoing_pickup: false
 			});
 		}
