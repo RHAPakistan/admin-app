@@ -31,6 +31,8 @@ const VendorButton = ({ data, onPress }) => {
 			style={[styles.button, ButtonStyle]}>
 			<View style={styles.buttonHeader}>
 				<Text style={TitleStyle}>Name: {data.fullName}</Text>
+			</View>
+			<View>
 				<Text style={InfoStyle}>{data.email}</Text>
 			</View>
 

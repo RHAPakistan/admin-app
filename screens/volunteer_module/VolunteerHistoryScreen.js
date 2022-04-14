@@ -50,7 +50,6 @@ const VolunteerHistoryScreen = ({ navigation, route }) => {
 	
 		const onChange = async (query) => {
 			// fetch data here;
-			console.log("adasdas", id);
 			if (query.index == 0) {
 				const response = await adminApi.get_pickups({"volunteer":pickup._id});
 				setData(response.pickups);

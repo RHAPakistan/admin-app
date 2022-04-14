@@ -33,8 +33,16 @@ const VolunteerButton = ({ data, onPress }) => {
 				<Text style={TitleStyle}>{data.fullName}</Text>
 			</View>
 			<View style={styles.buttonHeader}>
+				<Text style={InfoStyle}>{data.email}</Text>
+			</View>
+			<View style={styles.buttonHeader}>
 				<Text style={InfoStyle}>{data.contactNumber}</Text>
 			</View>
+			<View style={styles.buttonHeader}>
+				<Text style={InfoStyle}>{data.address}</Text>
+			</View>
+
+
 		</Pressable>
 	);
 };
