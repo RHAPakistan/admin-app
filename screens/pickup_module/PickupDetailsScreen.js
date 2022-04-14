@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { LogBox, ScrollView, View, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { ActivityIndicator } from "react-native";
 
 import ProgressBar from '../../components/ProgressBar';
 import PickupDetails from '../../components/DetailsForm/PickupDetails';
@@ -23,7 +24,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	// console.log("=====");
 	// console.log(route.params);
 	let removeProgressBar = false;
-
+	const [isLoading, setIsLoading] = useState(true);
 	const [dropoff, setDropoff] = useState({ name: 'none', id: '' });
 	const [volunteer, setVolunteer] = useState({"fullName":"none"});
 	const [progressCount, setProgressCount] = useState(1);
@@ -69,6 +70,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 					setProgressCount(5);
 					setHeading("Pickup Cancelled");
 				}
+				setIsLoading(false);
 			})
 			.catch((e)=>{
 				console.log(e);
@@ -230,6 +232,7 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 
 	return (
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
+			{isLoading && <ActivityIndicator color={"#165E2E"} />}			
 			<StatusBar style='dark' />
 			<InputModal modalVisible={dropoffModalVisible} setModalVisible={setDropoffModalVisible} 
 			 onPress={assignDropoff}/>
