@@ -65,10 +65,6 @@ const VendorDetailsScreen = ({ navigation, route }) => {
 					title='Pickup History'
 					action={() => navigation.navigate('VendorHistoryScreen', { id: id })}
 				/>
-			</View>
-
-			<View>
-				{/* When Cancelling or deactivating, a modal should appear to ask if admin really wants to cancel the pickup */}
 				<ActionBox
 					type='cancel'
 					title='Deactivate Account'

@@ -49,7 +49,7 @@ const VolunteerDetailsScreen = ({ navigation, route }) => {
 					type='primary'
 					title='Pickup History'
 					action={() =>
-						navigation.navigate('VolunteerHistoryScreen', { id: id })
+						navigation.navigate('VolunteerHistoryScreen', {id: id })
 					}
 				/>
 			</View>

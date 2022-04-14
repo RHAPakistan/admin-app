@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import ActionBox from '../../components/ActionBox';
 
 import GlobalStyles from '../../styles/GlobalStyles';
@@ -32,8 +32,8 @@ const EditVolunteerDetailsScreen = ({ navigation, route }) => {
 	return (
 		<ScrollView contentContainerStyle={GlobalStyles.container}>
 			<StatusBar style='dark' />
-
-			<VendorForm data={data} verify={isSubmitPressed} onSubmit={onSubmit} />
+			<Text>Under construction! You may deactivate this user and create a new one</Text>
+			{/* <VendorForm data={data} verify={isSubmitPressed} onSubmit={onSubmit} />
 
 			<View style={{ marginTop: 8 }}>
 				<ActionBox
@@ -42,7 +42,7 @@ const EditVolunteerDetailsScreen = ({ navigation, route }) => {
 					action={() => setSubmitPressed(true)}
 				/>
 				<ActionBox title='Cancel' action={navigation.goBack} />
-			</View>
+			</View> */}
 		</ScrollView>
 	);
 };

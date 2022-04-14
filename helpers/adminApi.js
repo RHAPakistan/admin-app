@@ -89,7 +89,7 @@ module.exports = {
         // query_string = query?query_string.concat(`?status=${query.status?query.status:0}`):query_string;
         // console.log(query_string);
         for(const key in query){
-            query_string = query_string.concat(`${key}=${query[key]}`);
+            query_string = query_string.concat(`${key}=${query[key]}&`);
         }
         console.log(query_string);
         const resp = await fetch(query_string, {
