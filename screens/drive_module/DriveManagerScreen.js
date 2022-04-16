@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, Pressable, View, Keyboard } from 'react-native';
+import { Text, Pressable, View, Keyboard, ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Entypo } from '@expo/vector-icons';
 
@@ -12,7 +12,7 @@ const adminApi = require("../../helpers/adminApi");
 
 const DriveManagerScreen = ({ navigation }) => {
 	const [data, setData] = useState([]);
-
+	const [isLoading, setIsLoading] = useState(true);
 	const fetchData = async(status)=>{
 		const resp = await adminApi.get_drives(status);
 		return resp;
@@ -23,6 +23,7 @@ const DriveManagerScreen = ({ navigation }) => {
 		.then((response)=>{
 			//console.log(response);
 			setData(response);
+			setIsLoading(false);
 		})
 		.catch((e)=>{
 			console.log(e);
@@ -54,7 +55,7 @@ const DriveManagerScreen = ({ navigation }) => {
 	return (
 		<Pressable onPress={Keyboard.dismiss} style={GlobalStyles.container}>
 			<StatusBar style='light' />
-
+			{isLoading && <ActivityIndicator color={"#165E2E"} />}
 			<View style={GlobalStyles.screenTitle}>
 				<Text style={GlobalStyles.screenTitleText}>Drive Manager</Text>
 
