@@ -561,6 +561,50 @@ module.exports = {
         })
         .catch(async (e) => console.log(e))
         return resp; 
-    }
+    },
+    search_volunteers: async (val) =>{
+        const resp = await fetch(API_URL.concat('/api/admin/volunteer/search'), {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({text: val})
+        })
+        .then((response)=>{
+            //console.log("Search res: ",response)
+            return response.json();
+        })
+        .then((json)=>{
+            //console.log(json);
+            return json;
+        })
+        .catch((e) =>{
+            console.log("error: ",e);
+        })
+        return resp;
+    },
+    search_providers: async (val) =>{
+        const resp = await fetch(API_URL.concat('/api/admin/provider/search'), {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({text: val})
+        })
+        .then((response)=>{
+            //console.log("Search res: ",response)
+            return response.json();
+        })
+        .then((json)=>{
+            //console.log(json);
+            return json;
+        })
+        .catch((e) =>{
+            console.log("error: ",e);
+        })
+        return resp;
+    },
 
 }

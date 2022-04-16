@@ -2,7 +2,7 @@ import moment from 'moment';
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import GlobalStyles from '../../../styles/GlobalStyles';
-
+import ContactLine from '../../ContactLine'
 import TextLine from '../TextLine';
 import TextLineClickable from '../TextLineClickable';
 import adminApi from "../../../helpers/adminApi";
@@ -48,7 +48,8 @@ const VendorDetails = ({ data }) => {
 			<TextLine index={1} label='Contact Name' value={data.fullName} />
 
 			{/* Phone number of contact */}
-			<TextLine index={2} label='Contact Phone' value={data.contactNumber} />
+			{/* <TextLine index={2} label='Contact Phone' value={data.contactNumber} /> */}
+			<ContactLine index={2} label="Contact Phone" name={data.contactNumber} number={data.contactNumber}></ContactLine>
 
 			{/* email of contact */}
 			<TextLine index={3} label='Contact Email' value={data.email} />
