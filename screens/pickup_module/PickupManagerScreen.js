@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { LogBox, Text, Pressable, View, Keyboard, Card, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { ActivityIndicator } from "react-native";
 
 import Options from '../../components/ManagerOptions/Options';
 import { socket, SocketContext } from '../../context/socket';
@@ -14,8 +15,8 @@ const PickupManagerScreen = ({ navigation }) => {
 	const socket = useContext(SocketContext);
 	const [data, setData] = useState([]);
 	const [status_no, setStatus] = useState(0); 
-
-	useEffect(() => {
+	const [isLoading, setIsLoading] = useState(true);
+ 	useEffect(() => {
 
 		const onMount = navigation.addListener('focus', () => {
 			// The screen is focused
@@ -29,7 +30,7 @@ const PickupManagerScreen = ({ navigation }) => {
 			fetchData()
 				.then((response) => {
 					setData(response);
-
+					setIsLoading(false);
 				})
 				.catch((e) => {
 					console.log(e);
@@ -100,6 +101,7 @@ const PickupManagerScreen = ({ navigation }) => {
 	return (
 		<Pressable onPress={Keyboard.dismiss} style={GlobalStyles.container}>
 			<StatusBar style='light' />
+			{isLoading && <ActivityIndicator color={"#165E2E"} />}
 
 			<View style={GlobalStyles.screenTitle}>
 				<Text style={GlobalStyles.screenTitleText}>Pickup Manager</Text>
