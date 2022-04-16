@@ -89,7 +89,7 @@ module.exports = {
         // query_string = query?query_string.concat(`?status=${query.status?query.status:0}`):query_string;
         // console.log(query_string);
         for(const key in query){
-            query_string = query_string.concat(`${key}=${query[key]}`);
+            query_string = query_string.concat(`${key}=${query[key]}&`);
         }
         console.log(query_string);
         const resp = await fetch(query_string, {
@@ -111,7 +111,31 @@ module.exports = {
         })
     return resp;
     },
-
+    createProvider: async(provider_data) =>{
+        var tok = await localStorage.getData("auth_token");
+        var token = concat("Token ", tok);
+        const resp = await fetch(API_URL.concat("/api/provider/register"),{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Token  " + tok 
+              },
+              body: JSON.stringify(provider_data)
+        })
+        .then(async (response) => {
+            if (response.status>=400){
+                console.log("Bad request from server at createProvider");
+                return [false, response.status];
+            }
+            return response.json();
+        })            
+        .then(async (json) => {
+            return json;
+        })
+        .catch(async (e) => console.log(e))
+        return resp; 
+    },
     get_volunteers: async (query) =>{
         var query_string = API_URL.concat("/api/admin/volunteer?");
         // query_string = query?query_string.concat(`?status=${query.status?query.status:0}`):query_string;
@@ -382,6 +406,60 @@ module.exports = {
         })
         return resp;
     },
+    delete_provider: async(id)=>{
+        const token = await localStorage.getData('auth_token');
+        const resp = await fetch(API_URL.concat(`/api/admin/provider/${id}`), {
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer "+token
+            },
+
+        })
+        .then((response)=>{
+            return response.json()
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+        if(resp.success){
+            return true
+        }
+        else{
+            return false
+        }
+    },
+    delete_volunteer: async(id)=>{
+        const token = await localStorage.getData('auth_token');
+        const resp = await fetch(API_URL.concat(`/api/admin/volunteer/${id}`), {
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer "+token
+            },
+
+        })
+        .then((response)=>{
+            return response.json()
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+        if(resp.error==0){
+            return true
+        }
+        else{
+            return false
+        }
+    },
     auth_forgot_verifyOTP: async (email, otp) =>{
         const resp = await fetch(API_URL.concat('/api/admin/auth/forgot/verifyOTP'), {
             method: 'POST',
@@ -457,6 +535,76 @@ module.exports = {
             console.log("error");
         })
         return resp;
-    }
+    },
+
+    createVolunteer: async(volunteer_data) =>{
+        var tok = await localStorage.getData("auth_token");
+        var token = concat("Token ", tok);
+        const resp = await fetch(API_URL.concat("/api/volunteer/register"),{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': "Token  " + tok 
+              },
+              body: JSON.stringify(volunteer_data)
+        })
+        .then(async (response) => {
+            if (response.status>=400){
+                console.log("Bad request from server at createProvider");
+                return [false, response.status];
+            }
+            return response.json();
+        })            
+        .then(async (json) => {
+            return json;
+        })
+        .catch(async (e) => console.log(e))
+        return resp; 
+    },
+    search_volunteers: async (val) =>{
+        const resp = await fetch(API_URL.concat('/api/admin/volunteer/search'), {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({text: val})
+        })
+        .then((response)=>{
+            //console.log("Search res: ",response)
+            return response.json();
+        })
+        .then((json)=>{
+            //console.log(json);
+            return json;
+        })
+        .catch((e) =>{
+            console.log("error: ",e);
+        })
+        return resp;
+    },
+    search_providers: async (val) =>{
+        const resp = await fetch(API_URL.concat('/api/admin/provider/search'), {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({text: val})
+        })
+        .then((response)=>{
+            //console.log("Search res: ",response)
+            return response.json();
+        })
+        .then((json)=>{
+            //console.log(json);
+            return json;
+        })
+        .catch((e) =>{
+            console.log("error: ",e);
+        })
+        return resp;
+    },
 
 }

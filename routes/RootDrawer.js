@@ -44,15 +44,15 @@ const RootDrawer = () => {
 				options={{ headerShown: false }}
 			/>
 			<Drawer.Screen
-				name='Vendor Manager'
+				name='Provider Manager'
 				component={VendorStack}
 				options={{ headerShown: false }}
 			/>
-			<Drawer.Screen
+			{/* <Drawer.Screen
 				name='Dropoff Manager'
 				component={DropoffStack}
 				options={{ headerShown: false }}
-			/>
+			/> */}
 			<Drawer.Screen
 				name='Volunteer Manager'
 				component={VolunteerStack}

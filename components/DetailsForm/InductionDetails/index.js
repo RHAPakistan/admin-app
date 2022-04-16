@@ -2,7 +2,7 @@ import moment from 'moment';
 import React from 'react';
 import { View } from 'react-native';
 import GlobalStyles from '../../../styles/GlobalStyles';
-
+import ContactLine from '../../ContactLine'
 import TextLine from '../TextLine';
 import TextDescription from "../TextDescription";
 
@@ -17,7 +17,8 @@ const InductionDetails = ({ data }) => {
 			<TextLine index={0} label='Full Name' value={data.fullname} />
 
 			{/* Phone number of Induction */}
-			<TextLine index={1} label='Phone' value={data.contactNumber} />
+			{/* <TextLine index={1} label='Phone' value={data.contactNumber} /> */}
+			<ContactLine index={1} label="Contact Phone" name={data.contactNumber} number={data.contactNumber}></ContactLine>
 
 			{/* Email of Induction */}
 			<TextLine index={2} label='Email' value={data.email} />

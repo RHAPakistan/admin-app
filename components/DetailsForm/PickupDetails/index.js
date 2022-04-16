@@ -68,9 +68,6 @@ const PickupDetails = ({ data }) => {
 				action={() => console.log('Phone Number Clicked')}
 			/>
 
-			
-
-
 			{/* vendor/provider name or Type if Guest */}
 			{ProviderLine}
 
