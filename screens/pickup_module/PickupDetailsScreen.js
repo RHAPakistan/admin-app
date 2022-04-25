@@ -177,12 +177,15 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 		},
 		VOLUNTEER: {
 			value: volunteer.fullName,
-			action: () =>
+			action: () =>{
+				let pickupCoordinates =currentPickup.pickupCoordinate?currentPickup.pickupCoordinate.coordinates:[0,0]; 
 				navigation.navigate('SelectVolunteerScreen', {
 					volunteer,
 					setVolunteer,
-					setProgressCount
-				}),
+					setProgressCount,
+					pickupCoordinates					
+				})
+			},
 		},
 	};
 

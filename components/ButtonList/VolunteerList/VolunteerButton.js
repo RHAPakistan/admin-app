@@ -22,7 +22,20 @@ const VolunteerButton = ({ data, onPress }) => {
 		setTitleStyles(styles.buttonTitleText);
 		setInfoStyles(styles.buttonInfoText);
 	};
-
+	const DistView = () => {
+		if (data.dist) {
+			return(
+			<View style={styles.buttonHeader}>
+				<Text style={InfoStyle}>Distance from pickup: {Math.round(data.dist.calculated)/1000}kms</Text>
+			</View>
+			)
+		}
+		else{
+			return(
+				<View></View>
+			);
+		}
+	}
 	return (
 		<Pressable
 			onPressIn={onPressInHandler}
@@ -41,8 +54,7 @@ const VolunteerButton = ({ data, onPress }) => {
 			<View style={styles.buttonHeader}>
 				<Text style={InfoStyle}>{data.address}</Text>
 			</View>
-
-
+			<DistView />
 		</Pressable>
 	);
 };

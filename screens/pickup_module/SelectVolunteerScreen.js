@@ -12,13 +12,13 @@ import SliderNativeComponent from 'react-native/Libraries/Components/Slider/Slid
 // import { SafeAreaView } from 'react-native-web';
 
 const SelectVolunteerScreen = ({ navigation, route }) => {
-	const { volunteer, setVolunteer, setProgressCount } = route.params;
+	const { volunteer, setVolunteer, setProgressCount,pickupCoordinates } = route.params;
 	const [volunteersList, setVolunteersList] = useState([]);
 	const [volunteerSelected, setVolunteerSelected] = useState("");
 	useEffect(()=>{
 		const fetchData = async() =>{
-			const resp = await adminApi.get_volunteers({"ongoing_pickup":false});
-			return resp;
+			const resp = await adminApi.get_volunteers_by_distance(pickupCoordinates);
+			return resp.message;
 		}
 		fetchData()
 		.then((response)=>{

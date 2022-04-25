@@ -607,4 +607,25 @@ module.exports = {
         return resp;
     },
 
+    get_volunteers_by_distance: async(coordinates)=>{
+        const resp = await fetch(API_URL.concat('/api/volunteer/getByDistance'),{
+            method: 'POST',
+            headers: {
+                Accept: 'applicaiton/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"pickup_coordinates":coordinates?coordinates:[0,0]})
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e)=>{
+            console.log("error ",e);
+        })
+        return resp
+    }
+
 }
