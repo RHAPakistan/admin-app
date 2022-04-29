@@ -4,7 +4,7 @@
             "outputFile": "/home/jawad/rhapak/admin-app/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "/home/jawad/.gradle/caches/transforms-3/c810a29ee9cc32eddbe9f435a5d40943/transformed/appcompat-1.2.0/res/values-xlarge-v4/values-xlarge-v4.xml",
+                    "source": "/home/jawad/.gradle/caches/transforms-3/abd4d4a97d661f75dfc248eaff05feee/transformed/appcompat-1.2.0/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

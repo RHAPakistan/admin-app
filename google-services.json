@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "621468312534",
+    "firebase_url": "https://rhafoodapp-default-rtdb.firebaseio.com",
+    "project_id": "rhafoodapp",
+    "storage_bucket": "rhafoodapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621468312534:android:16285040cbacf0ebeafa77",
+        "android_client_info": {
+          "package_name": "com.hassan30.rhaadminapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621468312534-04nhrsqv4h7os05lcm5co52ieadjffo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0x3pWJMwx93IQ2wW280_GNpV6XKaLYVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621468312534-04nhrsqv4h7os05lcm5co52ieadjffo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621468312534:android:736c1c534d8bc1a6eafa77",
+        "android_client_info": {
+          "package_name": "com.rha.volapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621468312534-04nhrsqv4h7os05lcm5co52ieadjffo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0x3pWJMwx93IQ2wW280_GNpV6XKaLYVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621468312534-04nhrsqv4h7os05lcm5co52ieadjffo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621468312534:android:b66d777c628ddce0eafa77",
+        "android_client_info": {
+          "package_name": "com.rhafoodapp.prov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621468312534-04nhrsqv4h7os05lcm5co52ieadjffo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0x3pWJMwx93IQ2wW280_GNpV6XKaLYVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621468312534-04nhrsqv4h7os05lcm5co52ieadjffo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

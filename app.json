@@ -24,6 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#165E2E"
       },
+      "googleServicesFile": "./google-services.json",
       "package": "com.hassan30.rhaadminapp"
     },
     "web": {

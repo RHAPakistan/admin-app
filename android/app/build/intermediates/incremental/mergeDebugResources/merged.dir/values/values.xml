@@ -750,12 +750,19 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="date_description">Select Date</string>
     <string name="day_description">Select Day</string>
+    <string name="default_web_client_id" translatable="false">621468312534-04nhrsqv4h7os05lcm5co52ieadjffo8.apps.googleusercontent.com</string>
     <string name="error_icon_content_description">Error</string>
     <string name="expo_notifications_fallback_channel_name">Miscellaneous</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
     <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
+    <string name="firebase_database_url" translatable="false">https://rhafoodapp-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">621468312534</string>
+    <string name="google_api_key" translatable="false">AIzaSyD0x3pWJMwx93IQ2wW280_GNpV6XKaLYVE</string>
+    <string name="google_app_id" translatable="false">1:621468312534:android:16285040cbacf0ebeafa77</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD0x3pWJMwx93IQ2wW280_GNpV6XKaLYVE</string>
+    <string name="google_storage_bucket" translatable="false">rhafoodapp.appspot.com</string>
     <string name="header_description" translatable="false">Heading</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string name="hour_description">Select Hour</string>
@@ -811,6 +818,7 @@
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="progressbar_description" translatable="false">Progress Bar</string>
+    <string name="project_id" translatable="false">rhafoodapp</string>
     <string name="radiogroup_description" translatable="false">Radio Group</string>
     <string name="rn_tab_description" translatable="false">Tab</string>
     <string name="scrollbar_description" translatable="false">Scroll Bar</string>
@@ -3051,10 +3059,10 @@
         <item name="android:datePickerMode">spinner</item>
     </style>
     <style name="SpinnerTimePickerDialog" ns2:targetApi="lollipop" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:timePickerStyle">@style/SpinnerTimePickerStyle</item>
+      <item name="android:timePickerStyle">@style/SpinnerTimePickerStyle</item>
     </style>
     <style name="SpinnerTimePickerStyle" ns2:targetApi="lollipop" parent="android:Widget.Material.Light.TimePicker">
-        <item name="android:timePickerMode">spinner</item>
+      <item name="android:timePickerMode">spinner</item>
     </style>
     <style name="Test.ShapeAppearanceOverlay.MaterialComponents.MaterialCalendar.Day" parent="">
     <item name="cornerFamily">rounded</item>
