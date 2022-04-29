@@ -79,11 +79,8 @@ const VendorManagerScreen = ({ navigation }) => {
 				</Pressable>
 			</View>
 
-<<<<<<< HEAD
 			{/* <Search onSubmit={onSubmit} placeholder='Search Vendor' /> */}
-=======
 			 <Search onSubmit={onSubmit} placeholder='Search Vendor by name, location or gender' />
->>>>>>> d172654... added search and update drives
 
 			<VendorList data={data} onPress={onPressHandler} />
 		</Pressable>
