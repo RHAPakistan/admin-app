@@ -1,0 +1,467 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.hassan30.rhaadminapp"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="30" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:7:3-75
+11-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:7:20-73
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:2:3-78
+12-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:2:20-76
+13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+13-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:3:3-76
+13-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:3:20-74
+14    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+14-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:4:3-74
+14-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:4:20-72
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:5:3-64
+15-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:5:20-62
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+16-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:6:3-77
+16-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:6:20-75
+17    <uses-permission android:name="android.permission.VIBRATE" />
+17-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:8:3-63
+17-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:8:20-61
+18    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+18-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:9:3-78
+18-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:9:20-76
+19    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+19-->[com.facebook.flipper:flipper:0.54.0] /home/jawad/.gradle/caches/transforms-3/7ced98fae9ea2b5aa64e54aefef0d400/transformed/jetified-flipper-0.54.0/AndroidManifest.xml:16:5-76
+19-->[com.facebook.flipper:flipper:0.54.0] /home/jawad/.gradle/caches/transforms-3/7ced98fae9ea2b5aa64e54aefef0d400/transformed/jetified-flipper-0.54.0/AndroidManifest.xml:16:22-73
+20    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+20-->[:expo-updates] /home/jawad/rhapak/admin-app/node_modules/expo-updates/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-79
+20-->[:expo-updates] /home/jawad/rhapak/admin-app/node_modules/expo-updates/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:22-76
+21
+22    <queries>
+22-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:5-22:15
+23
+24        <!-- Query open documents -->
+25        <intent>
+25-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-21:18
+26            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
+26-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-79
+26-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:21-76
+27        </intent>
+28    </queries>
+29
+30    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+30-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-81
+30-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:22-78
+31    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+31-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:24:5-68
+31-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:24:22-65
+32    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+32-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:26:5-82
+32-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:26:22-79
+33    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+33-->[com.android.installreferrer:installreferrer:1.0] /home/jawad/.gradle/caches/transforms-3/cc35e8389503840c9fbe05adc3f6e842/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
+33-->[com.android.installreferrer:installreferrer:1.0] /home/jawad/.gradle/caches/transforms-3/cc35e8389503840c9fbe05adc3f6e842/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
+34    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+34-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:15:5-98
+34-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:15:22-95
+35    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" /> <!-- for android -->
+35-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:16:5-94
+35-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:16:22-91
+36    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
+37    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
+38    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
+39    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
+40    <!-- for Samsung -->
+41    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+41-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+41-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+42    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
+42-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+42-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+43    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+43-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+43-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+44    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
+44-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+44-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+45    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+45-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+45-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+46    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
+46-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+46-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+47    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
+47-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+47-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+48    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
+48-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+48-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+49    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+49-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+49-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+50    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+50-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+50-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+51    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
+51-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+51-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+52    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
+52-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+52-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+53    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+53-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+53-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+54    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
+54-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+54-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+55    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+55-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+55-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+56    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
+56-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+56-->[me.leolin:ShortcutBadger:1.1.22] /home/jawad/.gradle/caches/transforms-3/180ab856c8d84401adaf1a4ef10a3c90/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
+57
+58    <application
+58-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:10:3-29:17
+59        android:name="com.hassan30.rhaadminapp.MainApplication"
+59-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:10:16-47
+60        android:allowBackup="true"
+60-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:10:162-188
+61        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+61-->[androidx.core:core:1.3.0] /home/jawad/.gradle/caches/transforms-3/fe3cf0882eb40046447bd9893532f7c5/transformed/core-1.3.0/AndroidManifest.xml:24:18-86
+62        android:debuggable="true"
+63        android:icon="@mipmap/ic_launcher"
+63-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:10:81-115
+64        android:label="@string/app_name"
+64-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:10:48-80
+65        android:roundIcon="@mipmap/ic_launcher_round"
+65-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:10:116-161
+66        android:theme="@style/AppTheme"
+66-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:10:189-220
+67        android:usesCleartextTraffic="true" >
+67-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:10:221-256
+68        <meta-data
+68-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:11:5-82
+69            android:name="expo.modules.updates.ENABLED"
+69-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:11:16-59
+70            android:value="true" />
+70-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:11:60-80
+71        <meta-data
+71-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:12:5-93
+72            android:name="expo.modules.updates.EXPO_SDK_VERSION"
+72-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:12:16-68
+73            android:value="42.0.0" />
+73-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:12:69-91
+74        <meta-data
+74-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:13:5-105
+75            android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH"
+75-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:13:16-80
+76            android:value="ALWAYS" />
+76-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:13:81-103
+77        <meta-data
+77-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:14:5-99
+78            android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS"
+78-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:14:16-79
+79            android:value="0" />
+79-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:14:80-97
+80        <meta-data
+80-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:15:5-126
+81            android:name="expo.modules.updates.EXPO_UPDATE_URL"
+81-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:15:16-67
+82            android:value="https://exp.host/@jawad571/rha-admin-app" />
+82-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:15:68-124
+83
+84        <activity
+84-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:16:5-27:16
+85            android:name="com.hassan30.rhaadminapp.MainActivity"
+85-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:16:15-43
+86            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+86-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:16:77-154
+87            android:label="@string/app_name"
+87-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:16:44-76
+88            android:launchMode="singleTask"
+88-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:16:155-186
+89            android:screenOrientation="portrait"
+89-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:16:276-312
+90            android:theme="@style/Theme.App.SplashScreen"
+90-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:16:230-275
+91            android:windowSoftInputMode="adjustResize" >
+91-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:16:187-229
+92            <intent-filter>
+92-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:17:7-20:23
+93                <action android:name="android.intent.action.MAIN" />
+93-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:18:9-60
+93-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:18:17-58
+94
+95                <category android:name="android.intent.category.LAUNCHER" />
+95-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:19:9-68
+95-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:19:19-66
+96            </intent-filter>
+97            <intent-filter>
+97-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:21:7-26:23
+98                <action android:name="android.intent.action.VIEW" />
+98-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:22:9-60
+98-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:22:17-58
+99
+100                <category android:name="android.intent.category.DEFAULT" />
+100-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:23:9-67
+100-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:23:19-65
+101                <category android:name="android.intent.category.BROWSABLE" />
+101-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:24:9-69
+101-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:24:19-67
+102
+103                <data android:scheme="com.hassan30.rhaadminapp" />
+103-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:25:9-58
+103-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:25:15-56
+104            </intent-filter>
+105        </activity>
+106        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+106-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:28:5-81
+106-->/home/jawad/rhapak/admin-app/android/app/src/main/AndroidManifest.xml:28:15-79
+107
+108        <meta-data
+108-->[:unimodules-react-native-adapter] /home/jawad/rhapak/admin-app/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:91
+109            android:name="org.unimodules.core.AppLoader#react-native-headless"
+109-->[:unimodules-react-native-adapter] /home/jawad/rhapak/admin-app/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
+110            android:value="org.unimodules.adapters.react.apploader.RNHeadlessAppLoader" />
+110-->[:unimodules-react-native-adapter] /home/jawad/rhapak/admin-app/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-88
+111
+112        <provider
+112-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
+113            android:name="expo.modules.filesystem.FileSystemFileProvider"
+113-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
+114            android:authorities="com.hassan30.rhaadminapp.FileSystemFileProvider"
+114-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
+115            android:exported="false"
+115-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
+116            android:grantUriPermissions="true" >
+116-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
+117            <meta-data
+117-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:13-33:70
+118                android:name="android.support.FILE_PROVIDER_PATHS"
+118-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:17-67
+119                android:resource="@xml/file_system_provider_paths" />
+119-->[:expo-file-system] /home/jawad/rhapak/admin-app/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:17-67
+120        </provider>
+121
+122        <service
+122-->[:expo-location] /home/jawad/rhapak/admin-app/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-19:56
+123            android:name="expo.modules.location.services.LocationTaskService"
+123-->[:expo-location] /home/jawad/rhapak/admin-app/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-78
+124            android:exported="false"
+124-->[:expo-location] /home/jawad/rhapak/admin-app/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-37
+125            android:foregroundServiceType="location" />
+125-->[:expo-location] /home/jawad/rhapak/admin-app/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-53
+126        <service
+126-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:9-20:19
+127            android:name="expo.modules.notifications.service.ExpoFirebaseMessagingService"
+127-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-91
+128            android:exported="false" >
+128-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-37
+129            <intent-filter android:priority="-1" >
+129-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:29
+129-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:28-49
+130                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+130-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-78
+130-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:25-75
+131            </intent-filter>
+132        </service>
+133
+134        <receiver
+134-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:22:9-34:20
+135            android:name="expo.modules.notifications.service.NotificationsService"
+135-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-83
+136            android:enabled="true"
+136-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-35
+137            android:exported="false" >
+137-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-37
+138            <intent-filter android:priority="-1" >
+138-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-33:29
+138-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:28-49
+139                <action android:name="expo.modules.notifications.NOTIFICATION_EVENT" />
+139-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:17-88
+139-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:25-85
+140                <action android:name="android.intent.action.BOOT_COMPLETED" />
+140-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:17-79
+140-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:25-76
+141                <action android:name="android.intent.action.REBOOT" />
+141-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:17-71
+141-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:25-68
+142                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+142-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:17-82
+142-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:25-79
+143                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+143-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:17-82
+143-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:25-79
+144                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+144-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:17-84
+144-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:32:25-81
+145            </intent-filter>
+146        </receiver>
+147        <!--
+148             FirebaseMessagingService performs security checks at runtime,
+149             but set to not exported to explicitly avoid allowing another app to call it.
+150        -->
+151        <service
+151-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:28:9-35:19
+152            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+152-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:29:13-82
+153            android:directBootAware="true"
+153-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:30:13-43
+154            android:exported="false" >
+154-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:31:13-37
+155            <intent-filter android:priority="-500" >
+155-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:29
+155-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:28-49
+156                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+156-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-78
+156-->[:expo-notifications] /home/jawad/rhapak/admin-app/node_modules/expo-notifications/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:25-75
+157            </intent-filter>
+158        </service>
+159        <service
+159-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:36:9-42:19
+160            android:name="com.google.firebase.components.ComponentDiscoveryService"
+160-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:37:13-84
+161            android:directBootAware="true"
+161-->[com.google.firebase:firebase-common:19.3.0] /home/jawad/.gradle/caches/transforms-3/4b618d6afbc1c87c73cbd4424694fca5/transformed/jetified-firebase-common-19.3.0/AndroidManifest.xml:34:13-43
+162            android:exported="false" >
+162-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:38:13-37
+163            <meta-data
+163-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:39:13-41:85
+164                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+164-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:40:17-119
+165                android:value="com.google.firebase.components.ComponentRegistrar" />
+165-->[com.google.firebase:firebase-messaging:20.2.4] /home/jawad/.gradle/caches/transforms-3/6c586f980d59ae512da65177951ce95e/transformed/jetified-firebase-messaging-20.2.4/AndroidManifest.xml:41:17-82
+166            <meta-data
+166-->[com.google.firebase:firebase-datatransport:17.0.3] /home/jawad/.gradle/caches/transforms-3/76ebaed9b8e40766cdb6bbcbe4645e97/transformed/jetified-firebase-datatransport-17.0.3/AndroidManifest.xml:28:13-30:85
+167                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+167-->[com.google.firebase:firebase-datatransport:17.0.3] /home/jawad/.gradle/caches/transforms-3/76ebaed9b8e40766cdb6bbcbe4645e97/transformed/jetified-firebase-datatransport-17.0.3/AndroidManifest.xml:29:17-115
+168                android:value="com.google.firebase.components.ComponentRegistrar" />
+168-->[com.google.firebase:firebase-datatransport:17.0.3] /home/jawad/.gradle/caches/transforms-3/76ebaed9b8e40766cdb6bbcbe4645e97/transformed/jetified-firebase-datatransport-17.0.3/AndroidManifest.xml:30:17-82
+169            <meta-data
+169-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:32:13-34:85
+170                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+170-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:33:17-96
+171                android:value="com.google.firebase.components.ComponentRegistrar" />
+171-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:34:17-82
+172            <meta-data
+172-->[com.google.firebase:firebase-installations:16.3.3] /home/jawad/.gradle/caches/transforms-3/e466251234da631bf58a07790c21d588/transformed/jetified-firebase-installations-16.3.3/AndroidManifest.xml:17:13-19:85
+173                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+173-->[com.google.firebase:firebase-installations:16.3.3] /home/jawad/.gradle/caches/transforms-3/e466251234da631bf58a07790c21d588/transformed/jetified-firebase-installations-16.3.3/AndroidManifest.xml:18:17-127
+174                android:value="com.google.firebase.components.ComponentRegistrar" />
+174-->[com.google.firebase:firebase-installations:16.3.3] /home/jawad/.gradle/caches/transforms-3/e466251234da631bf58a07790c21d588/transformed/jetified-firebase-installations-16.3.3/AndroidManifest.xml:19:17-82
+175        </service>
+176        <service
+176-->[com.google.android.datatransport:transport-backend-cct:2.2.0] /home/jawad/.gradle/caches/transforms-3/9d9ac43545ae65e579820a8f9ebfa7ab/transformed/jetified-transport-backend-cct-2.2.0/AndroidManifest.xml:29:9-35:19
+177            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+177-->[com.google.android.datatransport:transport-backend-cct:2.2.0] /home/jawad/.gradle/caches/transforms-3/9d9ac43545ae65e579820a8f9ebfa7ab/transformed/jetified-transport-backend-cct-2.2.0/AndroidManifest.xml:30:13-103
+178            android:exported="false" >
+178-->[com.google.android.datatransport:transport-backend-cct:2.2.0] /home/jawad/.gradle/caches/transforms-3/9d9ac43545ae65e579820a8f9ebfa7ab/transformed/jetified-transport-backend-cct-2.2.0/AndroidManifest.xml:31:13-37
+179            <meta-data
+179-->[com.google.android.datatransport:transport-backend-cct:2.2.0] /home/jawad/.gradle/caches/transforms-3/9d9ac43545ae65e579820a8f9ebfa7ab/transformed/jetified-transport-backend-cct-2.2.0/AndroidManifest.xml:32:13-34:39
+180                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+180-->[com.google.android.datatransport:transport-backend-cct:2.2.0] /home/jawad/.gradle/caches/transforms-3/9d9ac43545ae65e579820a8f9ebfa7ab/transformed/jetified-transport-backend-cct-2.2.0/AndroidManifest.xml:33:17-94
+181                android:value="cct" />
+181-->[com.google.android.datatransport:transport-backend-cct:2.2.0] /home/jawad/.gradle/caches/transforms-3/9d9ac43545ae65e579820a8f9ebfa7ab/transformed/jetified-transport-backend-cct-2.2.0/AndroidManifest.xml:34:17-36
+182        </service>
+183        <service
+183-->[com.google.android.datatransport:transport-runtime:2.2.0] /home/jawad/.gradle/caches/transforms-3/67657d92f4c2ff32b47894caf3da96b6/transformed/jetified-transport-runtime-2.2.0/AndroidManifest.xml:26:9-30:19
+184            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+184-->[com.google.android.datatransport:transport-runtime:2.2.0] /home/jawad/.gradle/caches/transforms-3/67657d92f4c2ff32b47894caf3da96b6/transformed/jetified-transport-runtime-2.2.0/AndroidManifest.xml:27:13-117
+185            android:exported="false"
+185-->[com.google.android.datatransport:transport-runtime:2.2.0] /home/jawad/.gradle/caches/transforms-3/67657d92f4c2ff32b47894caf3da96b6/transformed/jetified-transport-runtime-2.2.0/AndroidManifest.xml:28:13-37
+186            android:permission="android.permission.BIND_JOB_SERVICE" >
+186-->[com.google.android.datatransport:transport-runtime:2.2.0] /home/jawad/.gradle/caches/transforms-3/67657d92f4c2ff32b47894caf3da96b6/transformed/jetified-transport-runtime-2.2.0/AndroidManifest.xml:29:13-69
+187        </service>
+188
+189        <receiver
+189-->[com.google.android.datatransport:transport-runtime:2.2.0] /home/jawad/.gradle/caches/transforms-3/67657d92f4c2ff32b47894caf3da96b6/transformed/jetified-transport-runtime-2.2.0/AndroidManifest.xml:32:9-34:40
+190            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+190-->[com.google.android.datatransport:transport-runtime:2.2.0] /home/jawad/.gradle/caches/transforms-3/67657d92f4c2ff32b47894caf3da96b6/transformed/jetified-transport-runtime-2.2.0/AndroidManifest.xml:33:13-132
+191            android:exported="false" />
+191-->[com.google.android.datatransport:transport-runtime:2.2.0] /home/jawad/.gradle/caches/transforms-3/67657d92f4c2ff32b47894caf3da96b6/transformed/jetified-transport-runtime-2.2.0/AndroidManifest.xml:34:13-37
+192
+193        <provider
+193-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/jawad/.gradle/caches/transforms-3/7d3ec334880df430744e2b1f6a24d7db/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+194            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+194-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/jawad/.gradle/caches/transforms-3/7d3ec334880df430744e2b1f6a24d7db/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+195            android:authorities="com.hassan30.rhaadminapp.lifecycle-process"
+195-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/jawad/.gradle/caches/transforms-3/7d3ec334880df430744e2b1f6a24d7db/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+196            android:exported="false"
+196-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/jawad/.gradle/caches/transforms-3/7d3ec334880df430744e2b1f6a24d7db/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+197            android:multiprocess="true" />
+197-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/jawad/.gradle/caches/transforms-3/7d3ec334880df430744e2b1f6a24d7db/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+198
+199        <service
+199-->[androidx.room:room-runtime:2.1.0] /home/jawad/.gradle/caches/transforms-3/3b5db4b3b22ae452a34a6490900f58b2/transformed/room-runtime-2.1.0/AndroidManifest.xml:25:9-27:40
+200            android:name="androidx.room.MultiInstanceInvalidationService"
+200-->[androidx.room:room-runtime:2.1.0] /home/jawad/.gradle/caches/transforms-3/3b5db4b3b22ae452a34a6490900f58b2/transformed/room-runtime-2.1.0/AndroidManifest.xml:26:13-74
+201            android:exported="false" />
+201-->[androidx.room:room-runtime:2.1.0] /home/jawad/.gradle/caches/transforms-3/3b5db4b3b22ae452a34a6490900f58b2/transformed/room-runtime-2.1.0/AndroidManifest.xml:27:13-37
+202
+203        <receiver
+203-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:37:9-44:20
+204            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+204-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:38:13-78
+205            android:exported="true"
+205-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:39:13-36
+206            android:permission="com.google.android.c2dm.permission.SEND" >
+206-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:40:13-73
+207            <intent-filter>
+207-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:41:13-43:29
+208                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+208-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:42:17-81
+208-->[com.google.firebase:firebase-iid:20.2.3] /home/jawad/.gradle/caches/transforms-3/913c18fd982af3442dc3c49618adbcf7/transformed/jetified-firebase-iid-20.2.3/AndroidManifest.xml:42:25-78
+209            </intent-filter>
+210        </receiver>
+211
+212        <provider
+212-->[com.google.firebase:firebase-common:19.3.0] /home/jawad/.gradle/caches/transforms-3/4b618d6afbc1c87c73cbd4424694fca5/transformed/jetified-firebase-common-19.3.0/AndroidManifest.xml:26:9-30:39
+213            android:name="com.google.firebase.provider.FirebaseInitProvider"
+213-->[com.google.firebase:firebase-common:19.3.0] /home/jawad/.gradle/caches/transforms-3/4b618d6afbc1c87c73cbd4424694fca5/transformed/jetified-firebase-common-19.3.0/AndroidManifest.xml:27:13-77
+214            android:authorities="com.hassan30.rhaadminapp.firebaseinitprovider"
+214-->[com.google.firebase:firebase-common:19.3.0] /home/jawad/.gradle/caches/transforms-3/4b618d6afbc1c87c73cbd4424694fca5/transformed/jetified-firebase-common-19.3.0/AndroidManifest.xml:28:13-72
+215            android:exported="false"
+215-->[com.google.firebase:firebase-common:19.3.0] /home/jawad/.gradle/caches/transforms-3/4b618d6afbc1c87c73cbd4424694fca5/transformed/jetified-firebase-common-19.3.0/AndroidManifest.xml:29:13-37
+216            android:initOrder="100" />
+216-->[com.google.firebase:firebase-common:19.3.0] /home/jawad/.gradle/caches/transforms-3/4b618d6afbc1c87c73cbd4424694fca5/transformed/jetified-firebase-common-19.3.0/AndroidManifest.xml:30:13-36
+217
+218        <activity
+218-->[com.google.android.gms:play-services-base:17.0.0] /home/jawad/.gradle/caches/transforms-3/1dca9734d5f87c4d88604365b65ae74d/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
+219            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+219-->[com.google.android.gms:play-services-base:17.0.0] /home/jawad/.gradle/caches/transforms-3/1dca9734d5f87c4d88604365b65ae74d/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:24:13-79
+220            android:exported="false"
+220-->[com.google.android.gms:play-services-base:17.0.0] /home/jawad/.gradle/caches/transforms-3/1dca9734d5f87c4d88604365b65ae74d/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:25:13-37
+221            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+221-->[com.google.android.gms:play-services-base:17.0.0] /home/jawad/.gradle/caches/transforms-3/1dca9734d5f87c4d88604365b65ae74d/transformed/jetified-play-services-base-17.0.0/AndroidManifest.xml:26:13-72
+222
+223        <meta-data
+223-->[com.google.android.gms:play-services-basement:17.0.0] /home/jawad/.gradle/caches/transforms-3/8d613bce69ff230aa5061ee1fced0d13/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+224            android:name="com.google.android.gms.version"
+224-->[com.google.android.gms:play-services-basement:17.0.0] /home/jawad/.gradle/caches/transforms-3/8d613bce69ff230aa5061ee1fced0d13/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+225            android:value="@integer/google_play_services_version" />
+225-->[com.google.android.gms:play-services-basement:17.0.0] /home/jawad/.gradle/caches/transforms-3/8d613bce69ff230aa5061ee1fced0d13/transformed/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+226
+227        <service
+227-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:19:9-21:40
+228            android:name="io.nlopez.smartlocation.activity.providers.ActivityGooglePlayServicesProvider$ActivityRecognitionService"
+228-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:20:13-132
+229            android:exported="false" />
+229-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:21:13-37
+230        <service
+230-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:22:9-24:40
+231            android:name="io.nlopez.smartlocation.geofencing.providers.GeofencingGooglePlayServicesProvider$GeofencingService"
+231-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:23:13-127
+232            android:exported="false" />
+232-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:24:13-37
+233        <service
+233-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:25:9-27:40
+234            android:name="io.nlopez.smartlocation.geocoding.providers.AndroidGeocodingProvider$AndroidGeocodingService"
+234-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:26:13-120
+235            android:exported="false" />
+235-->[io.nlopez.smartlocation:library:3.2.11] /home/jawad/.gradle/caches/transforms-3/3ae92b76e842a48a06a89504a821a100/transformed/jetified-library-3.2.11/AndroidManifest.xml:27:13-37
+236    </application>
+237
+238</manifest>
