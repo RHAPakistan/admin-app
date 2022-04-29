@@ -8,7 +8,8 @@ import DriveForm from '../../components/InputForm/DriveFormV2';
 const adminApi = require("../../helpers/adminApi");
 const CreateDriveScreen = ({ navigation }) => {
 	const data = {
-		date: "",
+		title: "",
+		date: null,
 		meetupTime: "",
 		departureTime: "",
 		meetupPoint: "",

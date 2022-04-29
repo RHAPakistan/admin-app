@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Keyboard, Text, Pressable, View, ActivityIndicator } from 'react-native';
+import { Keyboard, Text, Pressable, View, ActivityIndicator, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import Search from '../../components/ManagerOptions/Search';
@@ -15,7 +15,10 @@ const InductionManagerScreen = ({ navigation }) => {
 		const resp = await adminApi.get_induction_requests();
 		return resp;
 	}
-
+	const searchQuery = async (val)=>{
+		const resp = await adminApi.search_requests(val);
+		return resp
+	}
 	useEffect(()=>{
 		fetchData()
 		.then((response)=>{
@@ -30,7 +33,28 @@ const InductionManagerScreen = ({ navigation }) => {
 
 	const onSubmit = (query) => {
 		// on submit, fetch data based on search query
-		console.log('Vendor Searched', query);
+		setIsLoading(true);
+		console.log('Searched Query: ', query);
+		searchQuery(query)
+		.then((res)=>{
+			console.log("Seaach Response ",res);
+			if(res.requests){
+				if(res.error == 1){
+					Alert.alert("Oops,",res.message);
+				}
+				setData(res.requests);
+				setIsLoading(false);
+			}
+			else {
+				Alert.alert("Error: ",`${res.message}\n\nKindly report the error, thanks.`);
+				setIsLoading(false);
+			}
+		})
+		.catch((e)=>{
+			console.log("Error: ",e);
+			Alert.alert("Error: ",`${e.message}\n\nKindly report the error, thanks.`);
+			setIsLoading(false);
+		});
 	};
 
 	const onPressHandler = (data) => {
@@ -46,7 +70,7 @@ const InductionManagerScreen = ({ navigation }) => {
 				
 			</View>
 
-			{/* <Search onSubmit={onSubmit} placeholder='Search Name' /> */}
+			 <Search onSubmit={onSubmit} placeholder='Search Requests by any attribute' />
 			{
 			data.length>0?
 				<InductionList data={data} onPress={onPressHandler} />
