@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
 import TextLine from '../TextLine';
 import TextDescription from '../TextDescription';
@@ -12,11 +12,14 @@ const DriveDetails = ({ data }) => {
 	);
 
 	return (
-		<View>
+		<ScrollView>
 			{/* Time When this drive was created or modified */}
 			{TimeLine}
 
 			{/* Drive Name / title */}
+			<TextLine index={0} label='Drive Title' value={data.title} />
+
+
 			<TextLine index={1} label='Drive Location' value={data.driveLocation} />
 
 			{/* Drive lOCATION/ADDRESS (String) */}
@@ -40,7 +43,7 @@ const DriveDetails = ({ data }) => {
 			<TextLine index={9} label='Volunteer Required' value={data.maxCount} />
 
 			<TextLine index={10} label='Volunteer Registered' value={data.currentCount} />
-		</View>
+		</ScrollView>
 	);
 };
 

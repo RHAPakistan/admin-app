@@ -7,6 +7,9 @@ import CreateDriveScreen from '../screens/drive_module/CreateDriveScreen';
 import DriveParticipantsScreen from '../screens/drive_module/DriveParticipantsScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
+import VolunteerHistoryScreen from '../screens/volunteer_module/VolunteerHistoryScreen';
+import VolunteerDetailsScreen from '../screens/volunteer_module/VolunteerDetailsScreen';
+
 import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
 import HeaderWithEdit from '../components/ScreenHeaders/HeaderWithEdit';
 
@@ -47,12 +50,30 @@ const DriveStack = () => {
 			<Stack.Screen
 				name='DriveParticipantsScreen'
 				component={DriveParticipantsScreen}
-				options={{ title: 'Drive Participants List' }}
+				//options={{ title: 'Drive Participants List' }}
+				options={({ route }) => ({ 
+					title: 'Drive Participants List' })}
 			/>
 			<Stack.Screen
 				name='NotificationScreen'
 				component={NotificationScreen}
 				options={{ title: 'Notifications' }}
+			/>
+			<Stack.Screen
+				name='VolunteerDetailsScreen'
+				component={VolunteerDetailsScreen}
+				options={({ navigation }) => {
+					const title = 'Volunteer';
+					//const screen = 'EditVolunteerDetailsScreen';
+					return PrimaryHeader(navigation, title);;
+				}}
+			/>
+			<Stack.Screen
+				name='VolunteerHistoryScreen'
+				component={VolunteerHistoryScreen}
+				options={({ route }) => ({
+					title: 'Volunteer History',
+				})}
 			/>
 		</Stack.Navigator>
 	);
