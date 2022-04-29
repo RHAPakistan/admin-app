@@ -53,34 +53,34 @@ module.exports = {
             });
 
         //setup notifications
-        if (Device.isDevice) {
-            const { status: existingStatus } = await Notifications.getPermissionsAsync();
-            let finalStatus = existingStatus;
-            if (existingStatus !== 'granted') {
-              const { status } = await Notifications.requestPermissionsAsync();
-              finalStatus = status;
-            }
-            if (finalStatus !== 'granted') {
-              alert('Failed to get push token for push notification!');
-              return;
-            }
-            const token = (await Notifications.getExpoPushTokenAsync()).data;
-            console.log(token);
-            // this.setState({ expoPushToken: token });
-            let uid = await localStorage.getData("user_id");
-            module.exports.send_push_token(uid,token);
-          } else {
-            alert('Must use physical device for Push Notifications');
-          }
+        // if (Device.isDevice) {
+        //     const { status: existingStatus } = await Notifications.getPermissionsAsync();
+        //     let finalStatus = existingStatus;
+        //     if (existingStatus !== 'granted') {
+        //       const { status } = await Notifications.requestPermissionsAsync();
+        //       finalStatus = status;
+        //     }
+        //     if (finalStatus !== 'granted') {
+        //       alert('Failed to get push token for push notification!');
+        //       return;
+        //     }
+        //     const token = (await Notifications.getExpoPushTokenAsync()).data;
+        //     console.log(token);
+        //     // this.setState({ expoPushToken: token });
+        //     let uid = await localStorage.getData("user_id");
+        //     module.exports.send_push_token(uid,token);
+        //   } else {
+        //     alert('Must use physical device for Push Notifications');
+        //   }
         
-          if (Platform.OS === 'android') {
-            Notifications.setNotificationChannelAsync('default', {
-              name: 'default',
-              importance: Notifications.AndroidImportance.MAX,
-              vibrationPattern: [0, 250, 250, 250],
-              lightColor: '#FF231F7C',
-            });
-          }
+        //   if (Platform.OS === 'android') {
+        //     Notifications.setNotificationChannelAsync('default', {
+        //       name: 'default',
+        //       importance: Notifications.AndroidImportance.MAX,
+        //       vibrationPattern: [0, 250, 250, 250],
+        //       lightColor: '#FF231F7C',
+        //     });
+        //   }
         return resp
     },
 
@@ -266,7 +266,7 @@ module.exports = {
         })
         .catch((e) =>{
             console.log(e);
-            console.log("error");
+            //console.log("error");
         })
         return resp;
     },
@@ -349,7 +349,7 @@ module.exports = {
             body: JSON.stringify(obj)
         })
         .then((response)=>{
-            console.log("Update drive Api: ",response);
+            //console.log("Update drive Api: ",response);
             return response
         })
         .then((json)=>{
@@ -369,7 +369,7 @@ module.exports = {
             body: JSON.stringify(data)
         })
         .then((response)=>{
-            console.log("Create drive Api res: ",response);
+            //console.log("Create drive Api res: ",response);
             return response
         })
         .then((json)=>{
@@ -606,5 +606,68 @@ module.exports = {
         })
         return resp;
     },
+    search_requests: async (val) =>{
+        const resp = await fetch(API_URL.concat('/api/admin/induction/search'), {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({text: val})
+        })
+        .then((response)=>{
+            //console.log("Search res: ",response)
+            return response.json();
+        })
+        .then((json)=>{
+            //console.log(json);
+            return json;
+        })
+        .catch((e) =>{
+            console.log("error: ",e);
+        })
+        return resp;
+    },
+
+    get_drive_participants : async(id)=>{
+        const resp = await fetch(API_URL.concat(`/api/admin/drive/participants/${id}`),{
+            method: 'GET',
+            headers: {
+                Accept: 'applicaiton/json',
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e)=>{
+            console.log("error ",e);
+        })
+        return resp
+    },
+
+    get_volunteers_by_distance: async(coordinates)=>{
+        const resp = await fetch(API_URL.concat('/api/volunteer/getByDistance'),{
+            method: 'POST',
+            headers: {
+                Accept: 'applicaiton/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"pickup_coordinates":coordinates?coordinates:[0,0]})
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e)=>{
+            console.log("error ",e);
+        })
+        return resp
+    }
 
 }
