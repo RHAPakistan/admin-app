@@ -32,6 +32,7 @@ const DriveManagerScreen = ({ navigation }) => {
 
 	const onChange = (query) => {
 		// Fetch data Here
+		setIsLoading(true);
 		let status = -2;
 		if(query.index==0) status = 1
 		else if (query.index==1) status = 0
@@ -41,6 +42,7 @@ const DriveManagerScreen = ({ navigation }) => {
 		.then((response)=>{
 			//console.log(response);
 			setData(response);
+			setIsLoading(false);
 		})
 		.catch((e)=>{
 			console.log(e);

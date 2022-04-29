@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Keyboard, Text, Pressable, View, ActivityIndicator } from 'react-native';
+import { Keyboard, Text, Pressable, View, ActivityIndicator, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Entypo } from '@expo/vector-icons';
 
@@ -39,18 +39,26 @@ const VendorManagerScreen = ({ navigation }) => {
 	const onSubmit = (query) => {
 		// on submit, fetch data based on search query
 		setIsLoading(true);
-		console.log('Vendor Searched', query);
+		console.log('Searched Query: ', query);
 		searchQuery(query)
 		.then((res)=>{
 			console.log("Seaach Response ",res);
-			setData(res.providers);
-			setIsLoading(false);
-			if(res.error == 1){
-				alert("No such result. Returning all data");
+			if(res.providers){
+				if(res.error == 1){
+					Alert.alert("Oops,",res.message);
+				}
+				setData(res.providers);
+				setIsLoading(false);
+			}
+			else {
+				Alert.alert("Error: ",`${res.message}\n\nKindly report the error, thanks.`);
+				setIsLoading(false);
 			}
 		})
 		.catch((e)=>{
 			console.log("Error: ",e);
+			Alert.alert("Error: ",`${e.message}\n\nKindly report the error, thanks.`);
+			setIsLoading(false);
 		});
 	};
 
@@ -71,7 +79,11 @@ const VendorManagerScreen = ({ navigation }) => {
 				</Pressable>
 			</View>
 
+<<<<<<< HEAD
 			{/* <Search onSubmit={onSubmit} placeholder='Search Vendor' /> */}
+=======
+			 <Search onSubmit={onSubmit} placeholder='Search Vendor by name, location or gender' />
+>>>>>>> d172654... added search and update drives
 
 			<VendorList data={data} onPress={onPressHandler} />
 		</Pressable>
