@@ -21,7 +21,7 @@ const DriveManagerScreen = ({ navigation }) => {
 	useEffect(()=>{
 		fetchData(1)
 		.then((response)=>{
-			//console.log(response);
+			console.log("The response: ",response);
 			setData(response);
 			setIsLoading(false);
 		})

@@ -20,7 +20,7 @@ const DriveParticipantsScreen = ({ navigation, route }) => {
 		const onMount = navigation.addListener('focus', ()=>{
 			const fetchData = async()=>{
 			//console.log("Id is : ",route.params.id);
-			const resp = await adminApi.get_drive_participants(route.params.id);
+			const resp = await adminApi.get_drive_participants(route.params.data._id);
 			return resp
 		}
 		fetchData()
@@ -63,7 +63,8 @@ const DriveParticipantsScreen = ({ navigation, route }) => {
 	};
 
 	const onPressHandler = (id) => {
-		navigation.navigate('VolunteerDetailsScreen', { id });
+		navigation.navigate('VolunteerDetailsScreen', { id:id, driveData: route.params.data });
+		//console.log("The drive id is: ",id);
 	};
 
 	return (
@@ -72,6 +73,11 @@ const DriveParticipantsScreen = ({ navigation, route }) => {
 			{isLoading && <ActivityIndicator color={"#165E2E"} />}
 			<View style={GlobalStyles.screenTitle}>
 				<Text style={GlobalStyles.screenTitleText}>Participants of the Drive</Text>
+				<Pressable
+					style={GlobalStyles.screenTitleButton}
+					onPress={() => navigation.navigate('SelectVolunteerScreen', {data: route.params.data })}>
+					<Entypo name='plus' size={30} color={Colors.white} />
+				</Pressable>
 			</View>
 
 			<Search onSubmit={onSubmit} placeholder='Search Participants by name, location or gender' />

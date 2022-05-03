@@ -70,7 +70,7 @@ const DriveDetailsScreen = ({ navigation, route }) => {
 					type='primary'
 					title='See Participants'
 					action={() =>
-						navigation.navigate('DriveParticipantsScreen', { id: data._id })
+						navigation.navigate('DriveParticipantsScreen', { data: data })
 					}
 				/>
 				{
