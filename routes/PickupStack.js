@@ -33,7 +33,7 @@ const PickupStack = () => {
 			<Stack.Screen
 				name='SelectVolunteerScreen'
 				component={SelectVolunteerScreen}
-				options={{ title: 'Assign Volunteer Location' }}
+				options={{ title: 'Assign Volunteer' }}
 			/>
 			<Stack.Screen
 				name='NotificationScreen'

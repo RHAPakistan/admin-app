@@ -7,9 +7,8 @@ import CreateDriveScreen from '../screens/drive_module/CreateDriveScreen';
 import DriveParticipantsScreen from '../screens/drive_module/DriveParticipantsScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
-import VolunteerHistoryScreen from '../screens/volunteer_module/VolunteerHistoryScreen';
-import VolunteerDetailsScreen from '../screens/volunteer_module/VolunteerDetailsScreen';
-
+import VolunteerDetailsScreen from '../screens/drive_module/VolunteerDetailsScreen';
+import SelectVolunteerScreen from '../screens/drive_module/SelectVolunteerScreen';
 import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
 import HeaderWithEdit from '../components/ScreenHeaders/HeaderWithEdit';
 
@@ -69,11 +68,9 @@ const DriveStack = () => {
 				}}
 			/>
 			<Stack.Screen
-				name='VolunteerHistoryScreen'
-				component={VolunteerHistoryScreen}
-				options={({ route }) => ({
-					title: 'Volunteer History',
-				})}
+				name='SelectVolunteerScreen'
+				component={SelectVolunteerScreen}
+				options={{ title: 'Add Volunteer' }}
 			/>
 		</Stack.Navigator>
 	);

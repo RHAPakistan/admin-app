@@ -52,13 +52,15 @@ const DriveDetails = ({ data }) => {
 
 			<TextLine index={7} label='For Whom' value={data.volunteerCategory} />
 
+
+			<TextLine index={8} label='Volunteer Required' value={data.maxCount} />
+
+			<TextLine index={9} label='Volunteer Registered' value={data.currentCount} />
+
 			{/* Food Description */}
-			<TextDescription index={8} label='Drive Description' value={data.description} />
+			<TextDescription index={10} label='Drive Description' value={data.description} />
 
 			{/* Volunteers Required */}
-			<TextLine index={9} label='Volunteer Required' value={data.maxCount} />
-
-			<TextLine index={10} label='Volunteer Registered' value={data.currentCount} />
 		</ScrollView>
 	);
 };

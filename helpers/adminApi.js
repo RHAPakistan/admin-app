@@ -53,34 +53,34 @@ module.exports = {
             });
 
         //setup notifications
-        if (Device.isDevice) {
-            const { status: existingStatus } = await Notifications.getPermissionsAsync();
-            let finalStatus = existingStatus;
-            if (existingStatus !== 'granted') {
-              const { status } = await Notifications.requestPermissionsAsync();
-              finalStatus = status;
-            }
-            if (finalStatus !== 'granted') {
-              alert('Failed to get push token for push notification!');
-              return;
-            }
-            const token = (await Notifications.getExpoPushTokenAsync()).data;
-            console.log(token);
-            // this.setState({ expoPushToken: token });
-            let uid = await localStorage.getData("user_id");
-            module.exports.send_push_token(uid,token);
-          } else {
-            alert('Must use physical device for Push Notifications');
-          }
+        // if (Device.isDevice) {
+        //     const { status: existingStatus } = await Notifications.getPermissionsAsync();
+        //     let finalStatus = existingStatus;
+        //     if (existingStatus !== 'granted') {
+        //       const { status } = await Notifications.requestPermissionsAsync();
+        //       finalStatus = status;
+        //     }
+        //     if (finalStatus !== 'granted') {
+        //       alert('Failed to get push token for push notification!');
+        //       return;
+        //     }
+        //     const token = (await Notifications.getExpoPushTokenAsync()).data;
+        //     console.log(token);
+        //     // this.setState({ expoPushToken: token });
+        //     let uid = await localStorage.getData("user_id");
+        //     module.exports.send_push_token(uid,token);
+        //   } else {
+        //     alert('Must use physical device for Push Notifications');
+        //   }
         
-          if (Platform.OS === 'android') {
-            Notifications.setNotificationChannelAsync('default', {
-              name: 'default',
-              importance: Notifications.AndroidImportance.MAX,
-              vibrationPattern: [0, 250, 250, 250],
-              lightColor: '#FF231F7C',
-            });
-          }
+        //   if (Platform.OS === 'android') {
+        //     Notifications.setNotificationChannelAsync('default', {
+        //       name: 'default',
+        //       importance: Notifications.AndroidImportance.MAX,
+        //       vibrationPattern: [0, 250, 250, 250],
+        //       lightColor: '#FF231F7C',
+        //     });
+        //   }
         return resp
     },
 
@@ -166,6 +166,28 @@ module.exports = {
 
     get_dropoffs: async () =>{
         const resp = await fetch(API_URL.concat("/api/admin/dropoff"), {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>{
+            // console.log(response);
+            return response.json();
+        })
+        .then((json)=>{
+            return json;
+        })
+        .catch((e) =>{
+            console.log(e);
+            console.log("error");
+        })
+    return resp;        
+    },
+
+    get_unenrolled_drive_volunteers: async (id) =>{
+        const resp = await fetch(API_URL.concat(`/api/admin/drive/volunteers/unenrolled/${id}`), {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -344,21 +366,24 @@ module.exports = {
             headers: {
                 Accept: 'application/json',
                 'Content-Type':'application/json',
-                'Authorization': "Token  " + token
+                'Authorization': "Bearer " + token
             },
             body: JSON.stringify(obj)
         })
         .then((response)=>{
-            //console.log("Update drive Api: ",response);
             return response
         })
         .then((json)=>{
             //console.log("Pickup updated? ",json);
             return json
         })
+        .catch((e) => {
+            console.log("error: ",e);
+        });
+        return resp
     },
     create_drive: async(data)=>{
-        const token = await await localStorage.getData("auth_token");
+        const token = await localStorage.getData("auth_token");
         const resp = await fetch(API_URL.concat('/api/admin/drive/'),{
             method: 'POST',
             headers: {
@@ -377,8 +402,7 @@ module.exports = {
             return json
         })
         .catch((e) => {
-            console.log(e);
-            console.log("error");
+            console.log("error: ",e);
         });
         return resp
     },
