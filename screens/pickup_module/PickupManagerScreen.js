@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import { LogBox, Text, Pressable, View, Keyboard, Card, TouchableOpacity } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { LogBox, Text, Pressable, View, Keyboard } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator } from "react-native";
 

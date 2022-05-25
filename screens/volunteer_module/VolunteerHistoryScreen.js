@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { LogBox, Text, Pressable, View, Keyboard, Card, TouchableOpacity } from 'react-native';
+import { LogBox, Text, Pressable, View, Keyboard} from 'react-native';
 
 
 import Options from '../../components/ManagerOptions/Options';

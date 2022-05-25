@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import { Component } from "react";
-import { StyleSheet, Text, View, Image, Button, TouchableOpacity} from 'react-native';
+import { Text, View, Image, TouchableOpacity} from 'react-native';
 import { styles } from "./styles";
 import LoginUser from "../components/LoginUser";
 import LoginGuest from "../components/LoginGuest";

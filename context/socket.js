@@ -1,4 +1,3 @@
-import * as SecureStore from 'expo-secure-store';
 import socketio from "socket.io-client";
 import React from "react";
 import {SOCKET_URL} from "../config.json";

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Keyboard, Text, Pressable, View, ActivityIndicator, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Entypo } from '@expo/vector-icons';
 import Search from '../../components/ManagerOptions/Search';
 
 import GlobalStyles from '../../styles/GlobalStyles';

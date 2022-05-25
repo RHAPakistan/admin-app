@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text, TextInput, Alert } from 'react-native';
-import * as Animatable from 'react-native-animatable';
+import { Alert } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { styles } from './styles';
 import { Form, FormItem, Picker } from 'react-native-form-component';
@@ -14,20 +13,7 @@ const Signup = ({ navigation }) => {
 	const [dob,setdob] = useState("");
 	const [contactNumber, setcontactNumber] = useState("");
 	const [gender, setgender] = useState("male");
-	const [occupation,setoccupation] = useState("");
 	const [address,setaddress] = useState("");
-	const [emergencyContact,setemergencyContact] = useState("");
-	const [relationEmergency,setrelationEmergency] = useState("");
-	const [fbLink,setfbLink] = useState("");
-	const [isVacinated,setisVacinated] = useState("No");
-	const [medicalCondition,setmedicalCondition] = useState("");
-	const [heardRHAwhere,setheardRHAwhere] = useState("");
-	const [contactsInRha,setcontactsInRha] = useState("");
-	const [volunteeredOrganizations,setvolunteeredOrganizations] = useState("");
-	const [reasonForApply,setreasonForApply] = useState("");
-	const [skills,setskills] = useState("");
-	const [pickupTiming,setpickupTiming] = useState("");
-	const [questions,setquestions] = useState("");
 
     const placeRequest = async (value)=>{
         console.log("Form Data",value);

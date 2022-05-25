@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import { SafeAreaView, View, TextInput, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import { SafeAreaView, View, TextInput, Text, TouchableOpacity, Alert} from 'react-native';
 import { styles } from './styles';
 var adminApi = require("../../helpers/adminApi.js");
 
-const changePassword = ({navigation, route}) => {
+const ChangePassword = ({navigation, route}) => {
 
     const email = route.params.email;
     const otp = route.params.otp;
@@ -64,4 +64,4 @@ const changePassword = ({navigation, route}) => {
     )
 }
 
-export default changePassword;
+export default ChangePassword;

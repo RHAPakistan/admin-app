@@ -1,6 +1,4 @@
-import * as SecureStore from 'expo-secure-store';
 import { concat } from 'react-native-reanimated';
-import { retrySymbolicateLogNow } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 import { API_URL } from "../config.json";
 import {initiateSocketConnection} from "../context/socket";
 import * as Notifications from "expo-notifications";

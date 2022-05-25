@@ -1,6 +1,4 @@
-import * as SecureStore from 'expo-secure-store';
 import React from "react";
-const localStorage = require("../helpers/localStorage");
 
 // export const socket = socketio.connect(
 //     SOCKET_URL

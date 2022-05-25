@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Button, LogBox, ScrollView, Text, View, FlatList, Alert } from 'react-native';
-import { SafeAreaView } from 'react-native-web';
+import { LogBox, ScrollView, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 const adminApi = require("../../helpers/adminApi");
-import GlobalStyles from '../../styles/GlobalStyles';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import styles from '../../components/ButtonList/styles.js';
-import VolunteerButton from '../../components/ButtonList/VolunteerList/VolunteerButton';
 import VolunteerList from '../../components/ButtonList/VolunteerList';
-import SliderNativeComponent from 'react-native/Libraries/Components/Slider/SliderNativeComponent';
-// import { SafeAreaView } from 'react-native-web';
 
 const SelectVolunteerScreen = ({ navigation, route }) => {
 	const { volunteer, setVolunteer, setProgressCount,pickupCoordinates } = route.params;
 	const [volunteersList, setVolunteersList] = useState([]);
-	const [volunteerSelected, setVolunteerSelected] = useState("");
 	useEffect(()=>{
 		const fetchData = async() =>{
 			const resp = await adminApi.get_volunteers_by_distance(pickupCoordinates);

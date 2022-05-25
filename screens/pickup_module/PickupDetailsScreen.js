@@ -8,7 +8,6 @@ import PickupDetails from '../../components/DetailsForm/PickupDetails';
 import ActionBox from '../../components/ActionBox';
 import { socket, SocketContext } from '../../context/socket';
 import GlobalStyles from '../../styles/GlobalStyles';
-import * as SecureStore from 'expo-secure-store';
 import PickupDetailsFixed from '../../components/DetailsForm/PickupDetailsFixed';
 import InputModal from '../../components/inputModal';
 
@@ -21,8 +20,6 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 	LogBox.ignoreLogs([
 		'VirtualizedLists should never be nested inside plain ScrollViews with the same orientation - use another VirtualizedList-backed container instead.',
 	]);
-	// console.log("=====");
-	// console.log(route.params);
 	let removeProgressBar = false;
 	const [isLoading, setIsLoading] = useState(true);
 	const [dropoff, setDropoff] = useState({ name: 'none', id: '' });
@@ -83,8 +80,6 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 				console.log(socket_data.volunteer);
 				setVolunteer(socket_data.volunteer.fullName);
 				setPickup(socket_data.message);
-				//navigate to processing state.
-				// navigation.navigate("ProcessingScreen", {"pickup": socket_data.message,"provider":socket_data.provider,"volunteer":socket_data.volunteer});
 			})
 
 			socket.on("foodPicked",(socket_data)=>{
@@ -102,11 +97,6 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 				setHeading("Pickup Completed");
 				setProgressCount(5);
 				setPickup(socket_data.message);
-				//navigate to completed state.
-				// navigation.navigate("CompletedScreen", 
-				// {"pickup": socket_data.message,"provider":socket_data.provider,
-				// "volunteer":socket_data.volunteer});
-	
 			})
 			socket.on("informCancelPickup", (socket_data)=>{
 				console.log("Pickup cancelled on admin's side",socket_data);
@@ -156,8 +146,6 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 
 	const data = {
 		BOOKING_TIME: currentPickup.placementTime,
-		// COMPLETION_TIME: '{COMPLETION_TIME}',
-		// CANCELLATION_TIME: '{CANCELLATION_TIME}',
 		CONTACT_NAME: current_provider.fullName,
 		CONTACT_PHONE: current_provider.contactNumber,
 		PROVIDER: {
@@ -173,7 +161,6 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 			value: dropoff.name,
 			action: () =>
 			setDropoffModalVisible(!dropoffModalVisible)
-			// navigation.navigate('SelectDropoffScreen', { dropoff, setDropoff, setProgressCount}),
 		},
 		VOLUNTEER: {
 			value: volunteer.fullName,
@@ -214,11 +201,9 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 			alert("Please assign dropoff and volunteer both");
 		} else{
 		//send a notification to the assigned volutneer through the socket
-		// socket.emit("assignPickup",{"pickup":currentPickup, "volunteer":volunteer});
 		socket.emit("assignPickup",{"message":currentPickup});
 		setProgressCount(2);
 		setHeading("Waiting for volunteer");
-		// navigation.navigate("AwaitVolunteerScreen",{"pickup":currentPickup, "provider":current_provider, "dropoff":dropoff, "volunteer":volunteer});
 		}
 	}
 
@@ -227,9 +212,6 @@ const PickupDetailsScreen = ({ navigation, route }) => {
 			name: props,
 			id: Math.random() * 10000 + ''
 		});
-		// setProgressCount((prevstate)=>{
-		// 	return prevstate+1;
-		// });
 		setDropoffModalVisible(!dropoffModalVisible);
 	}
 

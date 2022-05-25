@@ -6,7 +6,6 @@ import EditVendorDetailsScreen from '../screens/vendor_module/EditVendorDetailsS
 import CreateVendorScreen from '../screens/vendor_module/CreateVendorScreen';
 import VendorHistoryScreen from '../screens/vendor_module/VendorHistoryScreen';
 import NotificationScreen from '../screens/NotificationScreen';
-import VolunteerSignup from '../components/volunteerSignup';
 import PrimaryHeader from '../components/ScreenHeaders/PrimaryHeader';
 import HeaderWithEdit from '../components/ScreenHeaders/HeaderWithEdit';
 
